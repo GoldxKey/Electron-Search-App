@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 // import {clipboard, remote} from 'electron';
 import {connect} from 'react-redux';
 import {
-  fetchSearch
+  fetchSearch,
+  changeLanguageModalStatus
 } from '../../Redux/actions/index';
 
 import FAB from '../FAB/index';
@@ -11,6 +12,7 @@ import Search from './Search';
 import SearchResult from './SearchResult/index';
 import EmptyContainer from '../EmptyContainer/index';
 import LoadingContainer from '../LoadingContainer/index';
+import LanguageModal from '../LanguageModal/index';
 
 require('../../Page/stylesheet/dashboard.less');
 
@@ -24,9 +26,13 @@ class Dashboard extends Component {
   }
 
   render() {
-    let {totalCount, loading} = this.props;
+    let {totalCount, loading, changeLanguageModalStatus, languageModal} = this.props;
 
-    let container = (<EmptyContainer />);
+    let container = (<EmptyContainer />), changeLanguageModal;
+
+    if(languageModal) {
+      changeLanguageModal = (<LanguageModal />);
+    }
 
     if (loading) {
       container = (<LoadingContainer />);
@@ -36,8 +42,9 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard" >
-        <FAB />
+        <FAB handleClick={changeLanguageModalStatus.bind(this)}/>
         <Search />
+        {changeLanguageModal}
         {container}
       </div>
     )
@@ -47,7 +54,8 @@ class Dashboard extends Component {
 function mapStateToProps(state) {
   return {
     totalCount: state.totalCount,
-    loading: state.loading
+    loading: state.loading,
+    languageModal: state.languageModal
   }
 }
 
@@ -55,6 +63,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchSearch: () => {
       dispatch(fetchSearch());
+    },
+    changeLanguageModalStatus: () => {
+      dispatch(changeLanguageModalStatus(true));
     }
   }
 }

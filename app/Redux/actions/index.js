@@ -4,6 +4,14 @@ import {
   BASE_URL
 } from '../../Component/ConstValue';
 
+export const CHANGE_LANGUAGE_MODAL_STATUS = 'CHANGE_LANGUAGE_MODAL_STATUS';
+export const changeLanguageModalStatus = (status) => {
+  return {
+    type: CHANGE_LANGUAGE_MODAL_STATUS,
+    status
+  }
+};
+
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const changeName = (name) => {
   return {

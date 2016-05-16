@@ -8,8 +8,18 @@ const state = {
   },
   items: [],
   totalCount: 0,
-  loading: true
+  loading: true,
+  languageModal: false
 };
+
+export function languageModal(languageModal = false, action) {
+  switch (action.type) {
+  case ACTIONS.CHANGE_LANGUAGE_MODAL_STATUS:
+    return action.status;
+  default:
+    return languageModal;
+  }
+}
 
 export function parameters(parameters = state.parameters, action) {
   switch (action.type) {

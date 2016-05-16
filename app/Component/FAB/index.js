@@ -8,8 +8,9 @@ class FAB extends Component {
   }
 
   render() {
+    let {handleClick} = this.props;
     return (
-      <div className="fab"></div>
+      <div className="fab" onClick={handleClick.bind(this)}></div>
     )
   }
 }

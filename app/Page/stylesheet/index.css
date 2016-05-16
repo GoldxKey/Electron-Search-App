@@ -17,3 +17,8 @@ text-rendering: geometricPrecision;
   margin: 50px 5%;
   height: 100%;
 }
+
+body::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+}

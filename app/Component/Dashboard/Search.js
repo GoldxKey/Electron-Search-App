@@ -48,7 +48,7 @@ class Search extends Component {
       <div className="top_search_container">
         <div className="top_search" id="top_search">
           <i
-            className="fa fa-github fa-3 top_menu"
+            className="fa fa-github fa-2x top_menu"
             aria-hidden="true"
           />
           <input
@@ -58,9 +58,10 @@ class Search extends Component {
             ref="search"
             autofocus="true"
             onKeyUp={this.handleKeyUp.bind(this)}
+            placeholder="tap to search"
           />
           <i
-            className="fa fa-search fa-2 search_icon"
+            className="fa fa-search search_icon"
             aria-hidden="true"
             onClick={this.handleSearch.bind(this)}
           />

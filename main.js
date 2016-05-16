@@ -7,29 +7,31 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 // Module to create menu
 const Menu = electron.Menu;
+// Tray to add appIconMenu
+const Tray = electron.Tray;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-let menus = [
+let iconMenu = [
   {
-    label: 'search',
+    label: 'search in',
     submenu: [
       {
-        label: 'in github',
+        label: 'github',
         click: (item, focusedWindow) => {
 
         }
       },
       {
-        label: 'in stackoverflow',
+        label: 'stackoverflow',
         click: (item, focusedWindow) => {
 
         }
       },
       {
-        label: 'in segmentfault',
+        label: 'segmentfault',
         click: (item, focusedWindow) => {
 
         }
@@ -37,6 +39,40 @@ let menus = [
     ]
   }
 ]
+
+let menus = [
+  {
+    label: 'main',
+    submenu: [
+      {
+        label: 'Version 1.0'
+      },
+      {
+        label: 'Preferences',
+        click: (item, focusedWindow) => {
+
+        }
+      },
+      {
+        label: 'About',
+        click: (item, focusedWindow) => {
+
+        }
+      },
+      {
+        label: 'Quit',
+        click: () => {
+          app.quit();
+        }
+      }
+    ]
+  },
+  ...iconMenu
+];
+
+const path = require('path');
+const ipc = electron.ipcMain;
+let appIcon = null;
 
 // here to get more info of BrowserWindow:
 // https://github.com/electron/electron/blob/master/docs-translations/zh-CN/api/browser-window.md
@@ -78,8 +114,15 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createWindow();
+  // menu
   const menu = Menu.buildFromTemplate(menus);
   Menu.setApplicationMenu(menu);
+  // appIconMenu
+  const iconPath = path.join(__dirname, './app/Page/image/gundamcat_icon.png');
+  appIcon = new Tray(iconPath);
+  const contextMenu = electron.Menu.buildFromTemplate(iconMenu);
+  appIcon.setToolTip('change search area');
+  appIcon.setContextMenu(contextMenu);
 });
 
 // Quit when all windows are closed.
