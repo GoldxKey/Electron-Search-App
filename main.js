@@ -88,7 +88,7 @@ function createWindow () {
     title: 'Electron Demo',
     alwaysOnTop: true,
     center: true,
-    resizable: false,
+    // resizable: false,
     skipTaskbar: true
     // backgroundColor: '#000000'
   });

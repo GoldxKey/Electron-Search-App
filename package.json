@@ -44,6 +44,7 @@
     "webpack": "^1.13.0"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "draft-js": "^0.7.0",
     "electron-prebuilt": "^0.37.8",
     "electron-reload": "^0.3.0",

@@ -5,52 +5,52 @@ export const LANGUAGE_IMAGE_URL = 'Page/image/language/';
 export const LANGUAGES = {
   all: {
     name: 'all',
-    image: 'icon/electron.svg',
-    banner: 'banner/electron'
+    image: 'icon/code.png',
+    banner: 'banner/star-wars.jpg'
   },
   javascript: {
     name: 'javascript',
     image: 'icon/js.png',
-    banner: 'banner/js'
+    banner: 'banner/js.jpg'
   },
   html: {
     name: 'html',
     image: 'icon/html.png',
-    banner: 'banner/html'
+    banner: 'banner/html.png'
   },
   python: {
     name: 'python',
     image: 'icon/python.png',
-    banner: 'banner/python'
+    banner: 'banner/python.jpg'
   },
   ruby: {
     name: 'ruby',
     image: 'icon/ruby.png',
-    banner: 'banner/ruby'
+    banner: 'banner/ruby.jpg'
   },
   css: {
     name: 'css',
     image: 'icon/css.png',
-    banner: 'banner/css'
+    banner: 'banner/css.png'
   },
   java: {
     name: 'java',
     image: 'icon/java.png',
-    banner: 'banner/java'
+    banner: 'banner/java.jpg'
   },
-  node: {
-    name: 'node',
+  nodejs: {
+    name: 'nodejs',
     image: 'icon/nodejs.png',
-    banner: 'banner/nodejs'
+    banner: 'banner/nodejs.jpg'
   },
   swift: {
     name: 'swift',
     image: 'icon/swift.png',
-    banner: 'banner/swift'
+    banner: 'banner/swift.jpg'
   },
   php: {
     name: 'php',
     image: 'icon/php.png',
-    banner: 'banner/php'
+    banner: 'banner/php.png'
   }
 };
