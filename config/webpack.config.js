@@ -94,7 +94,7 @@ module.exports = {
   externals: [
     (function () {
       var IGNORES = [
-        'electron'
+        'electron', 'fs', 'path'
       ];
       return function (context, request, callback) {
         if (IGNORES.indexOf(request) >= 0) {

@@ -80,14 +80,16 @@ function createWindow () {
   // Create the browser window.
   // learn the config of BrowserWindow
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 450,
+    height: 700,
     // frame: false,
     titleBarStyle: 'hidden-inset', // top titleBar in your App, can be default, hidden, hidden-inset
     autoHideMenuBar: true,
     title: 'Electron Demo',
     alwaysOnTop: true,
     center: true,
+    resizable: false,
+    skipTaskbar: true
     // backgroundColor: '#000000'
   });
 
