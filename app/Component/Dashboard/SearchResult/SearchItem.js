@@ -1,9 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
+import {
+  showNewPage
+} from '../../../Page/js/utils/index';
 
 class SearchItem extends Component {
   constructor(props) {
     super(props);
+  }
+
+  showGithubPage() {
+    let {item} = this.props;
+    showNewPage(item.html_url, item.full_name);
   }
 
   render() {
@@ -17,7 +25,7 @@ class SearchItem extends Component {
             <div className="item_author_name">{item.owner.login}</div>
           </div>
           <div className="top_info_container">
-            <h3>{item.name}</h3>
+            <h3 onClick={this.showGithubPage.bind(this)} className="info_name">{item.name}</h3>
             <div className="info_description">{description}</div>
           </div>
         </div>
