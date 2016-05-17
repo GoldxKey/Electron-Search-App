@@ -8,9 +8,11 @@ class FAB extends Component {
   }
 
   render() {
-    let {handleClick} = this.props;
+    let {handleClick, image} = this.props;
     return (
-      <div className="fab" onClick={handleClick.bind(this)}></div>
+      <div className="fab" onClick={handleClick.bind(this)}>
+        <img className="fab_image" src={image} />
+      </div>
     )
   }
 }

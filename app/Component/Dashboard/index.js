@@ -6,6 +6,10 @@ import {
   fetchSearch,
   changeLanguageModalStatus
 } from '../../Redux/actions/index';
+import {
+  LANGUAGES,
+  LANGUAGE_IMAGE_URL
+} from '../ConstValue';
 
 import FAB from '../FAB/index';
 import Search from './Search';
@@ -26,7 +30,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    let {totalCount, loading, changeLanguageModalStatus, languageModal} = this.props;
+    let {totalCount, loading, changeLanguageModalStatus, languageModal, language} = this.props;
 
     let container = (<EmptyContainer />), changeLanguageModal;
 
@@ -39,10 +43,15 @@ class Dashboard extends Component {
     }else if (totalCount > 0) {
       container = (<SearchResult />);
     }
+    let currentLanguage = language.split(':')[1];
+    let languageUrl = '../' + LANGUAGE_IMAGE_URL + LANGUAGES[currentLanguage].image;
 
     return (
       <div className="dashboard" >
-        <FAB handleClick={changeLanguageModalStatus.bind(this)}/>
+        <FAB
+          handleClick={changeLanguageModalStatus.bind(this)}
+          image={languageUrl}
+        />
         <Search />
         {changeLanguageModal}
         {container}
@@ -55,7 +64,8 @@ function mapStateToProps(state) {
   return {
     totalCount: state.totalCount,
     loading: state.loading,
-    languageModal: state.languageModal
+    languageModal: state.languageModal,
+    language: state.parameters.language
   }
 }
 
