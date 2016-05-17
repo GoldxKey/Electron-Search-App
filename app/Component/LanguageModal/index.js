@@ -4,22 +4,47 @@ import {connect} from 'react-redux';
 require('../../Page/stylesheet/language_modal.less');
 
 import {
-  changeLanguageModalStatus
+  changeLanguageModalStatus,
+  changeLanguage,
+  fetchSearch
 } from '../../Redux/actions/index';
+
+import {
+  LANGUAGES
+} from '../ConstValue';
+
+import Language from './Language';
 
 class LanguageModal extends Component {
   constructor(props) {
     super(props);
   }
 
-  changeLanguageModalStatus(e) {
+  changeLanguageModalStatus() {
     this.props.changeLanguageModalStatus();
-    e.stoppropagation();
-    e.preventDefault();
     return false;
   }
 
+  changeLanguage(language) {
+    let {changeLanguage, fetchSearch} = this.props;
+    changeLanguage(language);
+    this.changeLanguageModalStatus();
+    fetchSearch();
+  }
+
   render() {
+
+    let languages = Object.keys(LANGUAGES).map((name, index) => {
+      if(name !== 'all') {
+        return (
+          <Language
+            key={index}
+            language={LANGUAGES[name]}
+            changeLanguage={this.changeLanguage.bind(this)}
+          />
+        )
+      }
+    });
 
     return (
       <div className="modal_container">
@@ -32,6 +57,11 @@ class LanguageModal extends Component {
             />
           </div>
           <div className="modal_header"></div>
+          <div className="modal_body">
+            <div className="languages_area">
+              {languages}
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -48,6 +78,12 @@ function mapDispatchToProps(dispatch) {
   return {
     changeLanguageModalStatus: () => {
       dispatch(changeLanguageModalStatus(false));
+    },
+    changeLanguage: (language) => {
+      dispatch(changeLanguage(language));
+    },
+    fetchSearch: () => {
+      dispatch(fetchSearch());
     }
   }
 }
