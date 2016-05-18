@@ -52,5 +52,10 @@ export const LANGUAGES = {
     name: 'php',
     image: 'icon/php.png',
     banner: 'banner/php.png'
+  },
+  go: {
+    name: 'go',
+    image: 'icon/go.png',
+    banner: 'banner/go.jpg'
   }
 };

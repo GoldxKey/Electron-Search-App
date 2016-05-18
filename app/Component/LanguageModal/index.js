@@ -58,7 +58,8 @@ class LanguageModal extends Component {
       ruby: currentLanguage === 'ruby',
       nodejs: currentLanguage === 'nodejs',
       swift: currentLanguage === 'swift',
-      java: currentLanguage === 'java'
+      java: currentLanguage === 'java',
+      go: currentLanguage === 'go'
     })
 
     return (
