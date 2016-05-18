@@ -11,9 +11,9 @@ JS大法好~！
 ### setup
 
 ```bash
-$ git clone git@github.com:ecmadao/Github-Search-App.git
+$ git clone git@github.com:ecmadao/Electron-Search-App.git
 
-$ cd Github-Search-App
+$ cd Electron-Search-App
 
 $ npm install
 
@@ -27,6 +27,7 @@ $ npm run rock
 - 自定义star数目
 - 搜索结果增加github趋势
 - App主题选择
+- 消息弹窗
 
 if possible, I wanna:
 
