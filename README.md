@@ -1,4 +1,4 @@
-## Github-Search-App
+## Electron-Search-App
 
 最初只是为了学习[`Electron`](https://github.com/electron/electron)，而clone了[`electron-quick-start`](https://github.com/electron/electron-quick-start)
 
