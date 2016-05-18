@@ -73,7 +73,12 @@ class LanguageModal extends Component {
             />
           </div>
 
-          <div className={modalHeaderClass}></div>
+          <div className={modalHeaderClass}>
+            <div className="language_name_container">
+              <span>当前搜索语言</span>
+              <div>{language.split(':')[1]}</div>
+            </div>
+          </div>
 
           <div className="modal_body">
             <div className="languages_area">
