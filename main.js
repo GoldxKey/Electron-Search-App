@@ -1,6 +1,10 @@
 // ES6 syntax is available
 
 const electron = require('electron')
+
+// electron debug tool
+require('electron-debug')({showDevTools: true});
+
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -88,7 +92,7 @@ function createWindow () {
     title: 'Electron Demo',
     alwaysOnTop: true,
     center: true,
-    // resizable: false,
+    resizable: false,
     skipTaskbar: true
     // backgroundColor: '#000000'
   });

@@ -26,7 +26,10 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchSearch();
+    let {totalCount, fetchSearch} = this.props;
+    if(!totalCount) {
+      this.props.fetchSearch();
+    }
   }
 
   render() {

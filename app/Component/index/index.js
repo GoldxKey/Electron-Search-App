@@ -9,19 +9,19 @@ import {gitSearchApp} from '../../Redux/reducers/index';
 
 require('../../Page/stylesheet/index.css');
 
-import {persistStore, autoRehydrate} from 'redux-persist';
+// import {persistStore, autoRehydrate} from 'redux-persist';
+//
+// const middlewareWrapper = applyMiddleware(thunk);
+// const store = middlewareWrapper(createStore);
+//
+// const rehydrator = autoRehydrate();
+// const AppStore = rehydrator(store)(gitSearchApp);
+// persistStore(AppStore);
 
-const middlewareWrapper = applyMiddleware(thunk);
-const store = middlewareWrapper(createStore);
-
-const rehydrator = autoRehydrate();
-const AppStore = rehydrator(store)(gitSearchApp);
-persistStore(AppStore);
-
-// const AppStore = createStore(
-//     gitSearchApp,
-//     applyMiddleware(thunk)
-// );
+const AppStore = createStore(
+    gitSearchApp,
+    applyMiddleware(thunk)
+);
 
 ReactDOM.render(
   <Provider store={AppStore}>
