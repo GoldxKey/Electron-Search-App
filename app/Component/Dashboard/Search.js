@@ -46,6 +46,7 @@ class Search extends Component {
     let {name} = this.props;
     return (
       <div className="top_search_container">
+        <div className="search_banner"></div>
         <div className="top_search" id="top_search">
           <i
             className="fa fa-github fa-2x top_menu"
