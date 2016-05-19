@@ -27,7 +27,7 @@ $ npm run rock
 - 自定义star数目
 - 搜索结果增加github趋势
 - App主题选择
-- 消息弹窗
+- ~~消息弹窗~~
 
 if possible, I wanna:
 

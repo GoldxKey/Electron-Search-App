@@ -93,7 +93,8 @@ function createWindow () {
     alwaysOnTop: true,
     center: true,
     resizable: false,
-    skipTaskbar: true
+    skipTaskbar: true,
+    // icon: __dirname + './app/Page/image/gundamcat.png'
     // backgroundColor: '#000000'
   });
 

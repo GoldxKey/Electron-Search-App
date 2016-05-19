@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 // import {clipboard, remote} from 'electron';
 import {connect} from 'react-redux';
+import Push from 'push.js';
+
 import {
   fetchSearch,
   changeLanguageModalStatus,
@@ -32,6 +34,11 @@ class Dashboard extends Component {
     if(!totalCount) {
       this.props.fetchSearch();
     }
+    Push.create('Hey',{
+      body: 'I\'m a github search app, built by Electron & React & Redux',
+      icon: '../../Page/image/gundamcat.png',
+      timeout: 6000
+    });
   }
 
   render() {
