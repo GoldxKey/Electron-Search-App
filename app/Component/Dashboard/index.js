@@ -4,7 +4,8 @@ import { render } from 'react-dom';
 import {connect} from 'react-redux';
 import {
   fetchSearch,
-  changeLanguageModalStatus
+  changeLanguageModalStatus,
+  changeMessage
 } from '../../Redux/actions/index';
 import {
   LANGUAGES,
@@ -17,6 +18,7 @@ import SearchResult from './SearchResult/index';
 import EmptyContainer from '../EmptyContainer/index';
 import LoadingContainer from '../LoadingContainer/index';
 import LanguageModal from '../LanguageModal/index';
+import Message from '../Message/index';
 
 require('../../Page/stylesheet/dashboard.less');
 
@@ -51,6 +53,7 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard" >
+        <Message />
         <FAB
           handleClick={changeLanguageModalStatus.bind(this)}
           image={languageUrl}
@@ -78,6 +81,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(fetchSearch());
     },
     changeLanguageModalStatus: () => {
+      dispatch(changeMessage('选择要搜索的编程语言', 'positive'));
       dispatch(changeLanguageModalStatus(true));
     }
   }

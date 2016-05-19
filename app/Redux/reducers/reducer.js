@@ -9,10 +9,23 @@ const state = {
   items: [],
   totalCount: 0,
   loading: true,
-  languageModal: false
+  languageModal: false,
+  msg: {
+    message: null,
+    messageType: 'default'
+  }
 };
 
-export function languageModal(languageModal = false, action) {
+export function msg(msg = state.msg, action) {
+  switch (action.type) {
+  case ACTIONS.CHANGE_MESSAGE:
+    return setState(msg, action.msg);
+  default:
+    return msg;
+  }
+}
+
+export function languageModal(languageModal = state.languageModal, action) {
   switch (action.type) {
   case ACTIONS.CHANGE_LANGUAGE_MODAL_STATUS:
     return action.status;

@@ -38,8 +38,8 @@ export const LANGUAGES = {
     image: 'icon/java.png',
     banner: 'banner/java.jpg'
   },
-  nodejs: {
-    name: 'nodejs',
+  node: {
+    name: 'node',
     image: 'icon/nodejs.png',
     banner: 'banner/nodejs.jpg'
   },

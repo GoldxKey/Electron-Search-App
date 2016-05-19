@@ -56,7 +56,7 @@ class LanguageModal extends Component {
       python: currentLanguage === 'python',
       php: currentLanguage === 'php',
       ruby: currentLanguage === 'ruby',
-      nodejs: currentLanguage === 'nodejs',
+      node: currentLanguage === 'node',
       swift: currentLanguage === 'swift',
       java: currentLanguage === 'java',
       go: currentLanguage === 'go'

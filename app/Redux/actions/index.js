@@ -4,6 +4,17 @@ import {
   BASE_URL
 } from '../../Component/ConstValue';
 
+export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
+export const changeMessage = (message, messageType) => {
+  return {
+    type: CHANGE_MESSAGE,
+    msg: {
+      message,
+      messageType
+    }
+  }
+};
+
 export const CHANGE_LANGUAGE_MODAL_STATUS = 'CHANGE_LANGUAGE_MODAL_STATUS';
 export const changeLanguageModalStatus = (status) => {
   return {
@@ -63,10 +74,16 @@ export const fetchSearch = () => {
         return response.json();
       }
     }).then((data) => {
+      console.log(data);
       if(data.items) {
         dispatch(changeTotalCount(data["total_count"]));
         dispatch(resetItems(data.items));
         dispatch(changeLoadingStatus(false));
+      }else {
+        if(data.errors) {
+          let errorMessage = data.errors[0].message;
+          dispatch(changeMessage(errorMessage, 'error'));
+        }
       }
     }).catch((err) => {
       dispatch(changeLoadingStatus(false));
