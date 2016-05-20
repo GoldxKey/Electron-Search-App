@@ -16,6 +16,7 @@ import {
 } from '../ConstValue';
 
 import Language from './Language';
+import AdvanceSearch from './AdvanceSearch/index';
 
 class LanguageModal extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class LanguageModal extends Component {
 
   render() {
     let {language} = this.props;
+
     let languages = Object.keys(LANGUAGES).map((name, index) => {
       return (
         <Language
@@ -60,7 +62,7 @@ class LanguageModal extends Component {
       swift: currentLanguage === 'swift',
       java: currentLanguage === 'java',
       go: currentLanguage === 'go'
-    })
+    });
 
     return (
       <div className="modal_container">
@@ -84,6 +86,7 @@ class LanguageModal extends Component {
             <div className="languages_area">
               {languages}
             </div>
+            <AdvanceSearch />
           </div>
         </div>
       </div>

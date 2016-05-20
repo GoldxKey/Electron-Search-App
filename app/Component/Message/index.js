@@ -19,7 +19,6 @@ class Message extends Component {
   waitForClose() {
     (() => {
       setTimeout(() => {
-        console.log('timeout');
         this.hideMessageModal();
       }, 2000)
     })();
