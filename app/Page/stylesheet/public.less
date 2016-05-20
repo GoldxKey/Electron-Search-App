@@ -1,0 +1,49 @@
+.transform_to_center(@x: -50%, @y: -50%) {
+  transform: translate(@x, @y);
+  -webkit-transform: translate(@x, @y);
+  -moz-transform: translate(@x, @y);
+  -o-transform: translate(@x, @y);
+  -ms-transform: translate(@x, @y);
+}
+
+.transition_animation(@time: 0.3s) {
+  transition: all @time;
+  -webkit-transition: all @time;
+  -o-transition: all @time;
+  -moz-transition: all @time;
+  -ms-transition: all @time;
+}
+
+.absolute_all_screen(@position: fixed, @zIndex: 0) {
+  position: @position;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: @zIndex;
+}
+
+.default() {
+  color: #343434;
+  background-color: #fff;
+}
+
+.positive() {
+  background-color: #0E90D2;
+  color: #fff;
+}
+
+.negative() {
+  background-color: #7D7D7D;
+  color: #f0f0f0;
+}
+
+.warning() {
+  background-color: #F37B1D;
+  color: #fff;
+}
+
+.error() {
+  background-color: #DD514C;
+  color: #fff;
+}
