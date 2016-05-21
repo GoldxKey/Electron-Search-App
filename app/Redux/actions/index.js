@@ -1,7 +1,8 @@
 import fetch from 'isomorphic-fetch';
 
 import {
-  BASE_URL
+  BASE_URL,
+  TIME_OPTIONS
 } from '../../Component/ConstValue';
 
 export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
@@ -23,6 +24,7 @@ export const changeLanguageModalStatus = (status) => {
   }
 };
 
+// parameters
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const changeName = (name) => {
   return {
@@ -47,6 +49,15 @@ export const changeStars = (stars) => {
   }
 };
 
+export const CHANGE_TIME = 'CHANGE_TIME';
+export const changeTime = (index) => {
+  return {
+    type: CHANGE_TIME,
+    index
+  }
+};
+
+// totalCount
 export const CHANGE_TOTAL_COUNT = 'CHANGE_TOTAL_COUNT';
 export const changeTotalCount = (totalCount) => {
   return {
@@ -55,6 +66,7 @@ export const changeTotalCount = (totalCount) => {
   }
 };
 
+// items
 export const RESET_ITEMS = 'RESET_ITEMS';
 export const resetItems = (items) => {
   return {
@@ -68,8 +80,12 @@ export const fetchSearch = () => {
     let {parameters} = getState();
     dispatch(changeLoadingStatus(true));
     let url = BASE_URL + parameters.name + '+stars:' + parameters.stars + '+' + parameters.language;
+    if(parameters.time !== Object.keys(TIME_OPTIONS)[0]) {
+      url = url + '+created:' + TIME_OPTIONS[parameters.time].range;
+    }
     console.log(url);
     fetch(url).then((response) => {
+      console.log(response);
       if(response.status === 200) {
         return response.json();
       }

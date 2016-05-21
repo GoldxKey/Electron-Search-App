@@ -185,13 +185,13 @@
 
           }
 
-          .search_stars {
+          .advance_search__options {
             width: 90%;
             margin: 5px 5%;
             height: 72px;
             padding: 16px 0 8px 0;
 
-            .search_stars_label {
+            .advance_search__option_label {
               font-size: 12px;
               color: #808080;
             }
@@ -205,6 +205,28 @@
               color: #343434;
               font-size: 14px;
               width: 100%;
+            }
+
+            &.search_times {
+              margin-top: 0;
+              padding-top: 0;
+            }
+
+            .advance_search__time_container {
+              width: 100%;
+              height: auto;
+              margin-top: 8px;
+
+              &::after {
+                content: '';
+                display: block;
+                clear: both;
+              }
+
+              .time_container {
+                width: 50%;
+                float: left;
+              }
             }
           }
         }

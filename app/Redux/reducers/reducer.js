@@ -1,10 +1,15 @@
 import * as ACTIONS from '../actions/index';
 
+import {
+  TIME_OPTIONS
+} from '../../Component/ConstValue';
+
 const state = {
   parameters: {
     name: '',
     language: 'language:all',
     stars: '>=10',
+    time: Object.keys(TIME_OPTIONS)[0]
   },
   items: [],
   totalCount: 0,
@@ -47,6 +52,10 @@ export function parameters(parameters = state.parameters, action) {
   case ACTIONS.CHANGE_STARS:
     return setState(parameters, {
       stars: '>=' + action.stars
+    });
+  case ACTIONS.CHANGE_TIME:
+    return setState(parameters, {
+      time: Object.keys(TIME_OPTIONS)[action.index]
     });
   default:
     return parameters;
