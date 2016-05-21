@@ -28,6 +28,7 @@ $ npm run rock
 - 搜索结果增加github趋势
 - App主题选择
 - ~~消息弹窗~~
+- 分页
 
 if possible, I wanna:
 
