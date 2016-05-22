@@ -109,7 +109,7 @@ class LanguageModal extends Component {
               <div className="languages_area">
                 {languages}
               </div>
-              <AdvanceSearch />
+              <AdvanceSearch search={this.research.bind(this)}/>
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ class AdvanceSearch extends Component {
 
   render() {
     let {advanceSearch} = this.state;
-    let {stars, changeTime, time, language} = this.props;
+    let {stars, changeTime, time, language, search} = this.props;
     stars = stars.split('>=')[1];
 
     let advanceSearchContainerClass = classNames('advance_search_container', {
@@ -58,10 +58,15 @@ class AdvanceSearch extends Component {
     let advanceSearchContentClass = classNames('advance_search_content', {
       active: advanceSearch
     });
-    let advanceSearchButtonClass = classNames('advance_search_button', {
+    let advanceSearchButtonClass = classNames('advance_search__button button_advance', {
       positive: !advanceSearch,
       negative: advanceSearch
     });
+    let searchButtonClass = classNames('advance_search__button button_search', {
+      positive: advanceSearch,
+      negative: !advanceSearch
+    });
+
     let buttonName = advanceSearch ? 'close options' : 'advance options';
 
     let timeOptions = Object.keys(TIME_OPTIONS).map((value, index) => {
@@ -118,8 +123,11 @@ class AdvanceSearch extends Component {
             </div>
           </div>
         </div>
-        <div className={advanceSearchButtonClass} onClick={this.toggleAdvanceSearch.bind(this)}>
-          {buttonName}
+        <div className="advance_search__button_container">
+          <div className={searchButtonClass} onClick={search.bind(this)}>search !</div>
+          <div className={advanceSearchButtonClass} onClick={this.toggleAdvanceSearch.bind(this)}>
+            {buttonName}
+          </div>
         </div>
       </div>
     )
