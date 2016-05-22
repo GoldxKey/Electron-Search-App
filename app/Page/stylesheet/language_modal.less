@@ -21,11 +21,33 @@
     width: 75%;
     height: 600px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-    overflow: scroll;
+    // overflow: scroll;
+    overflow: hidden;
 
     &::-webkit-scrollbar {
       background: transparent;
       width: 0;
+    }
+
+    &.header_fixed_top {
+      .modal_button {
+        background-color: transparent;
+        top: 2px;
+        right: 2px;
+        box-shadow: none;
+      }
+      .modal_header {
+        height: 60px;
+        .language_name_container {
+          line-height: 60px;
+          padding: 0;
+          margin-left: 20px;
+          span {
+            display: none;
+          }
+        }
+      }
+
     }
 
     .modal_button {
@@ -63,7 +85,10 @@
       background-size: cover;
       border-radius: 2px 2px 0 0;
       overflow: hidden;
-      position: relative;
+      // position: relative;
+      position: absolute;
+      z-index: 1;
+      .transition_animation;
 
       .language_name_container {
         position: absolute;
@@ -118,9 +143,16 @@
 
     .modal_body {
       width: 100%;
-      height: auto;
+      height: 100%;
       border-radius: 0 0 2px 2px;
+      overflow: scroll;
 
+      .modal_body_container {
+        width: 100%;
+        height: auto;
+        padding-top: 200px;
+
+      }
       .language_container {
         float: left;
         width: 33.3%;

@@ -23,6 +23,19 @@ class LanguageModal extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    let $modal = $('.language_modal');
+    let $modalBody = $modal.find('.modal_body');
+    $modalBody.scroll((event) => {
+      let $currentTop = $modalBody.scrollTop();
+      if($currentTop >= 140) {
+        $modal.addClass('header_fixed_top');
+      }else {
+        $modal.removeClass('header_fixed_top');
+      }
+    });
+  }
+
   changeLanguageModalStatus() {
     this.props.changeLanguageModalStatus();
     return false;
@@ -83,10 +96,12 @@ class LanguageModal extends Component {
           </div>
 
           <div className="modal_body">
-            <div className="languages_area">
-              {languages}
+            <div className="modal_body_container">
+              <div className="languages_area">
+                {languages}
+              </div>
+              <AdvanceSearch />
             </div>
-            <AdvanceSearch />
           </div>
         </div>
       </div>
