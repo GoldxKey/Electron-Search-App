@@ -21,7 +21,6 @@
     width: 75%;
     height: 600px;
     box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
-    // overflow: scroll;
     overflow: hidden;
 
     &::-webkit-scrollbar {
@@ -30,18 +29,27 @@
     }
 
     &.header_fixed_top {
+
       .modal_button {
         background-color: transparent;
         top: 2px;
         right: 2px;
         box-shadow: none;
+
+        &:hover {
+          box-shadow: none;
+          background-color: transparent;
+        }
       }
+
       .modal_header {
         height: 60px;
+
         .language_name_container {
           line-height: 60px;
           padding: 0;
           margin-left: 20px;
+
           span {
             display: none;
           }

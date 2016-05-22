@@ -48,6 +48,12 @@ class LanguageModal extends Component {
     fetchSearch();
   }
 
+  research() {
+    let {fetchSearch} = this.props;
+    this.changeLanguageModalStatus();
+    fetchSearch();
+  }
+
   render() {
     let {language} = this.props;
 
@@ -81,7 +87,7 @@ class LanguageModal extends Component {
       <div className="modal_container">
         <div className="modal_bg" onClick={this.changeLanguageModalStatus.bind(this)}></div>
         <div className="language_modal">
-          <div className="modal_button">
+          <div className="modal_button" onClick={this.research.bind(this)}>
             <i
               className="fa fa-search fa-lg search_icon"
               aria-hidden="true"
