@@ -25,7 +25,6 @@ class Message extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // let preMessage = prevProps.msg.message;
     let {msg} = this.props;
     let {message} = msg;
     if(message) {

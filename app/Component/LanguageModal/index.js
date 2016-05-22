@@ -7,7 +7,8 @@ require('../../Page/stylesheet/language_modal.less');
 import {
   changeLanguageModalStatus,
   changeLanguage,
-  fetchSearch
+  fetchSearch,
+  changePage
 } from '../../Redux/actions/index';
 
 import {
@@ -42,14 +43,14 @@ class LanguageModal extends Component {
   }
 
   changeLanguage(language) {
-    let {changeLanguage, fetchSearch} = this.props;
+    let {changeLanguage} = this.props;
     changeLanguage(language);
-    this.changeLanguageModalStatus();
-    fetchSearch();
+    this.research();
   }
 
   research() {
-    let {fetchSearch} = this.props;
+    let {fetchSearch, changePage} = this.props;
+    changePage(0);
     this.changeLanguageModalStatus();
     fetchSearch();
   }
@@ -131,6 +132,9 @@ function mapDispatchToProps(dispatch) {
     },
     fetchSearch: () => {
       dispatch(fetchSearch());
+    },
+    changePage: (page) => {
+      dispatch(changePage(page));
     }
   }
 }

@@ -7,7 +7,8 @@ import Push from 'push.js';
 import {
   fetchSearch,
   changeLanguageModalStatus,
-  changeMessage
+  changeMessage,
+  loadNextPage
 } from '../../Redux/actions/index';
 import {
   LANGUAGES,
@@ -31,7 +32,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    let {totalCount, fetchSearch} = this.props;
+    let {totalCount, fetchSearch, loadNextPage} = this.props;
     if(!totalCount) {
       this.props.fetchSearch();
     }
@@ -40,6 +41,23 @@ class Dashboard extends Component {
       icon: '../../Page/image/gundamcat.png',
       timeout: 6000
     });
+
+    let $search = $('#top_search');
+    let $searchTop = $search.offset().top;
+    let $searchHeight = $search.height();
+
+     $(window).scroll(() => {
+       let $currentTop = $(document).scrollTop();
+       if($currentTop >= $searchTop + $searchHeight/2) {
+         $search.parent().addClass('active');
+       }else {
+         $search.parent().removeClass('active');
+       }
+       let $searchResultHeight = $('.search_result_container').height();
+       if($currentTop >= $searchResultHeight - 800) {
+         loadNextPage();
+       }
+     });
   }
 
   render() {
@@ -79,7 +97,7 @@ function mapStateToProps(state) {
     totalCount: state.totalCount,
     loading: state.loading,
     languageModal: state.languageModal,
-    language: state.parameters.language
+    language: state.parameters.language,
   }
 }
 
@@ -91,6 +109,9 @@ function mapDispatchToProps(dispatch) {
     changeLanguageModalStatus: () => {
       dispatch(changeMessage('选择要搜索的编程语言', 'positive'));
       dispatch(changeLanguageModalStatus(true));
+    },
+    loadNextPage: () => {
+      dispatch(loadNextPage());
     }
   }
 }

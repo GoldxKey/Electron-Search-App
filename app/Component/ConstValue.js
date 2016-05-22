@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.github.com/search/repositories?sort=stars&order=desc&q=';
+export const BASE_URL = 'https://api.github.com/search/repositories?sort=stars&order=desc&page=';
 
 export const LANGUAGE_IMAGE_URL = 'Page/image/language/';
 

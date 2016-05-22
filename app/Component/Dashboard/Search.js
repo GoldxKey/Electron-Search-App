@@ -13,18 +13,7 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    let $search = $('#top_search');
-    let $searchTop = $search.offset().top;
-    let $searchHeight = $search.height();
-
-     $(window).scroll(() => {
-       let $currentTop = $(document).scrollTop();
-       if($currentTop >= $searchTop + $searchHeight/2) {
-         $search.parent().addClass('active');
-       }else {
-         $search.parent().removeClass('active');
-       }
-     });
+    
   }
 
   changeName() {

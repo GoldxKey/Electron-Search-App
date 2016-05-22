@@ -9,7 +9,9 @@ const state = {
     name: '',
     language: 'language:all',
     stars: '>=10',
-    time: Object.keys(TIME_OPTIONS)[0]
+    time: Object.keys(TIME_OPTIONS)[0],
+    page: 0,
+    loadingPage: false
   },
   items: [],
   totalCount: 0,
@@ -57,6 +59,14 @@ export function parameters(parameters = state.parameters, action) {
     return setState(parameters, {
       time: Object.keys(TIME_OPTIONS)[action.index]
     });
+  case ACTIONS.CHANGE_PAGE:
+    return setState(parameters, {
+      page: action.page
+    });
+  case ACTIONS.CHANGE_LOADING_PAGE_STATUS:
+    return setState(parameters, {
+      loadingPage: action.status
+    });
   default:
     return parameters;
   }
@@ -75,6 +85,8 @@ export function items(items = state.items, action) {
   switch (action.type) {
   case ACTIONS.RESET_ITEMS:
     return [...action.items];
+  case ACTIONS.APPEND_ITEMS:
+    return [...items, ...action.items];
   default:
     return items;
   }
