@@ -60,6 +60,42 @@ export const LANGUAGES = {
   }
 };
 
+export const ADVANCE_LANGUAGES = {
+  lua: {
+    name: 'lua'
+  },
+  C: {
+    name: 'C'
+  },
+  'C++': {
+    name: 'C++'
+  },
+  CoffeeScript: {
+    name: 'coffeescript'
+  },
+  haskell: {
+    name: 'haskell'
+  },
+  'Object-C': {
+    name: 'Object-C'
+  },
+  Pascal: {
+    name: 'Pascal'
+  },
+  R: {
+    name: 'R'
+  },
+  TypeScript: {
+    name: 'TypeScript'
+  },
+  Shell: {
+    name: 'Shell'
+  },
+  Scheme: {
+    name: 'Scheme'
+  }
+}
+
 import moment from 'moment';
 let weekBefore = moment().subtract(10, 'days').calendar();
 let monthBefore = moment().subtract(31, 'days').calendar();

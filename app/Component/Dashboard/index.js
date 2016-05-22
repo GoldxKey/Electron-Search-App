@@ -75,7 +75,8 @@ class Dashboard extends Component {
       container = (<SearchResult />);
     }
     let currentLanguage = language.split(':')[1];
-    let languageUrl = '../' + LANGUAGE_IMAGE_URL + LANGUAGES[currentLanguage].image;
+    let iconUrl = LANGUAGES[currentLanguage] ? LANGUAGES[currentLanguage].image : LANGUAGES["all"].image;
+    let languageUrl = '../' + LANGUAGE_IMAGE_URL + iconUrl;
 
     return (
       <div className="dashboard" >

@@ -4,10 +4,12 @@ import {connect} from 'react-redux';
 
 import {
   changeStars,
-  changeTime
+  changeTime,
+  changeLanguage
 } from '../../../Redux/actions/index';
 import {
-  TIME_OPTIONS
+  TIME_OPTIONS,
+  ADVANCE_LANGUAGES
 } from '../../ConstValue';
 import SearchTime from './SearchTime';
 
@@ -26,15 +28,28 @@ class AdvanceSearch extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    let preAdvanceSearch = prevState.advanceSearch;
+    let {advanceSearch} = this.state;
+    if(!preAdvanceSearch && advanceSearch) {
+      $('.modal_body').scrollTop(140);
+    }
+  }
+
   changeStars() {
     let {changeStars} = this.props;
     let value = this.refs.starNumber.value;
     changeStars(value);
   }
 
+  handleLanguageChange() {
+    let language = this.refs.language.value;
+    this.props.changeLanguage(language);
+  }
+
   render() {
     let {advanceSearch} = this.state;
-    let {stars, changeTime, time} = this.props;
+    let {stars, changeTime, time, language} = this.props;
     stars = stars.split('>=')[1];
 
     let advanceSearchContainerClass = classNames('advance_search_container', {
@@ -60,23 +75,43 @@ class AdvanceSearch extends Component {
           checked={time === value}
         />
       )
-    })
+    });
+
+    let languageOptions = Object.keys(ADVANCE_LANGUAGES).map((value, index) => {
+      return (
+        <option key={index} value={value}>{value}</option>
+      );
+    });
 
     return (
       <div className={advanceSearchContainerClass}>
         <div className={advanceSearchContentClass}>
           <div className="advance_search__options">
+            <span className="advance_search__option_label">选择其他语言</span><br/>
+            <div className="advance_search_languages">
+              <i className="fa fa-angle-down options__angle_down_icon" aria-hidden="true"></i>
+              {language}
+              <select
+                ref="language"
+                onChange={this.handleLanguageChange.bind(this)}
+                >
+                {languageOptions}
+              </select>
+            </div>
+          </div>
+          <div className="advance_search__options options_star">
             <span className="advance_search__option_label">最少星标数</span><br/>
             <input
               ref="starNumber"
               type="number"
               min="0"
-              className="search_stars_input"
+              className="advance_search__option_input"
               value={stars}
               onChange={this.changeStars.bind(this)}
             />
+          <i className="fa fa-star-o options__star_icon" aria-hidden="true"></i>
           </div>
-          <div className="advance_search__options search_times">
+          <div className="advance_search__options">
             <span className="advance_search__option_label">在以下日期范围内搜索</span><br/>
             <div className="advance_search__time_container">
               {timeOptions}
@@ -94,7 +129,8 @@ class AdvanceSearch extends Component {
 function mapStateToProps(state) {
   return {
     stars: state.parameters.stars,
-    time: state.parameters.time
+    time: state.parameters.time,
+    language: state.parameters.language.split(':')[1]
   }
 }
 
@@ -105,6 +141,9 @@ function mapDispatchToProps(dispatch) {
     },
     changeTime: (index) => {
       dispatch(changeTime(index));
+    },
+    changeLanguage: (language) => {
+      dispatch(changeLanguage(language));
     }
   }
 }

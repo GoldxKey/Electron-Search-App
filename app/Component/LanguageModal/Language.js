@@ -17,9 +17,7 @@ class Language extends Component {
 
   render() {
     let {language} = this.props;
-
     let url = '../' + LANGUAGE_IMAGE_URL + language.image;
-
     return (
       <div className="language_container">
         <div className="language_image_container" onClick={this.changeLanguage.bind(this)}>

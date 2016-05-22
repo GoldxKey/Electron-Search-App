@@ -59,13 +59,15 @@ class LanguageModal extends Component {
     let {language} = this.props;
 
     let languages = Object.keys(LANGUAGES).map((name, index) => {
-      return (
-        <Language
-          key={index}
-          language={LANGUAGES[name]}
-          changeLanguage={this.changeLanguage.bind(this)}
-        />
-      )
+      if(LANGUAGES[name]) {
+        return (
+          <Language
+            key={index}
+            language={LANGUAGES[name]}
+            changeLanguage={this.changeLanguage.bind(this)}
+          />
+        )
+      }
     });
 
     let currentLanguage = language.split(':')[1];
