@@ -13,7 +13,7 @@ class Search extends Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   changeName() {
@@ -32,9 +32,10 @@ class Search extends Component {
   }
 
   render() {
-    let {name} = this.props;
+    let {name, language} = this.props;
     return (
       <div className="top_search_container">
+        <div className="current_language">{language}</div>
         <div className="search_banner"></div>
         <div className="top_search" id="top_search">
           <i
@@ -63,7 +64,8 @@ class Search extends Component {
 
 function mapStateToProps(state) {
   return {
-    name: state.parameters.name
+    name: state.parameters.name,
+    language: state.parameters.language.split(':')[1]
   }
 }
 

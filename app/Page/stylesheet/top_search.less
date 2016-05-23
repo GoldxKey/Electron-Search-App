@@ -9,6 +9,17 @@
   .transition_animation;
   z-index: 99;
 
+  .current_language {
+    opacity: 0;
+    .transition_animation;
+    float: right;
+    height: 50px;
+    line-height: 50px;
+    color: #000;
+    margin-right: 10px;
+    font-size: 2em;
+  }
+
   .search_banner {
     width: 100%;
     height: 100%;
@@ -26,6 +37,10 @@
 
     .search_banner {
       background-image: url('../image/language/banner/react.png');
+    }
+
+    .current_language {
+      opacity: 1;
     }
 
     .top_search {
