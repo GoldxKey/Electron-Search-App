@@ -1,103 +1,13 @@
-@import "./public.less";
-
 .dashboard {
   cursor: text;
   width: 100%;
   height: 100%;
   position: relative;
-} 
+}
 
 // search area
 .search_result_container {
   width: 100%;
   margin-top: 140px;
   min-height: 100%;
-
-  .search_item {
-    width: 100%;
-    position: relative;
-    margin: 15px 0;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    .transition_animation;
-    color: #343434;
-    background-color: #fafafa;
-    border-radius: 2px;
-
-    &:hover {
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .item_top {
-      width: 100%;
-      min-height: 80px;
-
-      &::after {
-        content: '';
-        display: block;
-        clear: both;
-      }
-
-      .top_image_container {
-        float: left;
-        width: 80px;
-        height: 100px;
-        margin-top: 6px;
-        margin-left: 15px;
-        text-align: center;
-
-        .top_image {
-          width: 60px;
-          height: 60px;
-          margin: 10px 10px 0 10px;
-          border-radius: 50%;
-        }
-
-        .item_author_name {
-          width: 90%;
-          margin-left: 5%;
-          height: 20px;
-          text-align: center;
-          line-height: 20px;
-          overflow:hidden;
-          text-overflow:ellipsis;
-          white-space:nowrap;
-          font-weight: 500;
-        }
-      }
-
-      .top_info_container {
-        margin-left: 100px;
-        padding: 10px;
-        min-height: 100px;
-
-        &::after {
-          content: '';
-          display: block;
-          clear: both;
-        }
-
-        .info_name {
-          overflow: hidden;
-          cursor: pointer;
-        }
-
-        .info_description {
-          overflow: hidden;
-          margin-top: 10px;
-        }
-      }
-    }
-
-    .item_bottom {
-      height: 30px;
-      border-top: 2px solid #F4F4F4;
-      padding: 0 15px;
-
-      .item_status {
-        float: right;
-        height: 30px;
-        line-height: 30px;
-      }
-    }
-  }
 }

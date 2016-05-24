@@ -47,3 +47,15 @@
   background-color: #DD514C;
   color: #fff;
 }
+
+.button_common_shadow(@x: 4px, @y: 4px) {
+  box-shadow: 0 @x @y rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 @x @y rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 @x @y rgba(0, 0, 0, 0.1);
+}
+
+.button_hover_shadow(@x: 8px, @y: 8px) {
+  box-shadow: 0 @x @y rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 @x @y rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 @x @y rgba(0, 0, 0, 0.15);
+}

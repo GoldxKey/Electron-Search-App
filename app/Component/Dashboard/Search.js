@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 import {connect} from 'react-redux';
 import {
   changeName,
-  fetchSearch
+  fetchItems,
+  changeSideMenuStatus
 } from '../../Redux/actions/index';
 require('../../Page/stylesheet/top_search.less');
 
@@ -28,11 +29,12 @@ class Search extends Component {
   }
 
   handleSearch() {
-    this.props.fetchSearch()
+    this.props.fetchItems()
   }
 
   render() {
-    let {name, language} = this.props;
+    let {name, language, openSideMenu} = this.props;
+
     return (
       <div className="top_search_container">
         <div className="current_language">{language}</div>
@@ -41,6 +43,7 @@ class Search extends Component {
           <i
             className="fa fa-github fa-2x top_menu"
             aria-hidden="true"
+            onClick={openSideMenu.bind(this)}
           />
           <input
             className="search_input"
@@ -74,8 +77,11 @@ function mapDispatchToProps(dispatch) {
     changeName: (name) => {
       dispatch(changeName(name));
     },
-    fetchSearch: () => {
-      dispatch(fetchSearch());
+    fetchItems: () => {
+      dispatch(fetchItems());
+    },
+    openSideMenu: () => {
+      dispatch(changeSideMenuStatus(true));
     }
   }
 }

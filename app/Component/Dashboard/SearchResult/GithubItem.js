@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { render } from 'react-dom';
 import {
   showNewPage
 } from '../../../Page/js/utils/index';
+require('../../../Page/stylesheet/SearchItem/github_item.less');
 
-class SearchItem extends Component {
+class GithubItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -30,6 +30,9 @@ class SearchItem extends Component {
           </div>
         </div>
         <div className="item_bottom">
+          <div className="item_time">
+            <i className="fa fa-calendar" aria-hidden="true"></i>&nbsp;<span>{item.created_at.split('T')[0]}</span>
+          </div>
           <div className="item_status">
             <i className="fa fa-star-o" aria-hidden="true"></i>&nbsp;<span>{item.stargazers_count}</span>&nbsp;&nbsp;&nbsp;
             <i className="fa fa-code-fork" aria-hidden="true"></i>&nbsp;<span>{item.forks_count} </span>
@@ -40,4 +43,4 @@ class SearchItem extends Component {
   }
 }
 
-export default SearchItem;
+export default GithubItem;

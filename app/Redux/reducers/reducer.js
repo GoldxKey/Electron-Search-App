@@ -1,7 +1,8 @@
 import * as ACTIONS from '../actions/index';
 
 import {
-  TIME_OPTIONS
+  TIME_OPTIONS,
+  GITHUB
 } from '../../Component/ConstValue';
 
 const state = {
@@ -11,12 +12,23 @@ const state = {
     stars: '>=10',
     time: Object.keys(TIME_OPTIONS)[0],
     page: 0,
-    loadingPage: false
+    tagged: ''
   },
-  items: [],
-  totalCount: 0,
-  loading: true,
-  languageModal: false,
+  searchReasult: {
+    items: [],
+    totalCount: 0,
+    loadingPage: false,
+    remainingCount: 0
+  },
+  modal: {
+    languageModal: false,
+    loading: true
+  },
+  sideMenu: {
+    showSideMenu: false,
+    fullMode: false,
+    activeMenu: GITHUB
+  },
   msg: {
     message: null,
     messageType: 'default'
@@ -32,12 +44,37 @@ export function msg(msg = state.msg, action) {
   }
 }
 
-export function languageModal(languageModal = state.languageModal, action) {
+export function sideMenu(sideMenu = state.sideMenu, action) {
+  switch (action.type) {
+  case ACTIONS.CHANGE_SIDE_MENU_STATUS:
+    return setState(sideMenu, {
+      showSideMenu: action.status
+    });
+  case ACTIONS.TOGGLE_SIDE_MENU_FULL_MODE:
+    return setState(sideMenu, {
+      fullMode: action.status
+    });
+  case ACTIONS.CHANGE_ACTIVE_MENU:
+    return setState(sideMenu, {
+      activeMenu: action.menu
+    })
+  default:
+    return sideMenu;
+  }
+}
+
+export function modal(modal = state.modal, action) {
   switch (action.type) {
   case ACTIONS.CHANGE_LANGUAGE_MODAL_STATUS:
-    return action.status;
+    return setState(modal, {
+      languageModal: action.status
+    });
+  case ACTIONS.CHANGE_LOADING_STATUS:
+    return setState(modal, {
+      loading: action.status
+    });
   default:
-    return languageModal;
+    return modal;
   }
 }
 
@@ -63,41 +100,39 @@ export function parameters(parameters = state.parameters, action) {
     return setState(parameters, {
       page: action.page
     });
-  case ACTIONS.CHANGE_LOADING_PAGE_STATUS:
+  case ACTIONS.CHANGE_TAGGED:
     return setState(parameters, {
-      loadingPage: action.status
+      tagged: action.tagged
     });
   default:
     return parameters;
   }
 }
 
-export function totalCount(totalCount = state.totalCount, action) {
+export function searchReasult(searchReasult = state.searchReasult, action) {
   switch (action.type) {
   case ACTIONS.CHANGE_TOTAL_COUNT:
-    return action.totalCount;
-  default:
-    return totalCount;
-  }
-}
-
-export function items(items = state.items, action) {
-  switch (action.type) {
+    return setState(searchReasult, {
+      totalCount: action.totalCount
+    });
+  case ACTIONS.CHANGE_REMAINING_COUNT:
+    return setState(searchReasult, {
+      remainingCount: action.remainingCount
+    });
   case ACTIONS.RESET_ITEMS:
-    return [...action.items];
+    return setState(searchReasult, {
+      items: [...action.items]
+    });
   case ACTIONS.APPEND_ITEMS:
-    return [...items, ...action.items];
+    return setState(searchReasult, {
+      items: [...searchReasult.items, ...action.items]
+    });
+  case ACTIONS.CHANGE_LOADING_PAGE_STATUS:
+    return setState(searchReasult, {
+      loadingPage: action.status
+    });
   default:
-    return items;
-  }
-}
-
-export function loading(loading = state.loading, action) {
-  switch (action.type) {
-  case ACTIONS.CHANGE_LOADING_STATUS:
-    return action.status;
-  default:
-    return loading;
+    return searchReasult;
   }
 }
 

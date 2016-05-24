@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 import {connect} from 'react-redux';
-
-import SearchItem from './SearchItem';
+import DISTRIBUTE_SEARCH_ITEMS from './DistributeItems';
 
 class SearchResult extends Component {
   constructor(props) {
@@ -10,7 +9,10 @@ class SearchResult extends Component {
   }
 
   render() {
-    let {items} = this.props;
+    let {items, activeMenu} = this.props;
+
+    let SearchItem = DISTRIBUTE_SEARCH_ITEMS[activeMenu];
+
     console.log(items);
     let searchItems = items.map((item, index) => {
       return (
@@ -31,7 +33,8 @@ class SearchResult extends Component {
 
 function mapStateToProps(state) {
   return {
-    items: state.items
+    items: state.searchReasult.items,
+    activeMenu: state.sideMenu.activeMenu
   }
 }
 

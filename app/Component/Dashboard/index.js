@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Push from 'push.js';
 
 import {
-  fetchSearch,
+  fetchItems,
   changeLanguageModalStatus,
   changeMessage,
   loadNextPage
@@ -22,6 +22,7 @@ import EmptyContainer from '../EmptyContainer/index';
 import LoadingContainer from '../LoadingContainer/index';
 import LanguageModal from '../LanguageModal/index';
 import Message from '../Message/index';
+import SideMenu from '../SideMenu/index';
 
 require('../../Page/stylesheet/dashboard.less');
 import moment from 'moment';
@@ -32,9 +33,9 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    let {totalCount, fetchSearch, loadNextPage} = this.props;
+    let {totalCount, fetchItems, loadNextPage} = this.props;
     if(!totalCount) {
-      this.props.fetchSearch();
+      this.props.fetchItems();
     }
     Push.create('Hey',{
       body: 'I\'m a github search app, built by Electron & React & Redux',
@@ -86,6 +87,7 @@ class Dashboard extends Component {
           image={languageUrl}
         />
         <Search />
+        <SideMenu />
         {changeLanguageModal}
         {container}
       </div>
@@ -95,17 +97,17 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    totalCount: state.totalCount,
-    loading: state.loading,
-    languageModal: state.languageModal,
+    totalCount: state.searchReasult.totalCount,
+    loading: state.modal.loading,
+    languageModal: state.modal.languageModal,
     language: state.parameters.language,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchSearch: () => {
-      dispatch(fetchSearch());
+    fetchItems: () => {
+      dispatch(fetchItems());
     },
     changeLanguageModalStatus: () => {
       dispatch(changeMessage('选择要搜索的编程语言', 'positive'));

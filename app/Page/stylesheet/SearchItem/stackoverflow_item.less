@@ -1,0 +1,35 @@
+@import "../public.less";
+
+.stackoverflow_item__container {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  .transition_animation;
+  color: #343434;
+  background-color: #fafafa;
+  border-radius: 2px;
+
+  &:hover {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .item_top {
+    width: 100%;
+    min-height: 80px;
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+  }
+
+  .item_bottom {
+    height: 30px;
+    border-top: 2px solid #F4F4F4;
+    padding: 0 15px;
+    font-size: 14px;
+  }
+}

@@ -326,6 +326,12 @@
           height: 40px;
           line-height: 40px;
           text-align: center;
+
+          &::after {
+            display: block;
+            content: '';
+            clear: both;
+          }
         }
 
         .advance_search__button {
@@ -337,14 +343,15 @@
           border-radius: 2px;
           cursor: pointer;
           .transition_animation;
-
-          &:hover {
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-          }
-
         }
 
         .button_search {
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+
+          &:hover {
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+          }
+
           &.positive {
             .positive;
           }
@@ -354,11 +361,17 @@
         }
 
         .button_advance {
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+
+          &:hover {
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+          }
+
           &.positive {
             .positive;
           }
+
           &.negative {
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
             background-color: #fff;
           }
         }
