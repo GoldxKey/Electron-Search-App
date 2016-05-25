@@ -37,8 +37,37 @@
     height: 100%;
     .transition_animation;
 
+    .content_logo_container {
+      width: 80%;
+      margin: 50px 10%;
+
+      .site_item_container {
+        width: 100%;
+        text-align: center;
+        color: #343434;
+        margin: 20px 0;
+        cursor: pointer;
+
+        .site_logo {
+          width: 60%;
+        }
+
+        .site_name {
+          display: none;
+        }
+      }
+    }
+
     &.full_modal {
       width: 80%;
+
+      .content_logo_container {
+        .site_item_container {
+          .site_name {
+            display: inline;
+          }
+        }
+      }
     }
   }
 }

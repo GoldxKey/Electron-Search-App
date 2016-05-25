@@ -93,10 +93,10 @@ class Dashboard extends Component {
             image={languageUrl}
           />
           <Search />
-          <SideMenu />
-          {changeLanguageModal}
           {container}
         </div>
+        <SideMenu />
+        {changeLanguageModal}
       </div>
     )
   }

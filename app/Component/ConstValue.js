@@ -2,6 +2,16 @@ export const BASE_URL_GITHUB = 'https://api.github.com/search/repositories?sort=
 export const BASE_URL_STACKOVERFLOW = 'https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&page=';
 export const GITHUB = 'github';
 export const STACKOVERFLOW = 'stackoverflow';
+export const SITE_LOGOS = {
+  github: {
+    name: GITHUB,
+    logo: require('../Page/image/logos/github.png')
+  },
+  stackoverflow: {
+    name: STACKOVERFLOW,
+    logo: require('../Page/image/logos/stackoverflow.png')
+  }
+};
 
 export const LANGUAGE_IMAGE_URL = 'Page/image/language/';
 
