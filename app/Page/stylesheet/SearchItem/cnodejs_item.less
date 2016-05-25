@@ -1,0 +1,65 @@
+@import "../public.less";
+.cnodejs_item_container {
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+  // .transition_animation;
+  color: #343434;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+
+  .cnodejs_top {
+    width: 95%;
+    margin: 0 2.5% 15px 2.5%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:pre;
+
+    .top_title {
+      font-size: 18px;
+      color: #4a4a4a;
+      .transition_animation;
+      width: 100%;
+      cursor: pointer;
+      padding: 5px 0;
+      font-weight: bold;
+
+      &:hover {
+        color: #2196F3;
+      }
+    }
+
+    .top_content {
+      color: #828282;
+      max-height: 100px;
+
+      &.expand {
+        max-height: 200px;
+      }
+    }
+
+  }
+
+  .cnodejs_bottom {
+    width: 95%;
+    margin: 0 2.5%;
+    height: 30px;
+    // border-top: 1px solid #fff;
+    font-size: 14px;
+
+    &::after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    .bottom_info {
+      float: left;
+    }
+
+    .bottom_expand {
+      float: right;
+    }
+  }
+
+}
