@@ -19,7 +19,6 @@ const state = {
     items: [],
     totalCount: 1,
     loadingPage: false,
-    // remainingCount: 1
   },
   modal: {
     languageModal: false,
@@ -28,7 +27,7 @@ const state = {
   sideMenu: {
     showSideMenu: false,
     fullMode: false,
-    activeMenu: STACKOVERFLOW
+    activeMenu: GITHUB
   },
   msg: {
     message: null,

@@ -85,7 +85,7 @@ class Dashboard extends Component {
     });
 
     return (
-      <div className="dashboard_container">
+      <div className={dashboardContainerClass}>
         <div className="dashboard" >
           <Message />
           <FAB
