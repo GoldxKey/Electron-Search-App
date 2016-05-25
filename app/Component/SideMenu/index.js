@@ -6,7 +6,8 @@ import SiteItem from './SiteItem';
 
 import {
   changeSideMenuStatus,
-  toggleSideMenuFullMode
+  toggleSideMenuFullMode,
+  changeSite
 } from '../../Redux/actions/index';
 
 import {
@@ -16,10 +17,27 @@ import {
 class SideMenu extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fullScreen: false
+    }
+  }
+
+  toggleFullScreen() {
+    let {fullScreen} = this.state;
+    this.setState({
+      fullScreen: !fullScreen
+    });
+  }
+
+  changeSite(site) {
+    let {closeSideMenu, changeSite} = this.props;
+    changeSite(site);
+    closeSideMenu();
   }
 
   render() {
     let {showSideMenu, closeSideMenu} = this.props;
+    let {fullScreen} = this.state;
 
     let sideMenuContainer = className('side_menu_container', {
       active: showSideMenu
@@ -31,14 +49,24 @@ class SideMenu extends Component {
           key={index}
           siteName={site}
           siteLogo={SITE_LOGOS[site].logo}
+          handleClick={this.changeSite.bind(this)}
         />
       )
+    });
+
+    let iconClass = className('toggle_fullscreen_button fa', {
+      'fa-angle-right': !fullScreen,
+      'fa-angle-left': fullScreen
+    });
+    let sideMenuContent = className('side_menu_content', {
+      'full_modal': fullScreen
     });
 
     return (
       <div className={sideMenuContainer}>
         <div className="side_menu_layer" onClick={closeSideMenu.bind(this)}></div>
-        <div className="side_menu_content">
+        <div className={sideMenuContent}>
+          <i className={iconClass} aria-hidden="true" onClick={this.toggleFullScreen.bind(this)}></i>
           <div className="content_logo_container">
             {siteItems}
           </div>
@@ -62,6 +90,9 @@ function mapDispatchToProps(dispatch) {
     },
     toggleSideMenuFullMode: (status) => {
       dispatch(toggleSideMenuFullMode(status));
+    },
+    changeSite: (menu) => {
+      dispatch(changeSite(menu));
     }
   }
 }
