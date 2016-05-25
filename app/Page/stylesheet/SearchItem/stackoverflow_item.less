@@ -3,20 +3,15 @@
 .stackoverflow_item__container {
   width: 100%;
   position: relative;
-  margin: 15px 0;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
   .transition_animation;
   color: #343434;
-  background-color: #fafafa;
-  border-radius: 2px;
-
-  &:hover {
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-  }
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
 
   .item_top {
-    width: 100%;
-    min-height: 80px;
+    width: 95%;
+    margin: 0 2.5%;
 
     &::after {
       content: '';
@@ -24,12 +19,83 @@
       clear: both;
     }
 
+    .item_title {
+      font-size: 18px;
+      color: #4a4a4a;
+      .transition_animation;
+      display: block;
+      width: 100%;
+      cursor: pointer;
+      padding: 5px 0;
+
+      &:hover {
+        color: #2196F3;
+      }
+    }
+
+    .item_tags {
+      width: 100%;
+
+      &::after {
+        display: block;
+        content: '';
+        clear: both;
+      }
+
+      .item_tag {
+        height: 30px;
+        line-height: 30px;
+        margin: 0 10px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #9B9B9B;
+        float: left;
+        .transition_animation;
+
+        &:first-child {
+          margin-left: 0px;
+        }
+
+        &:hover {
+          color: #343434;
+        }
+
+      }
+    }
+
   }
 
   .item_bottom {
     height: 30px;
-    border-top: 2px solid #F4F4F4;
-    padding: 0 15px;
+    border-top: 1px solid #fff;
+    width: 95%;
+    margin: 0 2.5%;
     font-size: 14px;
+
+    .item__author {
+      float: left;
+      height: 30px;
+      line-height: 30px;
+
+      .author_profile {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+      }
+
+      .author_name {
+        font-size: 12px;
+      }
+    }
+
+    .item_status {
+      float: right;
+      height: 30px;
+      line-height: 30px;
+
+      .answered {
+        color: #ECD719;
+      }
+    }
   }
 }

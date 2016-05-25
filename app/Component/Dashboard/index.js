@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 // import {clipboard, remote} from 'electron';
 import {connect} from 'react-redux';
 import Push from 'push.js';
+import classNames from 'classnames';
 
 import {
   fetchItems,
@@ -12,7 +13,9 @@ import {
 } from '../../Redux/actions/index';
 import {
   LANGUAGES,
-  LANGUAGE_IMAGE_URL
+  LANGUAGE_IMAGE_URL,
+  GITHUB,
+  STACKOVERFLOW
 } from '../ConstValue';
 
 import FAB from '../FAB/index';
@@ -25,7 +28,6 @@ import Message from '../Message/index';
 import SideMenu from '../SideMenu/index';
 
 require('../../Page/stylesheet/dashboard.less');
-import moment from 'moment';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -34,11 +36,9 @@ class Dashboard extends Component {
 
   componentDidMount() {
     let {totalCount, fetchItems, loadNextPage} = this.props;
-    if(!totalCount) {
-      this.props.fetchItems();
-    }
+    this.props.fetchItems();
     Push.create('Hey',{
-      body: 'I\'m a github search app, built by Electron & React & Redux',
+      body: 'I\'m a desktop app, built by Electron & React & Redux',
       icon: '../../Page/image/gundamcat.png',
       timeout: 6000
     });
@@ -62,7 +62,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    let {totalCount, loading, changeLanguageModalStatus, languageModal, language} = this.props;
+    let {totalCount, loading, changeLanguageModalStatus, languageModal, language, activeMenu} = this.props;
 
     let container = (<EmptyContainer />), changeLanguageModal;
 
@@ -79,17 +79,24 @@ class Dashboard extends Component {
     let iconUrl = LANGUAGES[currentLanguage] ? LANGUAGES[currentLanguage].image : LANGUAGES["all"].image;
     let languageUrl = '../' + LANGUAGE_IMAGE_URL + iconUrl;
 
+    let dashboardContainerClass = classNames('dashboard_container', {
+      'main_stackoverflow': activeMenu === STACKOVERFLOW,
+      'main_github': activeMenu === GITHUB
+    });
+
     return (
-      <div className="dashboard" >
-        <Message />
-        <FAB
-          handleClick={changeLanguageModalStatus.bind(this)}
-          image={languageUrl}
-        />
-        <Search />
+      <div className="dashboard_container">
+        <div className="dashboard" >
+          <Message />
+          <FAB
+            handleClick={changeLanguageModalStatus.bind(this)}
+            image={languageUrl}
+          />
+          <Search />
+          {container}
+        </div>
         <SideMenu />
         {changeLanguageModal}
-        {container}
       </div>
     )
   }
@@ -101,6 +108,7 @@ function mapStateToProps(state) {
     loading: state.modal.loading,
     languageModal: state.modal.languageModal,
     language: state.parameters.language,
+    activeMenu: state.sideMenu.activeMenu
   }
 }
 
