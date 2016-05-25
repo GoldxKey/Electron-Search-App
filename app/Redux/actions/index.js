@@ -61,6 +61,22 @@ export const changeActiveMenu = (menu) => {
   }
 };
 
+export const changeSite = (site) => {
+  return (dispatch, getState) => {
+    dispatch(changeActiveMenu(site));
+    dispatch(resetState());
+    dispatch(fetchItems());
+  }
+}
+
+export const resetState = () => {
+  return (dispatch) => {
+    dispatch(changePage(0));
+    dispatch(resetSearchResult([]));
+    dispatch(changeTotalCount(1));
+  }
+}
+
 // parameters
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const changeName = (name) => {

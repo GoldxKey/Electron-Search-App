@@ -6,6 +6,9 @@ import {
   fetchItems,
   changeSideMenuStatus
 } from '../../Redux/actions/index';
+import {
+  SITE_LOGOS
+} from '../ConstValue';
 require('../../Page/stylesheet/top_search.less');
 
 class Search extends Component {
@@ -33,18 +36,16 @@ class Search extends Component {
   }
 
   render() {
-    let {name, language, openSideMenu} = this.props;
+    let {name, language, openSideMenu, activeMenu} = this.props;
 
     return (
       <div className="top_search_container">
         <div className="current_language">{language}</div>
         <div className="search_banner"></div>
         <div className="top_search" id="top_search">
-          <i
-            className="fa fa-github fa-2x top_menu"
-            aria-hidden="true"
-            onClick={openSideMenu.bind(this)}
-          />
+
+          <img src={SITE_LOGOS[activeMenu].logo} className="top_menu" onClick={openSideMenu.bind(this)} />
+
           <input
             className="search_input"
             value={name}
@@ -68,7 +69,8 @@ class Search extends Component {
 function mapStateToProps(state) {
   return {
     name: state.parameters.name,
-    language: state.parameters.language.split(':')[1]
+    language: state.parameters.language.split(':')[1],
+    activeMenu: state.sideMenu.activeMenu
   }
 }
 

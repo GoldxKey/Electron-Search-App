@@ -37,9 +37,20 @@
     height: 100%;
     .transition_animation;
 
+    .toggle_fullscreen_button {
+      display: block;
+      margin: 40px 20% 0px 20%;
+      color: #343434;
+      text-align: right;
+      font-size: 1.5em;
+      width: 30px;
+      float: right;
+      cursor: pointer;
+    }
+
     .content_logo_container {
       width: 80%;
-      margin: 50px 10%;
+      margin: 80px 10%;
 
       .site_item_container {
         width: 100%;
@@ -47,9 +58,12 @@
         color: #343434;
         margin: 20px 0;
         cursor: pointer;
+        max-width: 100px;
+        .transition_animation;
 
         .site_logo {
           width: 60%;
+          .transition_animation;
         }
 
         .site_name {
@@ -62,7 +76,17 @@
       width: 80%;
 
       .content_logo_container {
+
+        &::after {
+          display: block;
+          content: '';
+          clear: both;
+        }
+
         .site_item_container {
+          float: left;
+          margin: 20px;
+
           .site_name {
             display: inline;
           }

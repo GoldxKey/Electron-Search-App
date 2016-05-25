@@ -6,9 +6,9 @@ class SiteItem extends Component {
   }
 
   render() {
-    let {siteName, siteLogo} = this.props;
+    let {siteName, siteLogo, handleClick} = this.props;
     return (
-      <div className="site_item_container">
+      <div className="site_item_container" onClick={handleClick.bind(this, siteName)}>
         <img className="site_logo" src={siteLogo} /><br/>
         <span className="site_name">{siteName}</span>
       </div>
