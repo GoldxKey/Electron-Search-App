@@ -168,20 +168,18 @@ export const fetchItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
     let {sideMenu, searchReasult} = getState();
     let {activeMenu} = sideMenu;
-    let {items, totalCount, remainingCount} = searchReasult;
-    switch (activeMenu) {
-    case GITHUB:
-      if(items.length < totalCount) {
+    let {items, totalCount} = searchReasult;
+    if(items.length < totalCount) {
+      switch (activeMenu) {
+      case GITHUB:
         dispatch(fetchGithubItems(loadingStatus));
-      }
-      break;
-    case STACKOVERFLOW:
-      if(remainingCount) {
+        break;
+      case STACKOVERFLOW:
         dispatch(fetchStackoverflowItems(loadingStatus));
+        break;
+      default:
+        return false;
       }
-      break;
-    default:
-      return false;
     }
   }
 }
@@ -204,9 +202,21 @@ export const fetchStackoverflowItems = (loadingStatus = true) => {
     }).then((data) => {
       console.log(data);
       if(data.items) {
-
+        dispatch(changeTotalCount(data["quota_max"]));
+        if(loadingStatus) {
+          console.log(loadingStatus);
+          dispatch(changePage(1));
+          dispatch(resetSearchResult(data.items));
+        }else {
+          dispatch(changeLoadingPageStatus(false));
+          dispatch(appendSearchResult(data.items));
+        }
+        dispatch(changeLoadingStatus(false));
       }
-    })
+    }).catch((err) => {
+      dispatch(changeMessage('wtf', 'error'));
+      dispatch(changeLoadingStatus(false));
+    });
   }
 }
 
@@ -246,8 +256,9 @@ export const fetchGithubItems = (loadingStatus = true) => {
         }
       }
     }).catch((err) => {
+      dispatch(changeMessage(err, 'error'));
       dispatch(changeLoadingStatus(false));
-    })
+    });
   }
 };
 

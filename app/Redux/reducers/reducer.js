@@ -2,7 +2,8 @@ import * as ACTIONS from '../actions/index';
 
 import {
   TIME_OPTIONS,
-  GITHUB
+  GITHUB,
+  STACKOVERFLOW
 } from '../../Component/ConstValue';
 
 const state = {
@@ -16,9 +17,9 @@ const state = {
   },
   searchReasult: {
     items: [],
-    totalCount: 0,
+    totalCount: 1,
     loadingPage: false,
-    remainingCount: 0
+    // remainingCount: 1
   },
   modal: {
     languageModal: false,
@@ -27,7 +28,7 @@ const state = {
   sideMenu: {
     showSideMenu: false,
     fullMode: false,
-    activeMenu: GITHUB
+    activeMenu: STACKOVERFLOW
   },
   msg: {
     message: null,
@@ -115,10 +116,10 @@ export function searchReasult(searchReasult = state.searchReasult, action) {
     return setState(searchReasult, {
       totalCount: action.totalCount
     });
-  case ACTIONS.CHANGE_REMAINING_COUNT:
-    return setState(searchReasult, {
-      remainingCount: action.remainingCount
-    });
+  // case ACTIONS.CHANGE_REMAINING_COUNT:
+  //   return setState(searchReasult, {
+  //     remainingCount: action.remainingCount
+  //   });
   case ACTIONS.RESET_ITEMS:
     return setState(searchReasult, {
       items: [...action.items]
