@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch';
 import {
   BASE_URL_GITHUB,
   BASE_URL_STACKOVERFLOW,
+  BASE_URL_STACKOVERFLOW_SEARCH,
   TIME_OPTIONS,
   STACKOVERFLOW,
   GITHUB
@@ -203,11 +204,15 @@ export const fetchItems = (loadingStatus = true) => {
 export const fetchStackoverflowItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
     let {parameters} = getState();
+    let {name, tagged} = parameters;
     dispatch(changeLoadingStatus(loadingStatus));
     let page = parseInt(parameters.page) + 1;
     let url = BASE_URL_STACKOVERFLOW + page;
-    if(parameters.tagged) {
-      url = url + '&tagged=' + parameters.tagged;
+    if(name) {
+      url =  BASE_URL_STACKOVERFLOW_SEARCH + page + '&intitle=' + name;
+    }
+    if(tagged) {
+      url = url + '&tagged=' + tagged;
     }
     console.log(url);
     fetch(url).then((response) => {
