@@ -4,6 +4,8 @@ export const BASE_URL_STACKOVERFLOW_SEARCH = 'https://api.stackexchange.com/2.2/
 
 export const GITHUB = 'github';
 export const STACKOVERFLOW = 'stackoverflow';
+export const CNODEJS = 'cnodejs';
+
 export const SITE_LOGOS = {
   github: {
     name: GITHUB,
@@ -12,6 +14,10 @@ export const SITE_LOGOS = {
   stackoverflow: {
     name: STACKOVERFLOW,
     logo: require('../Page/image/logos/stackoverflow.png')
+  },
+  cnodejs: {
+    name: CNODEJS,
+    logo: require('../Page/image/logos/cnodejs.png')
   }
 };
 

@@ -6,7 +6,8 @@ import {
   BASE_URL_STACKOVERFLOW_SEARCH,
   TIME_OPTIONS,
   STACKOVERFLOW,
-  GITHUB
+  GITHUB,
+  CNODEJS
 } from '../../Component/ConstValue';
 
 export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
@@ -194,10 +195,19 @@ export const fetchItems = (loadingStatus = true) => {
       case STACKOVERFLOW:
         dispatch(fetchStackoverflowItems(loadingStatus));
         break;
+      case CNODEJS:
+        dispatch(fetchCnodejsItems(loadingStatus));
+        break;
       default:
         return false;
       }
     }
+  }
+}
+
+export const fetchCnodejsItems = (loadingStatus = true) => {
+  return (dispatch, getState) => {
+    
   }
 }
 

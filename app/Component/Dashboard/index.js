@@ -84,14 +84,21 @@ class Dashboard extends Component {
       'main_github': activeMenu === GITHUB
     });
 
+    let fab;
+    if(activeMenu === GITHUB) {
+      fab = (
+        <FAB
+          handleClick={changeLanguageModalStatus.bind(this)}
+          image={languageUrl}
+        />
+      );
+    }
+
     return (
       <div className={dashboardContainerClass}>
         <div className="dashboard" >
           <Message />
-          <FAB
-            handleClick={changeLanguageModalStatus.bind(this)}
-            image={languageUrl}
-          />
+          {fab}
           <Search />
           <SideMenu />
           {container}
