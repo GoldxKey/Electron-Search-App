@@ -28,7 +28,6 @@ import Message from '../Message/index';
 import SideMenu from '../SideMenu/index';
 
 require('../../Page/stylesheet/dashboard.less');
-import moment from 'moment';
 
 class Dashboard extends Component {
   constructor(props) {

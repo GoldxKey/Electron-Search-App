@@ -1,5 +1,5 @@
 import GithubItem from './GithubItem';
-import StackoverflowItem from './StackoverflowItem';
+import StackoverflowItem from './StackoverflowItem/index';
 
 const DISTRIBUTE_SEARCH_ITEMS = {
   github: GithubItem,

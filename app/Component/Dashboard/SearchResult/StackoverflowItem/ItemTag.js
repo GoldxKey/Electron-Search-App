@@ -6,10 +6,10 @@ class ItemTag extends Component {
   }
 
   render() {
-    let {tag, handleClick} = this.props;
+    let {tag, handleTagClick} = this.props;
 
     return (
-      <div className="item_tag">{tag}</div>
+      <div className="item_tag" onClick={handleTagClick.bind(this, tag)}>{tag}</div>
     )
   }
 }

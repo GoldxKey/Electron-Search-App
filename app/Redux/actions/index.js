@@ -103,7 +103,7 @@ export const changePage = (page) => {
 };
 
 export const CHANGE_TAGGED = 'CHANGE_TAGGED';
-export const chnageTagged = (tagged) => {
+export const changeTagged = (tagged) => {
   return {
     type: CHANGE_TAGGED,
     tagged
