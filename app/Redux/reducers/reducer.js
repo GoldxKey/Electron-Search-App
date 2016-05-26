@@ -3,7 +3,8 @@ import * as ACTIONS from '../actions/index';
 import {
   TIME_OPTIONS,
   GITHUB,
-  STACKOVERFLOW
+  STACKOVERFLOW,
+  CNODEJS
 } from '../../Component/ConstValue';
 
 const state = {
@@ -13,7 +14,8 @@ const state = {
     stars: '>=10',
     time: Object.keys(TIME_OPTIONS)[0],
     page: 0,
-    tagged: ''
+    tagged: '',
+    tab: 'good'
   },
   searchReasult: {
     items: [],
@@ -27,7 +29,7 @@ const state = {
   sideMenu: {
     showSideMenu: false,
     fullMode: false,
-    activeMenu: GITHUB
+    activeMenu: CNODEJS
   },
   msg: {
     message: null,

@@ -3,9 +3,13 @@ import fetch from 'isomorphic-fetch';
 import {
   BASE_URL_GITHUB,
   BASE_URL_STACKOVERFLOW,
+  BASE_URL_STACKOVERFLOW_SEARCH,
+  BASE_URL_CNODEJS,
+  BASE_URL_CNODEJS_DETAIL,
   TIME_OPTIONS,
   STACKOVERFLOW,
-  GITHUB
+  GITHUB,
+  CNODEJS
 } from '../../Component/ConstValue';
 
 export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
@@ -193,6 +197,9 @@ export const fetchItems = (loadingStatus = true) => {
       case STACKOVERFLOW:
         dispatch(fetchStackoverflowItems(loadingStatus));
         break;
+      case CNODEJS:
+        dispatch(fetchCnodejsItems(loadingStatus));
+        break;
       default:
         return false;
       }
@@ -200,14 +207,52 @@ export const fetchItems = (loadingStatus = true) => {
   }
 }
 
-export const fetchStackoverflowItems = (loadingStatus = true) => {
+// BASE_URL_CNODEJS
+export const fetchCnodejsItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
     let {parameters} = getState();
     dispatch(changeLoadingStatus(loadingStatus));
+    let {tab} = parameters;
+    let page = parseInt(parameters.page) + 1;
+    let url = BASE_URL_CNODEJS + page + '&tab=' +tab;
+    console.log(url);
+    fetch(url).then((response) => {
+      console.log(response);
+      if(response.status === 200) {
+        return response.json();
+      }
+    }).then((data) => {
+      console.log(data);
+      if(data.success) {
+        dispatch(changeTotalCount(data.data.length + 1));
+        if(loadingStatus) {
+          dispatch(changePage(1));
+          dispatch(resetSearchResult(data.data));
+        }else {
+          dispatch(changeLoadingPageStatus(false));
+          dispatch(appendSearchResult(data.data));
+        }
+        dispatch(changeLoadingStatus(false));
+      }
+    }).catch((err) => {
+      dispatch(changeMessage('wtf', 'error'));
+      dispatch(changeLoadingStatus(false));
+    })
+  }
+}
+
+export const fetchStackoverflowItems = (loadingStatus = true) => {
+  return (dispatch, getState) => {
+    let {parameters} = getState();
+    let {name, tagged} = parameters;
+    dispatch(changeLoadingStatus(loadingStatus));
     let page = parseInt(parameters.page) + 1;
     let url = BASE_URL_STACKOVERFLOW + page;
-    if(parameters.tagged) {
-      url = url + '&tagged=' + parameters.tagged;
+    if(name) {
+      url =  BASE_URL_STACKOVERFLOW_SEARCH + page + '&intitle=' + name;
+    }
+    if(tagged) {
+      url = url + '&tagged=' + tagged;
     }
     console.log(url);
     fetch(url).then((response) => {

@@ -38,13 +38,15 @@ class Search extends Component {
   render() {
     let {name, language, openSideMenu, activeMenu} = this.props;
 
+    let site = SITE_LOGOS[activeMenu]
+
     return (
       <div className="top_search_container">
         <div className="current_language">{language}</div>
         <div className="search_banner"></div>
         <div className="top_search" id="top_search">
 
-          <img src={SITE_LOGOS[activeMenu].logo} className="top_menu" onClick={openSideMenu.bind(this)} />
+          <img src={site.logo} className="top_menu" onClick={openSideMenu.bind(this)} />
 
           <input
             className="search_input"
@@ -54,6 +56,7 @@ class Search extends Component {
             autofocus="true"
             onKeyUp={this.handleKeyUp.bind(this)}
             placeholder="tap to search"
+            disabled={!site.searchAble}
           />
           <i
             className="fa fa-search search_icon"
