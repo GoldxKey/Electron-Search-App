@@ -39,3 +39,6 @@ if possible, I wanna:
 - add 知乎 search
 - ~~add stackoverflow search~~
 - add medium search
+- add cnodejs
+  - ~~cnodejs items~~
+  - cnodejs detail

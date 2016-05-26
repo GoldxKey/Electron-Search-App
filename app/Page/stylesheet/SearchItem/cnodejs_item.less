@@ -11,9 +11,6 @@
   .cnodejs_top {
     width: 95%;
     margin: 0 2.5% 15px 2.5%;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space:pre;
 
     .top_title {
       font-size: 18px;
@@ -32,6 +29,9 @@
     .top_content {
       color: #828282;
       max-height: 100px;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space:pre;
 
       &.expand {
         max-height: 200px;
@@ -59,6 +59,10 @@
 
     .bottom_expand {
       float: right;
+
+      .expand_icon {
+        cursor: pointer;
+      }
     }
   }
 

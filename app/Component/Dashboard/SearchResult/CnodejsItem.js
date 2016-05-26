@@ -25,7 +25,7 @@ class CnodejsItem extends Component {
     let {item} = this.props;
     let {title, content, create_at} = item;
 
-    let expandIcon = className('fa', {
+    let expandIcon = className('expand_icon fa', {
       'fa-angle-down': !expand,
       'fa-angle-up': expand
     });

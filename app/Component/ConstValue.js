@@ -11,15 +11,18 @@ export const CNODEJS = 'cnodejs';
 export const SITE_LOGOS = {
   github: {
     name: GITHUB,
-    logo: require('../Page/image/logos/github.png')
+    logo: require('../Page/image/logos/github.png'),
+    searchAble: true
   },
   stackoverflow: {
     name: STACKOVERFLOW,
-    logo: require('../Page/image/logos/stackoverflow.png')
+    logo: require('../Page/image/logos/stackoverflow.png'),
+    searchAble: true
   },
   cnodejs: {
     name: CNODEJS,
-    logo: require('../Page/image/logos/cnodejs.png')
+    logo: require('../Page/image/logos/cnodejs.png'),
+    searchAble: false
   }
 };
 
