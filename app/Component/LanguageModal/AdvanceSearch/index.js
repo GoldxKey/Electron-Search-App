@@ -138,7 +138,7 @@ function mapStateToProps(state) {
   return {
     stars: state.parameters.stars,
     time: state.parameters.time,
-    language: state.parameters.language.split(':')[1]
+    language: state.parameters.language
   }
 }
 

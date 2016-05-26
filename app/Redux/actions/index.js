@@ -286,8 +286,9 @@ export const fetchGithubItems = (loadingStatus = true) => {
     let {parameters} = getState();
     dispatch(changeLoadingStatus(loadingStatus));
 
+    
     let page = parseInt(parameters.page) + 1;
-    let url = BASE_URL_GITHUB + page + '&q=' + parameters.name + '+stars:' + parameters.stars + '+' + parameters.language;
+    let url = BASE_URL_GITHUB + page + '&q=' + parameters.name + '+stars:' + parameters.stars + '+language:' + parameters.language;
     if(parameters.time !== Object.keys(TIME_OPTIONS)[0]) {
       url = url + '+created:' + TIME_OPTIONS[parameters.time].range;
     }
