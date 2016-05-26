@@ -70,22 +70,6 @@ class LanguageModal extends Component {
       }
     });
 
-    let currentLanguage = language.split(':')[1];
-
-    let modalHeaderClass = classNames('modal_header', {
-      all: currentLanguage === 'all',
-      js: currentLanguage === 'javascript',
-      html: currentLanguage === 'html',
-      css: currentLanguage === 'css',
-      python: currentLanguage === 'python',
-      php: currentLanguage === 'php',
-      ruby: currentLanguage === 'ruby',
-      node: currentLanguage === 'node',
-      swift: currentLanguage === 'swift',
-      java: currentLanguage === 'java',
-      go: currentLanguage === 'go'
-    });
-
     return (
       <div className="modal_container">
         <div className="modal_bg" onClick={this.changeLanguageModalStatus.bind(this)}></div>
@@ -97,10 +81,10 @@ class LanguageModal extends Component {
             />
           </div>
 
-          <div className={modalHeaderClass}>
+          <div className="modal_header" style={{backgroundImage: 'url(' + LANGUAGES[language].banner + ')'}}>
             <div className="language_name_container">
               <span>当前搜索语言</span>
-              <div>{language.split(':')[1]}</div>
+              <div>{language}</div>
             </div>
           </div>
 

@@ -10,7 +10,7 @@ import {
 const state = {
   parameters: {
     name: '',
-    language: 'language:all',
+    language: 'all',
     stars: '>=10',
     time: Object.keys(TIME_OPTIONS)[0],
     page: 0,
@@ -88,7 +88,7 @@ export function parameters(parameters = state.parameters, action) {
     });
   case ACTIONS.CHANGE_LANGUAGE:
     return setState(parameters, {
-      language: 'language:' + action.language
+      language: action.language
     });
   case ACTIONS.CHANGE_STARS:
     return setState(parameters, {

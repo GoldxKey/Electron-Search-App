@@ -17,7 +17,7 @@ class SearchResult extends Component {
   changeTagged(tag) {
     let {changeTagged, fetchItems, changeLanguage} = this.props;
     changeTagged(tag);
-    changeLanguage(tag);
+    // changeLanguage(tag);
     fetchItems();
   }
 

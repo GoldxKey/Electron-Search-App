@@ -12,17 +12,20 @@ export const SITE_LOGOS = {
   github: {
     name: GITHUB,
     logo: require('../Page/image/logos/github.png'),
-    searchAble: true
+    searchAble: true,
+    parameter: 'language'
   },
   stackoverflow: {
     name: STACKOVERFLOW,
     logo: require('../Page/image/logos/stackoverflow.png'),
-    searchAble: true
+    searchAble: true,
+    parameter: 'tagged'
   },
   cnodejs: {
     name: CNODEJS,
     logo: require('../Page/image/logos/cnodejs.png'),
-    searchAble: false
+    searchAble: false,
+    parameter: 'tab'
   }
 };
 
@@ -31,58 +34,58 @@ export const LANGUAGE_IMAGE_URL = 'Page/image/language/';
 export const LANGUAGES = {
   all: {
     name: 'all',
-    image: 'icon/code.png',
-    banner: 'banner/star-wars.jpg'
+    image: require('../Page/image/language/icon/code.png'),
+    banner: require('../Page/image/language/banner/star-wars.jpg')
   },
   javascript: {
     name: 'javascript',
-    image: 'icon/js.png',
-    banner: 'banner/js.jpg'
+    image: require('../Page/image/language/icon/js.png'),
+    banner: require('../Page/image/language/banner/js.jpg')
   },
   html: {
     name: 'html',
-    image: 'icon/html.png',
-    banner: 'banner/html.png'
+    image: require('../Page/image/language/icon/html.png'),
+    banner: require('../Page/image/language/banner/html.png')
   },
   python: {
     name: 'python',
-    image: 'icon/python.png',
-    banner: 'banner/python.jpg'
+    image: require('../Page/image/language/icon/python.png'),
+    banner: require('../Page/image/language/banner/python.jpg')
   },
   ruby: {
     name: 'ruby',
-    image: 'icon/ruby.png',
-    banner: 'banner/ruby.jpg'
+    image: require('../Page/image/language/icon/ruby.png'),
+    banner: require('../Page/image/language/banner/ruby.jpg')
   },
   css: {
     name: 'css',
-    image: 'icon/css.png',
-    banner: 'banner/css.png'
+    image: require('../Page/image/language/icon/css.png'),
+    banner: require('../Page/image/language/banner/css.png')
   },
   java: {
     name: 'java',
-    image: 'icon/java.png',
-    banner: 'banner/java.jpg'
+    image: require('../Page/image/language/icon/java.png'),
+    banner: require('../Page/image/language/banner/java.jpg')
   },
   node: {
     name: 'node',
-    image: 'icon/nodejs.png',
-    banner: 'banner/nodejs.jpg'
+    image: require('../Page/image/language/icon/nodejs.png'),
+    banner: require('../Page/image/language/banner/nodejs.jpg')
   },
   swift: {
     name: 'swift',
-    image: 'icon/swift.png',
-    banner: 'banner/swift.jpg'
+    image: require('../Page/image/language/icon/swift.png'),
+    banner: require('../Page/image/language/banner/swift.jpg')
   },
   php: {
     name: 'php',
-    image: 'icon/php.png',
-    banner: 'banner/php.png'
+    image: require('../Page/image/language/icon/php.png'),
+    banner: require('../Page/image/language/banner/php.png')
   },
   go: {
     name: 'go',
-    image: 'icon/go.png',
-    banner: 'banner/go.jpg'
+    image: require('../Page/image/language/icon/go.png'),
+    banner: require('../Page/image/language/banner/go.jpg')
   }
 };
 

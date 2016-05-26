@@ -13,9 +13,9 @@ import {
 } from '../../Redux/actions/index';
 import {
   LANGUAGES,
-  LANGUAGE_IMAGE_URL,
   GITHUB,
-  STACKOVERFLOW
+  STACKOVERFLOW,
+  CNODEJS
 } from '../ConstValue';
 
 import FAB from '../FAB/index';
@@ -75,12 +75,11 @@ class Dashboard extends Component {
     }else if (totalCount > 0) {
       container = (<SearchResult />);
     }
-    let currentLanguage = language.split(':')[1];
-    let iconUrl = LANGUAGES[currentLanguage] ? LANGUAGES[currentLanguage].image : LANGUAGES["all"].image;
-    let languageUrl = '../' + LANGUAGE_IMAGE_URL + iconUrl;
+
+    let iconUrl = LANGUAGES[language] ? LANGUAGES[language].image : LANGUAGES["all"].image;
 
     let dashboardContainerClass = classNames('dashboard_container', {
-      'main_stackoverflow': activeMenu === STACKOVERFLOW,
+      'main_stackoverflow': activeMenu === STACKOVERFLOW || activeMenu === CNODEJS,
       'main_github': activeMenu === GITHUB
     });
 
@@ -89,7 +88,7 @@ class Dashboard extends Component {
       fab = (
         <FAB
           handleClick={changeLanguageModalStatus.bind(this)}
-          image={languageUrl}
+          image={iconUrl}
         />
       );
     }
