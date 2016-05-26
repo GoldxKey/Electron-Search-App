@@ -3,7 +3,6 @@
   width: 100%;
   position: relative;
   margin: 20px 0;
-  // .transition_animation;
   color: #343434;
   padding-bottom: 20px;
   border-bottom: 1px solid #f0f0f0;
@@ -28,14 +27,9 @@
 
     .top_content {
       color: #828282;
-      max-height: 100px;
       overflow: hidden;
       text-overflow:ellipsis;
       white-space:pre;
-
-      &.expand {
-        max-height: 200px;
-      }
     }
 
   }
@@ -45,6 +39,7 @@
     margin: 0 2.5%;
     height: 30px;
     font-size: 14px;
+    line-height: 30px;
 
     &::after {
       display: block;
@@ -56,14 +51,8 @@
       float: left;
     }
 
-    .bottom_expand {
+    .bottom_replay {
       float: right;
-
-      .expand_icon {
-        .transition_animation;
-        cursor: pointer;
-        font-size: 20px;
-      }
     }
   }
 
