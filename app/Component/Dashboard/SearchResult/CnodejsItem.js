@@ -8,17 +8,38 @@ require('../../../Page/stylesheet/SearchItem/cnodejs_item.less');
 class CnodejsItem extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      expand: false
+    }
+  }
+
+  handleExpandChange() {
+    let {expand} = this.state;
+    this.setState({
+      expand: !expand
+    });
   }
 
   render() {
+    let {expand} = this.state;
     let {item} = this.props;
     let {title, content, create_at, reply_count} = item;
+
+    let expandIcon = className('expand_icon fa', {
+      'fa-angle-down': !expand,
+      'fa-angle-up': expand
+    });
+
+    let itemContent = content.slice(0, 101);
+    if(expand) {
+      itemContent = content.slice(0, 301);
+    }
 
     return (
       <div className="cnodejs_item_container">
         <div className="cnodejs_top">
           <div className="top_title">{title}</div>
-          <div className="top_content">{content.slice(0, 101)}</div>
+          <div className="top_content">{itemContent}</div>
         </div>
         <div className="cnodejs_bottom">
           <div className="bottom_info">
@@ -26,7 +47,8 @@ class CnodejsItem extends Component {
           </div>
           <div className="bottom_replay">
             <i className="replay_icon fa fa-comments-o" aria-hidden="true"></i>
-            &nbsp;&nbsp;<span>{reply_count}</span>
+            &nbsp;&nbsp;<span>{reply_count}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i className={expandIcon} aria-hidden="true" onClick={this.handleExpandChange.bind(this)}></i>
           </div>
         </div>
       </div>

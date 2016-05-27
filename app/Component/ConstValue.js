@@ -7,6 +7,7 @@ export const BASE_URL_CNODEJS_DETAIL = 'https://cnodejs.org/api/v1/topic/';
 export const GITHUB = 'github';
 export const STACKOVERFLOW = 'stackoverflow';
 export const CNODEJS = 'cnodejs';
+export const HACKER_NEWS = 'hacker news';
 
 export const SITE_LOGOS = {
   github: {
