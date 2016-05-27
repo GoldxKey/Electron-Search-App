@@ -2,7 +2,7 @@
 
 最初只是为了学习[`Electron`](https://github.com/electron/electron)，而clone了[`electron-quick-start`](https://github.com/electron/electron-quick-start)
 
-后来发现官方案例真的蛮简单的，就在此基础上增加了React&Redux和Webpack，并利用[Github-API](https://developer.github.com/)以及[stackoverflow-API](https://api.stackexchange.com/docs)，随便打造一个练手的小项目，也算是自己写的第一个JS桌面端App了吧。
+后来发现官方案例真的蛮简单的，就在此基础上增加了React&Redux和Webpack，并利用[Github-API](https://developer.github.com/)以及[stackoverflow-API](https://api.stackexchange.com/docs)，[CNodejs-API](https://cnodejs.org/api)，随便打造一个练手的小项目，也算是自己写的第一个JS桌面端App了吧。
 
 目前可完成基本的搜索功能，还在进一步完善中。
 
@@ -31,6 +31,7 @@ $ npm run rock
 - ~~分页~~
 - upgrade user experience
   - stackoverflow搜索无内容时的处理
+- 自动化测试
 
 if possible, I wanna:
 

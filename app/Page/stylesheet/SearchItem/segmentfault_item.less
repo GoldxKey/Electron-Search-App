@@ -1,0 +1,58 @@
+@import "../public.less";
+.segmentfault_item_container {
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+  color: #343434;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+
+  .segmentfault_top {
+    width: 95%;
+    margin: 0 2.5% 15px 2.5%;
+
+    .top_title {
+      font-size: 18px;
+      color: #4a4a4a;
+      .transition_animation;
+      width: 100%;
+      cursor: pointer;
+      padding: 5px 0;
+      font-weight: bold;
+
+      &:hover {
+        color: #2196F3;
+      }
+    }
+
+    .top_content {
+      color: #828282;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space:pre;
+      .transition_animation;
+    }
+  }
+
+  .segmentfault_bottom {
+    width: 95%;
+    margin: 0 2.5%;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+
+    &::after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    .segmentfault_type {
+      float: right;
+
+      .segmentfault_type_icon {
+        font-size: 20px;
+      }
+    }
+  }
+}

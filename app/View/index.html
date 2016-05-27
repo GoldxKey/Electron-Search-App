@@ -3,7 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <title>G-Search</title>
-    <link rel="stylesheet" media="screen" href="../../assets/index.bundle.css" />
+    <script>
+      var fs = require('fs');
+      var result = fs.readFileSync("./assets/webpack_manifest.json", "utf8");
+      result = JSON.parse(result);
+      var node = document.createElement('link');
+      node.rel = 'stylesheet';
+      node.href = '../../assets/' + result['index.css'];
+      document.getElementsByTagName('head')[0].appendChild(node);
+    </script>
+    <!-- <link rel="stylesheet" media="screen" href="../../assets/index.bundle.css" /> -->
     <link rel="stylesheet" media="screen" href="../Page/stylesheet/font-awesome-4.6.3/css/font-awesome.min.css" />
   </head>
   <body>
@@ -12,7 +21,13 @@
   </body>
 
   <script>
-    require('../../assets/common.bundle');
-    require('../../assets/index.bundle');
+     var fs = require('fs');
+     var result = fs.readFileSync("./assets/webpack_manifest.json", "utf8");
+     console.log(result);
+     result = JSON.parse(result);
+     require('../../assets/' + result['common.js']);
+     require('../../assets/' + result['index.js']);
+//    require('../../assets/common.bundle.js');
+//    require('../../assets/index.bundle.js');
   </script>
 </html>
