@@ -18,7 +18,7 @@ const state = {
     tagged: '',
     tab: 'good'
   },
-  searchReasult: {
+  searchResult: {
     items: [],
     totalCount: 1,
     loadingPage: false
@@ -112,30 +112,30 @@ export function parameters(parameters = state.parameters, action) {
   }
 }
 
-export function searchReasult(searchReasult = state.searchReasult, action) {
+export function searchResult(searchResult = state.searchResult, action) {
   switch (action.type) {
   case ACTIONS.CHANGE_TOTAL_COUNT:
-    return setState(searchReasult, {
+    return setState(searchResult, {
       totalCount: action.totalCount
     });
   // case ACTIONS.CHANGE_REMAINING_COUNT:
-  //   return setState(searchReasult, {
+  //   return setState(searchResult, {
   //     remainingCount: action.remainingCount
   //   });
   case ACTIONS.RESET_ITEMS:
-    return setState(searchReasult, {
+    return setState(searchResult, {
       items: [...action.items]
     });
   case ACTIONS.APPEND_ITEMS:
-    return setState(searchReasult, {
-      items: [...searchReasult.items, ...action.items]
+    return setState(searchResult, {
+      items: [...searchResult.items, ...action.items]
     });
   case ACTIONS.CHANGE_LOADING_PAGE_STATUS:
-    return setState(searchReasult, {
+    return setState(searchResult, {
       loadingPage: action.status
     });
   default:
-    return searchReasult;
+    return searchResult;
   }
 }
 

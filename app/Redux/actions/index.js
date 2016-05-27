@@ -132,11 +132,11 @@ export const changeTagged = (tagged) => {
   }
 };
 
-// searchReasult
+// searchResult
 export const loadNextPage = () => {
   return (dispatch, getState) => {
-    let {searchReasult} = getState();
-    let {loadingPage} = searchReasult;
+    let {searchResult} = getState();
+    let {loadingPage} = searchResult;
     if(!loadingPage) {
       dispatch(changeMessage('加载下一页...', 'positive'));
       dispatch(changeLoadingPageStatus(true));
@@ -188,9 +188,9 @@ export const appendItems = (items) => {
 
 export const fetchItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
-    let {sideMenu, searchReasult} = getState();
+    let {sideMenu, searchResult} = getState();
     let {activeMenu} = sideMenu;
-    let {items, totalCount} = searchReasult;
+    let {items, totalCount} = searchResult;
     if(items.length < totalCount) {
       switch (activeMenu) {
       case GITHUB:

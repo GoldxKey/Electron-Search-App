@@ -110,7 +110,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    totalCount: state.searchReasult.totalCount,
+    totalCount: state.searchResult.totalCount,
     loading: state.modal.loading,
     languageModal: state.modal.languageModal,
     language: state.parameters.language,
