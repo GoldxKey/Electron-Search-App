@@ -23,28 +23,31 @@ class CnodejsItem extends Component {
   render() {
     let {expand} = this.state;
     let {item} = this.props;
-    let {title, content, create_at} = item;
+    let {title, content, create_at, reply_count} = item;
 
     let expandIcon = className('expand_icon fa', {
       'fa-angle-down': !expand,
       'fa-angle-up': expand
     });
 
-    let topContentClass = className('top_content', {
-      expand: expand
-    });
+    let itemContent = content.slice(0, 101);
+    if(expand) {
+      itemContent = content.slice(0, 301);
+    }
 
     return (
       <div className="cnodejs_item_container">
         <div className="cnodejs_top">
           <div className="top_title">{title}</div>
-          <div className={topContentClass}>{content}</div>
+          <div className="top_content">{itemContent}</div>
         </div>
         <div className="cnodejs_bottom">
           <div className="bottom_info">
-            <i className="fa fa-calendar" aria-hidden="true"></i>&nbsp;<span>{create_at.split('T')[0]}</span>
+            <i className="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;<span>{create_at.split('T')[0]}</span>
           </div>
-          <div className="bottom_expand">
+          <div className="bottom_replay">
+            <i className="replay_icon fa fa-comments-o" aria-hidden="true"></i>
+            &nbsp;&nbsp;<span>{reply_count}</span>&nbsp;&nbsp;&nbsp;&nbsp;
             <i className={expandIcon} aria-hidden="true" onClick={this.handleExpandChange.bind(this)}></i>
           </div>
         </div>

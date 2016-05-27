@@ -70,6 +70,9 @@ class SideMenu extends Component {
           <div className="content_logo_container">
             {siteItems}
           </div>
+          <div className="side_menu_bottom">
+            <i className="fa fa-cog" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
     )

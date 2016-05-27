@@ -28,7 +28,8 @@
   }
 
   .side_menu_content {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #484849;
+    // background-color: rgba(255, 255, 255, 0.9);
     position: absolute;
     top: 0;
     left: -100%;
@@ -40,7 +41,7 @@
     .toggle_fullscreen_button {
       display: block;
       margin: 40px 20% 0px 20%;
-      color: #343434;
+      // color: #343434;
       text-align: right;
       font-size: 1.5em;
       width: 30px;
@@ -52,10 +53,16 @@
       width: 80%;
       margin: 80px 10%;
 
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
       .site_item_container {
         width: 100%;
         text-align: center;
-        color: #343434;
+        // color: #343434;
         margin: 20px 0;
         cursor: pointer;
         max-width: 100px;
@@ -70,6 +77,25 @@
         .site_name {
           display: none;
         }
+      }
+    }
+
+    .side_menu_bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #2F2F2F;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      .transition_animation;
+
+      &:hover {
+        background-color: #191919;
+        color: #E6E6E6;
       }
     }
 
@@ -92,6 +118,7 @@
           }
         }
       }
+
     }
   }
 }
