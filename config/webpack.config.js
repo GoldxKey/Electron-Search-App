@@ -10,6 +10,9 @@ const ROOT_PATH = path.join(__dirname, '../'); // 项目根目录
 const BUILD_PATH = path.join(ROOT_PATH, './assets'); // 最后输出放置公共资源的目录
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ManifestPlugin = require('webpack-manifest-plugin');
+
+const CleanPlugin = require('clean-webpack-plugin');
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -17,7 +20,7 @@ const plugins = [
   // 插件扔在这里
   new webpack.optimize.CommonsChunkPlugin({
     // 与 entry 中的 jquery 对应
-    name: 'jquery',
+    name: 'common',
     // 输出的公共资源名称
     filename: 'common.bundle.js',
     // 对所有entry实行这个规则
@@ -35,7 +38,12 @@ const plugins = [
     "process.env": {
        NODE_ENV: JSON.stringify("production")
      }
-  })
+  }),
+  new ManifestPlugin({
+    fileName: 'webpack_manifest.json'
+  }),
+  // 在打包前清空 assets 文件夹
+  // new CleanPlugin(BUILD_PATH),
 ];
 
 if(production) {
@@ -57,12 +65,12 @@ module.exports = {
   entry: {
     index: './app/Component/index/index.js',
     // renderer: './renderer.js',
-    jquery: ['jquery']
+    common: ['jquery']
     // public: './public/pages/public.js'
   },
   output: {
     path: BUILD_PATH, // 设置输出目录
-    filename: '[name].bundle.js', // 输出文件名
+    filename: '[name].[hash].bundle.js', // 输出文件名
   },
   resolve: {
     extensions: ['', '.js', '.jsx', 'css', 'less'] // 配置简写，配置过后，书写该文件路径的时候可以省略文件后缀

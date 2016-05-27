@@ -6,10 +6,12 @@ import {
   BASE_URL_STACKOVERFLOW_SEARCH,
   BASE_URL_CNODEJS,
   BASE_URL_CNODEJS_DETAIL,
+  BASE_URL_SEGMENTFAULT_SEARCH,
   TIME_OPTIONS,
   STACKOVERFLOW,
   GITHUB,
-  CNODEJS
+  CNODEJS,
+  SEGMENTFAULT
 } from '../../Component/ConstValue';
 
 export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
@@ -200,20 +202,57 @@ export const fetchItems = (loadingStatus = true) => {
       case CNODEJS:
         dispatch(fetchCnodejsItems(loadingStatus));
         break;
+      case SEGMENTFAULT:
+        dispatch(fetchSegmentfaultItems(loadingStatus));
+        break;
       default:
         return false;
       }
     }
   }
-}
+};
+
+export const fetchSegmentfaultItems = (loadingStatus = true) => {
+  return (dispatch, getState) => {
+    let {parameters} = getState();
+    dispatch(changeLoadingStatus(loadingStatus));
+    let {name, page} = parameters;
+    page = parseInt(page) + 1;
+    name = name ? name : '.json';
+    let url = BASE_URL_SEGMENTFAULT_SEARCH + page + '&q=' + name;
+    console.log(url);
+    fetch(url).then((response) => {
+      if(response.status === 200) {
+        return response.json();
+      }
+    }).then((data) => {
+      console.log(data.data);
+      let resultData = data.data;
+      if(resultData) {
+        dispatch(changeTotalCount(resultData.page.total));
+        if(loadingStatus) {
+          dispatch(changePage(1));
+          dispatch(resetSearchResult(resultData.rows));
+        }else {
+          dispatch(changeLoadingPageStatus(false));
+          dispatch(appendSearchResult(resultData.rows));
+        }
+        dispatch(changeLoadingStatus(false));
+      }
+    }).catch((err) => {
+      dispatch(changeMessage('wtf', 'error'));
+      dispatch(changeLoadingStatus(false));
+    });
+  }
+};
 
 // BASE_URL_CNODEJS
 export const fetchCnodejsItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
     let {parameters} = getState();
     dispatch(changeLoadingStatus(loadingStatus));
-    let {tab} = parameters;
-    let page = parseInt(parameters.page) + 1;
+    let {tab, page} = parameters;
+    page = parseInt(page) + 1;
     let url = BASE_URL_CNODEJS + page + '&tab=' +tab;
     console.log(url);
     fetch(url).then((response) => {
@@ -244,9 +283,9 @@ export const fetchCnodejsItems = (loadingStatus = true) => {
 export const fetchStackoverflowItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
     let {parameters} = getState();
-    let {name, tagged} = parameters;
+    let {name, tagged, page} = parameters;
     dispatch(changeLoadingStatus(loadingStatus));
-    let page = parseInt(parameters.page) + 1;
+    page = parseInt(page) + 1;
     let url = BASE_URL_STACKOVERFLOW + page;
     if(name) {
       url =  BASE_URL_STACKOVERFLOW_SEARCH + page + '&intitle=' + name;
@@ -285,12 +324,12 @@ export const fetchGithubItems = (loadingStatus = true) => {
   return (dispatch, getState) => {
     let {parameters} = getState();
     dispatch(changeLoadingStatus(loadingStatus));
+    let {name, page, stars, language, time} = parameters;
 
-    
-    let page = parseInt(parameters.page) + 1;
-    let url = BASE_URL_GITHUB + page + '&q=' + parameters.name + '+stars:' + parameters.stars + '+language:' + parameters.language;
-    if(parameters.time !== Object.keys(TIME_OPTIONS)[0]) {
-      url = url + '+created:' + TIME_OPTIONS[parameters.time].range;
+    page = parseInt(page) + 1;
+    let url = BASE_URL_GITHUB + page + '&q=' + name + '+stars:' + stars + '+language:' + language;
+    if(time !== Object.keys(TIME_OPTIONS)[0]) {
+      url = url + '+created:' + TIME_OPTIONS[time].range;
     }
 
     console.log(url);

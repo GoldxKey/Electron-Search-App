@@ -4,7 +4,8 @@ import {
   TIME_OPTIONS,
   GITHUB,
   STACKOVERFLOW,
-  CNODEJS
+  CNODEJS,
+  SEGMENTFAULT
 } from '../../Component/ConstValue';
 
 const state = {
@@ -20,7 +21,7 @@ const state = {
   searchReasult: {
     items: [],
     totalCount: 1,
-    loadingPage: false,
+    loadingPage: false
   },
   modal: {
     languageModal: false,
@@ -29,7 +30,7 @@ const state = {
   sideMenu: {
     showSideMenu: false,
     fullMode: false,
-    activeMenu: CNODEJS
+    activeMenu: SEGMENTFAULT
   },
   msg: {
     message: null,

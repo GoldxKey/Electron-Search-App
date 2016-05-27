@@ -3,11 +3,14 @@ export const BASE_URL_STACKOVERFLOW = 'https://api.stackexchange.com/2.2/questio
 export const BASE_URL_STACKOVERFLOW_SEARCH = 'https://api.stackexchange.com/2.2/search?order=desc&sort=activity&site=stackoverflow&page=';
 export const BASE_URL_CNODEJS = 'https://cnodejs.org/api/v1/topics?mdrender=false&page=';
 export const BASE_URL_CNODEJS_DETAIL = 'https://cnodejs.org/api/v1/topic/';
+export const BASE_URL_SEGMENTFAULT = 'https://segmentfault.com';
+export const BASE_URL_SEGMENTFAULT_SEARCH = 'https://api.segmentfault.com/search?page=';
 
 export const GITHUB = 'github';
 export const STACKOVERFLOW = 'stackoverflow';
 export const CNODEJS = 'cnodejs';
 export const HACKER_NEWS = 'hacker news';
+export const SEGMENTFAULT = 'segmentfault';
 
 export const SITE_LOGOS = {
   github: {
@@ -27,6 +30,12 @@ export const SITE_LOGOS = {
     logo: require('../Page/image/logos/cnodejs.png'),
     searchAble: false,
     parameter: 'tab'
+  },
+  segmentfault: {
+    name: SEGMENTFAULT,
+    logo: require('../Page/image/logos/segmentfault.png'),
+    searchAble: true,
+    parameter: 'name'
   }
 };
 
@@ -124,7 +133,7 @@ export const ADVANCE_LANGUAGES = {
   Scheme: {
     name: 'Scheme'
   }
-}
+};
 
 import moment from 'moment';
 let weekBefore = moment().subtract(10, 'days').calendar();
