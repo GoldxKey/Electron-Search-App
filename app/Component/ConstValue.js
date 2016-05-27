@@ -3,7 +3,8 @@ export const BASE_URL_STACKOVERFLOW = 'https://api.stackexchange.com/2.2/questio
 export const BASE_URL_STACKOVERFLOW_SEARCH = 'https://api.stackexchange.com/2.2/search?order=desc&sort=activity&site=stackoverflow&page=';
 export const BASE_URL_CNODEJS = 'https://cnodejs.org/api/v1/topics?mdrender=false&page=';
 export const BASE_URL_CNODEJS_DETAIL = 'https://cnodejs.org/api/v1/topic/';
-export const BASE_URL_SEGMENTFAULT = 'https://api.segmentfault.com/search?page=';
+export const BASE_URL_SEGMENTFAULT = 'https://segmentfault.com';
+export const BASE_URL_SEGMENTFAULT_SEARCH = 'https://api.segmentfault.com/search?page=';
 
 export const GITHUB = 'github';
 export const STACKOVERFLOW = 'stackoverflow';

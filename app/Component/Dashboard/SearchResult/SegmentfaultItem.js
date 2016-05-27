@@ -3,11 +3,20 @@ import className from 'classnames';
 import {
   showNewPage
 } from '../../../Page/js/utils/index';
+import {
+  BASE_URL_SEGMENTFAULT
+} from '../../ConstValue';
 require('../../../Page/stylesheet/SearchItem/segmentfault_item.less');
 
 class SegmentfaultItem extends Component {
   constructor(props) {
     super(props);
+  }
+
+  showSfPage() {
+    let {item} = this.props;
+    let {title, url} = item;
+    showNewPage(BASE_URL_SEGMENTFAULT + url, title);
   }
 
   render() {
@@ -21,7 +30,7 @@ class SegmentfaultItem extends Component {
     return (
       <div className="segmentfault_item_container">
         <div className="segmentfault_top">
-          <div className="top_title">{title}</div>
+          <div className="top_title" onClick={this.showSfPage.bind(this)}>{title}</div>
           <div className="top_content">{excerpt}</div>
         </div>
         <div className="segmentfault_bottom">

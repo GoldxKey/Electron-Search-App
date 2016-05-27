@@ -6,7 +6,7 @@ import {
   BASE_URL_STACKOVERFLOW_SEARCH,
   BASE_URL_CNODEJS,
   BASE_URL_CNODEJS_DETAIL,
-  BASE_URL_SEGMENTFAULT,
+  BASE_URL_SEGMENTFAULT_SEARCH,
   TIME_OPTIONS,
   STACKOVERFLOW,
   GITHUB,
@@ -219,7 +219,7 @@ export const fetchSegmentfaultItems = (loadingStatus = true) => {
     let {name, page} = parameters;
     page = parseInt(page) + 1;
     name = name ? name : '.json';
-    let url = BASE_URL_SEGMENTFAULT + page + '&q=' + name;
+    let url = BASE_URL_SEGMENTFAULT_SEARCH + page + '&q=' + name;
     console.log(url);
     fetch(url).then((response) => {
       if(response.status === 200) {
