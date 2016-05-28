@@ -13,7 +13,7 @@ const state = {
     name: '',
     language: 'all',
     stars: '>=10',
-    time: Object.keys(TIME_OPTIONS)[0],
+    time: Object.keys(TIME_OPTIONS)[2],
     page: 0,
     tagged: '',
     tab: 'good'
@@ -30,7 +30,7 @@ const state = {
   sideMenu: {
     showSideMenu: false,
     fullMode: false,
-    activeMenu: SEGMENTFAULT
+    activeMenu: CNODEJS
   },
   msg: {
     message: null,

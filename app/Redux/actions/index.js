@@ -69,8 +69,8 @@ export const changeActiveMenu = (menu) => {
 
 export const changeSite = (site) => {
   return (dispatch, getState) => {
-    dispatch(changeActiveMenu(site));
     dispatch(resetState());
+    dispatch(changeActiveMenu(site));
     dispatch(fetchItems());
   }
 }
