@@ -24,20 +24,26 @@ let iconMenu = [
     submenu: [
       {
         label: 'github',
-        click: (item, focusedWindow) => {
-
+        click: (item) => {
+          mainWindow.webContents.send('changeSite', 'github');
         }
       },
       {
         label: 'stackoverflow',
-        click: (item, focusedWindow) => {
-
+        click: (item) => {
+          mainWindow.webContents.send('changeSite', 'stackoverflow');
         }
       },
       {
         label: 'segmentfault',
-        click: (item, focusedWindow) => {
-
+        click: (item) => {
+          mainWindow.webContents.send('changeSite', 'segmentfault');
+        }
+      },
+      {
+        label: 'cnodejs',
+        click: (item) => {
+          mainWindow.webContents.send('changeSite', 'cnodejs');
         }
       }
     ]

@@ -9,7 +9,8 @@ import {
   fetchItems,
   changeLanguageModalStatus,
   changeMessage,
-  loadNextPage
+  loadNextPage,
+  changeSite
 } from '../../Redux/actions/index';
 import {
   LANGUAGES,
@@ -28,6 +29,7 @@ import Message from '../Message/index';
 import SideMenu from '../SideMenu/index';
 
 require('../../Page/stylesheet/dashboard.less');
+const ipcRenderer = require('electron').ipcRenderer;
 
 class Dashboard extends Component {
   constructor(props) {
@@ -57,6 +59,13 @@ class Dashboard extends Component {
        let $searchResultHeight = $('.search_result_container').height();
        if($currentTop >= $searchResultHeight - 800) {
          loadNextPage();
+       }
+     });
+
+     ipcRenderer.on('changeSite', (event, site) => {
+       let {changeSite, activeMenu} = this.props;
+       if(activeMenu !== site) {
+         changeSite(site);
        }
      });
   }
@@ -110,7 +119,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    totalCount: state.searchReasult.totalCount,
+    totalCount: state.searchResult.totalCount,
     loading: state.modal.loading,
     languageModal: state.modal.languageModal,
     language: state.parameters.language,
@@ -129,6 +138,9 @@ function mapDispatchToProps(dispatch) {
     },
     loadNextPage: () => {
       dispatch(loadNextPage());
+    },
+    changeSite: (site) => {
+      dispatch(changeSite(site));
     }
   }
 }

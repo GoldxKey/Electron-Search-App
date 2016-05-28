@@ -13,12 +13,12 @@ const state = {
     name: '',
     language: 'all',
     stars: '>=10',
-    time: Object.keys(TIME_OPTIONS)[0],
+    time: Object.keys(TIME_OPTIONS)[2],
     page: 0,
     tagged: '',
     tab: 'good'
   },
-  searchReasult: {
+  searchResult: {
     items: [],
     totalCount: 1,
     loadingPage: false
@@ -30,7 +30,7 @@ const state = {
   sideMenu: {
     showSideMenu: false,
     fullMode: false,
-    activeMenu: SEGMENTFAULT
+    activeMenu: CNODEJS
   },
   msg: {
     message: null,
@@ -112,30 +112,30 @@ export function parameters(parameters = state.parameters, action) {
   }
 }
 
-export function searchReasult(searchReasult = state.searchReasult, action) {
+export function searchResult(searchResult = state.searchResult, action) {
   switch (action.type) {
   case ACTIONS.CHANGE_TOTAL_COUNT:
-    return setState(searchReasult, {
+    return setState(searchResult, {
       totalCount: action.totalCount
     });
   // case ACTIONS.CHANGE_REMAINING_COUNT:
-  //   return setState(searchReasult, {
+  //   return setState(searchResult, {
   //     remainingCount: action.remainingCount
   //   });
   case ACTIONS.RESET_ITEMS:
-    return setState(searchReasult, {
+    return setState(searchResult, {
       items: [...action.items]
     });
   case ACTIONS.APPEND_ITEMS:
-    return setState(searchReasult, {
-      items: [...searchReasult.items, ...action.items]
+    return setState(searchResult, {
+      items: [...searchResult.items, ...action.items]
     });
   case ACTIONS.CHANGE_LOADING_PAGE_STATUS:
-    return setState(searchReasult, {
+    return setState(searchResult, {
       loadingPage: action.status
     });
   default:
-    return searchReasult;
+    return searchResult;
   }
 }
 

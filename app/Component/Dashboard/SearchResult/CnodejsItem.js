@@ -3,6 +3,7 @@ import className from 'classnames';
 import {
   showNewPage
 } from '../../../Page/js/utils/index';
+import {remote} from 'electron';
 require('../../../Page/stylesheet/SearchItem/cnodejs_item.less');
 
 class CnodejsItem extends Component {
@@ -18,6 +19,14 @@ class CnodejsItem extends Component {
     this.setState({
       expand: !expand
     });
+  }
+
+  showCnodejsPage() {
+    let {item} = this.props;
+    let {id, title} = item;
+    let currentWindow = remote.getCurrentWindow();
+    currentWindow.setContentSize(800, 700, true);
+    currentWindow.setTitle(title);
   }
 
   render() {
@@ -38,7 +47,7 @@ class CnodejsItem extends Component {
     return (
       <div className="cnodejs_item_container">
         <div className="cnodejs_top">
-          <div className="top_title">{title}</div>
+          <div className="top_title" onClick={this.showCnodejsPage.bind(this)}>{title}</div>
           <div className="top_content">{itemContent}</div>
         </div>
         <div className="cnodejs_bottom">

@@ -47,7 +47,7 @@ class SearchResult extends Component {
 
 function mapStateToProps(state) {
   return {
-    items: state.searchReasult.items,
+    items: state.searchResult.items,
     activeMenu: state.sideMenu.activeMenu
   }
 }
