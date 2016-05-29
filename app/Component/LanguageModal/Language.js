@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 
-import {
-  LANGUAGE_IMAGE_URL
-} from '../ConstValue';
-
 class Language extends Component {
   constructor(props) {
     super(props);

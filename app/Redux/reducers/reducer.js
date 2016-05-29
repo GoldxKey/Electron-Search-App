@@ -1,4 +1,4 @@
-import * as ACTIONS from '../actions/index';
+import * as TYPES from '../actions/types.js';
 
 import {
   TIME_OPTIONS,
@@ -40,7 +40,7 @@ const state = {
 
 export function msg(msg = state.msg, action) {
   switch (action.type) {
-  case ACTIONS.CHANGE_MESSAGE:
+  case TYPES.CHANGE_MESSAGE:
     return setState(msg, action.msg);
   default:
     return msg;
@@ -49,15 +49,15 @@ export function msg(msg = state.msg, action) {
 
 export function sideMenu(sideMenu = state.sideMenu, action) {
   switch (action.type) {
-  case ACTIONS.CHANGE_SIDE_MENU_STATUS:
+  case TYPES.CHANGE_SIDE_MENU_STATUS:
     return setState(sideMenu, {
       showSideMenu: action.status
     });
-  case ACTIONS.TOGGLE_SIDE_MENU_FULL_MODE:
+  case TYPES.TOGGLE_SIDE_MENU_FULL_MODE:
     return setState(sideMenu, {
       fullMode: action.status
     });
-  case ACTIONS.CHANGE_ACTIVE_MENU:
+  case TYPES.CHANGE_ACTIVE_MENU:
     return setState(sideMenu, {
       activeMenu: action.menu
     })
@@ -68,11 +68,11 @@ export function sideMenu(sideMenu = state.sideMenu, action) {
 
 export function modal(modal = state.modal, action) {
   switch (action.type) {
-  case ACTIONS.CHANGE_LANGUAGE_MODAL_STATUS:
+  case TYPES.CHANGE_LANGUAGE_MODAL_STATUS:
     return setState(modal, {
       languageModal: action.status
     });
-  case ACTIONS.CHANGE_LOADING_STATUS:
+  case TYPES.CHANGE_LOADING_STATUS:
     return setState(modal, {
       loading: action.status
     });
@@ -83,27 +83,27 @@ export function modal(modal = state.modal, action) {
 
 export function parameters(parameters = state.parameters, action) {
   switch (action.type) {
-  case ACTIONS.CHANGE_NAME:
+  case TYPES.CHANGE_NAME:
     return setState(parameters, {
       name: action.name
     });
-  case ACTIONS.CHANGE_LANGUAGE:
+  case TYPES.CHANGE_LANGUAGE:
     return setState(parameters, {
       language: action.language
     });
-  case ACTIONS.CHANGE_STARS:
+  case TYPES.CHANGE_STARS:
     return setState(parameters, {
       stars: '>=' + action.stars
     });
-  case ACTIONS.CHANGE_TIME:
+  case TYPES.CHANGE_TIME:
     return setState(parameters, {
       time: Object.keys(TIME_OPTIONS)[action.index]
     });
-  case ACTIONS.CHANGE_PAGE:
+  case TYPES.CHANGE_PAGE:
     return setState(parameters, {
       page: action.page
     });
-  case ACTIONS.CHANGE_TAGGED:
+  case TYPES.CHANGE_TAGGED:
     return setState(parameters, {
       tagged: action.tagged
     });
@@ -114,23 +114,23 @@ export function parameters(parameters = state.parameters, action) {
 
 export function searchResult(searchResult = state.searchResult, action) {
   switch (action.type) {
-  case ACTIONS.CHANGE_TOTAL_COUNT:
+  case TYPES.CHANGE_TOTAL_COUNT:
     return setState(searchResult, {
       totalCount: action.totalCount
     });
-  // case ACTIONS.CHANGE_REMAINING_COUNT:
+  // case TYPES.CHANGE_REMAINING_COUNT:
   //   return setState(searchResult, {
   //     remainingCount: action.remainingCount
   //   });
-  case ACTIONS.RESET_ITEMS:
+  case TYPES.RESET_ITEMS:
     return setState(searchResult, {
       items: [...action.items]
     });
-  case ACTIONS.APPEND_ITEMS:
+  case TYPES.APPEND_ITEMS:
     return setState(searchResult, {
       items: [...searchResult.items, ...action.items]
     });
-  case ACTIONS.CHANGE_LOADING_PAGE_STATUS:
+  case TYPES.CHANGE_LOADING_PAGE_STATUS:
     return setState(searchResult, {
       loadingPage: action.status
     });

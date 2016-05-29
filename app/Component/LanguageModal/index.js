@@ -12,8 +12,7 @@ import {
 } from '../../Redux/actions/index';
 
 import {
-  LANGUAGES,
-  LANGUAGE_IMAGE_URL
+  LANGUAGES
 } from '../ConstValue';
 
 import Language from './Language';

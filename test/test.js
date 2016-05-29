@@ -1,3 +1,7 @@
+import * as TYPES from '../app/Redux/actions/types.js';
+import * as ACTIONS from '../app/Redux/actions/index.js';
+import {expect} from 'chai';
+
 var should = require('should');
 describe('Array', function() {
   describe('#indexOf()', function() {
@@ -8,3 +12,15 @@ describe('Array', function() {
     });
   });
 });
+
+describe('actions', () => {
+  it('should create an action to add a todo', () => {
+    const language = 'python';
+    const expectedAction = {
+      type: TYPES.CHANGE_LANGUAGE,
+      language
+    };
+
+    expect(ACTIONS.changeLanguage(language)).to.deep.equal(expectedAction)
+  })
+})

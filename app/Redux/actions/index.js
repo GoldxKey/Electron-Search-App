@@ -12,12 +12,13 @@ import {
   GITHUB,
   CNODEJS,
   SEGMENTFAULT
-} from '../../Component/ConstValue';
+} from '../ConstValue/BaseUrl.js';
 
-export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
+import * as TYPES from './types.js';
+
 export const changeMessage = (message, messageType) => {
   return {
-    type: CHANGE_MESSAGE,
+    type: TYPES.CHANGE_MESSAGE,
     msg: {
       message,
       messageType
@@ -26,43 +27,38 @@ export const changeMessage = (message, messageType) => {
 };
 
 // modal
-export const CHANGE_LANGUAGE_MODAL_STATUS = 'CHANGE_LANGUAGE_MODAL_STATUS';
 export const changeLanguageModalStatus = (status) => {
   return {
-    type: CHANGE_LANGUAGE_MODAL_STATUS,
+    type: TYPES.CHANGE_LANGUAGE_MODAL_STATUS,
     status
   }
 };
 
-export const CHANGE_LOADING_STATUS = 'CHANGE_LOADING_STATUS';
 export const changeLoadingStatus = (status) => {
   return {
-    type: CHANGE_LOADING_STATUS,
+    type: TYPES.CHANGE_LOADING_STATUS,
     status
   }
 };
 
 // sideMenu
-export const CHANGE_SIDE_MENU_STATUS = 'CHANGE_SIDE_MENU_STATUS';
 export const changeSideMenuStatus = (status) => {
   return {
-    type: CHANGE_SIDE_MENU_STATUS,
+    type: TYPES.CHANGE_SIDE_MENU_STATUS,
     status
   }
 };
 
-export const TOGGLE_SIDE_MENU_FULL_MODE = 'TOGGLE_SIDE_MENU_FULL_MODE';
 export const toggleSideMenuFullMode = (status) => {
   return {
-    type: TOGGLE_SIDE_MENU_FULL_MODE,
+    type: TYPES.TOGGLE_SIDE_MENU_FULL_MODE,
     status
   }
 };
 
-export const CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU';
 export const changeActiveMenu = (menu) => {
   return {
-    type: CHANGE_ACTIVE_MENU,
+    type: TYPES.CHANGE_ACTIVE_MENU,
     menu
   }
 };
@@ -84,50 +80,44 @@ export const resetState = () => {
 }
 
 // parameters
-export const CHANGE_NAME = 'CHANGE_NAME';
 export const changeName = (name) => {
   return {
-    type: CHANGE_NAME,
+    type: TYPES.CHANGE_NAME,
     name
   }
 };
 
-export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const changeLanguage = (language) => {
   return {
-    type: CHANGE_LANGUAGE,
+    type: TYPES.CHANGE_LANGUAGE,
     language
   }
 };
 
-export const CHANGE_STARS = 'CHANGE_STARS';
 export const changeStars = (stars) => {
   return {
-    type: CHANGE_STARS,
+    type: TYPES.CHANGE_STARS,
     stars
   }
 };
 
-export const CHANGE_TIME = 'CHANGE_TIME';
 export const changeTime = (index) => {
   return {
-    type: CHANGE_TIME,
+    type: TYPES.CHANGE_TIME,
     index
   }
 };
 
-export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const changePage = (page) => {
   return {
-    type: CHANGE_PAGE,
+    type: TYPES.CHANGE_PAGE,
     page
   }
 };
 
-export const CHANGE_TAGGED = 'CHANGE_TAGGED';
 export const changeTagged = (tagged) => {
   return {
-    type: CHANGE_TAGGED,
+    type: TYPES.CHANGE_TAGGED,
     tagged
   }
 };
@@ -145,43 +135,38 @@ export const loadNextPage = () => {
   }
 };
 
-export const CHANGE_LOADING_PAGE_STATUS = 'CHANGE_LOADING_PAGE_STATUS';
 export const changeLoadingPageStatus = (status) => {
   return {
-    type: CHANGE_LOADING_PAGE_STATUS,
+    type: TYPES.CHANGE_LOADING_PAGE_STATUS,
     status
   }
 };
 
-export const CHANGE_TOTAL_COUNT = 'CHANGE_TOTAL_COUNT';
 export const changeTotalCount = (totalCount) => {
   return {
-    type: CHANGE_TOTAL_COUNT,
+    type: TYPES.CHANGE_TOTAL_COUNT,
     totalCount
   }
 };
 
-export const CHANGE_REMAINING_COUNT = 'CHANGE_REMAINING_COUNT';
 export const changeRemainingCount = (remainingCount) => {
   return {
-    type: CHANGE_REMAINING_COUNT,
+    type: TYPES.CHANGE_REMAINING_COUNT,
     remainingCount
   }
 };
 
 // items
-export const RESET_ITEMS = 'RESET_ITEMS';
 export const resetItems = (items) => {
   return {
-    type: RESET_ITEMS,
+    type: TYPES.RESET_ITEMS,
     items
   }
 };
 
-export const APPEND_ITEMS = 'APPEND_ITEMS';
 export const appendItems = (items) => {
   return {
-    type: APPEND_ITEMS,
+    type: TYPES.APPEND_ITEMS,
     items
   }
 };

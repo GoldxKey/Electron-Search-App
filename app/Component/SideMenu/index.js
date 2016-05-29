@@ -30,9 +30,11 @@ class SideMenu extends Component {
   }
 
   changeSite(site) {
-    let {closeSideMenu, changeSite} = this.props;
-    changeSite(site);
-    closeSideMenu();
+    let {closeSideMenu, changeSite, activeMenu} = this.props;
+    if(activeMenu !== site) {
+      changeSite(site);
+      closeSideMenu();
+    }
   }
 
   render() {
@@ -82,7 +84,8 @@ class SideMenu extends Component {
 function mapStateToProps(state) {
   return {
     showSideMenu: state.sideMenu.showSideMenu,
-    fullMode: state.sideMenu.fullMode
+    fullMode: state.sideMenu.fullMode,
+    activeMenu: state.sideMenu.activeMenu
   }
 }
 
