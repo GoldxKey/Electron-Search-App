@@ -8,7 +8,7 @@
     "webpack-build": "webpack --config config/webpack.config.js -p --display-reasons --display-chunks --progress --colors --profile --display-modules",
     "webpack-watch": "webpack --watch",
     "rock": "npm run webpack-build && npm start && webpack-watch",
-    "test": "mocha --compilers js:babel-core/register --recursive"
+    "test": "mocha --timeout 10s --compilers js:babel-core/register --recursive"
   },
   "babel": {
     "presets": [

@@ -1,42 +1,5 @@
 import * as TYPES from '../actions/types.js';
-
-import {
-  TIME_OPTIONS,
-  GITHUB,
-  STACKOVERFLOW,
-  CNODEJS,
-  SEGMENTFAULT
-} from '../../Component/ConstValue';
-
-const state = {
-  parameters: {
-    name: '',
-    language: 'all',
-    stars: '>=10',
-    time: Object.keys(TIME_OPTIONS)[2],
-    page: 0,
-    tagged: '',
-    tab: 'good'
-  },
-  searchResult: {
-    items: [],
-    totalCount: 1,
-    loadingPage: false
-  },
-  modal: {
-    languageModal: false,
-    loading: true
-  },
-  sideMenu: {
-    showSideMenu: false,
-    fullMode: false,
-    activeMenu: CNODEJS
-  },
-  msg: {
-    message: null,
-    messageType: 'default'
-  }
-};
+import {state} from '../ConstValue/DefaultState';
 
 export function msg(msg = state.msg, action) {
   switch (action.type) {
@@ -60,7 +23,7 @@ export function sideMenu(sideMenu = state.sideMenu, action) {
   case TYPES.CHANGE_ACTIVE_MENU:
     return setState(sideMenu, {
       activeMenu: action.menu
-    })
+    });
   default:
     return sideMenu;
   }

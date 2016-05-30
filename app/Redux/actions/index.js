@@ -7,12 +7,15 @@ import {
   BASE_URL_CNODEJS,
   BASE_URL_CNODEJS_DETAIL,
   BASE_URL_SEGMENTFAULT_SEARCH,
-  TIME_OPTIONS,
   STACKOVERFLOW,
   GITHUB,
   CNODEJS,
   SEGMENTFAULT
 } from '../ConstValue/BaseUrl.js';
+
+import {
+  TIME_OPTIONS
+} from '../ConstValue/TimeOptions';
 
 import * as TYPES from './types.js';
 
@@ -206,12 +209,11 @@ export const fetchSegmentfaultItems = (loadingStatus = true) => {
     name = name ? name : '.json';
     let url = BASE_URL_SEGMENTFAULT_SEARCH + page + '&q=' + name;
     console.log(url);
-    fetch(url).then((response) => {
+    return fetch(url).then((response) => {
       if(response.status === 200) {
         return response.json();
       }
     }).then((data) => {
-      console.log(data.data);
       let resultData = data.data;
       if(resultData) {
         dispatch(changeTotalCount(resultData.page.total));
@@ -240,13 +242,11 @@ export const fetchCnodejsItems = (loadingStatus = true) => {
     page = parseInt(page) + 1;
     let url = BASE_URL_CNODEJS + page + '&tab=' +tab;
     console.log(url);
-    fetch(url).then((response) => {
-      console.log(response);
+    return fetch(url).then((response) => {
       if(response.status === 200) {
         return response.json();
       }
     }).then((data) => {
-      console.log(data);
       if(data.success) {
         dispatch(changeTotalCount(data.data.length + 1));
         if(loadingStatus) {
@@ -279,17 +279,14 @@ export const fetchStackoverflowItems = (loadingStatus = true) => {
       url = url + '&tagged=' + tagged;
     }
     console.log(url);
-    fetch(url).then((response) => {
-      console.log(response);
+    return fetch(url).then((response) => {
       if(response.status === 200) {
         return response.json();
       }
     }).then((data) => {
-      console.log(data);
       if(data.items) {
         dispatch(changeTotalCount(data["quota_max"]));
         if(loadingStatus) {
-          console.log(loadingStatus);
           dispatch(changePage(1));
           dispatch(resetSearchResult(data.items));
         }else {
@@ -318,13 +315,11 @@ export const fetchGithubItems = (loadingStatus = true) => {
     }
 
     console.log(url);
-    fetch(url).then((response) => {
-      console.log(response);
+    return fetch(url).then((response) => {
       if(response.status === 200) {
         return response.json();
       }
     }).then((data) => {
-      console.log(data);
       if(data.items) {
         dispatch(changeTotalCount(data["total_count"]));
         if(loadingStatus) {
@@ -334,13 +329,14 @@ export const fetchGithubItems = (loadingStatus = true) => {
           dispatch(changeLoadingPageStatus(false));
           dispatch(appendSearchResult(data.items));
         }
-        dispatch(changeLoadingStatus(false));
       }else {
         if(data.errors) {
           let errorMessage = data.errors[0].message;
           dispatch(changeMessage(errorMessage, 'error'));
         }
       }
+      dispatch(changeLoadingStatus(false));
+
     }).catch((err) => {
       dispatch(changeMessage(err, 'error'));
       dispatch(changeLoadingStatus(false));
