@@ -6,8 +6,10 @@ import thunk from 'redux-thunk';
 import {expect} from 'chai';
 import {state} from '../app/Redux/ConstValue/DefaultState';
 import should from 'should';
+import {Provider} from 'react-redux';
 
 const AppStore = createStore(
+    state,
     gitSearchApp,
     applyMiddleware(thunk)
 );
@@ -30,6 +32,22 @@ const subscribeListener = (result, done) => {
     done();
   });
 }
+
+// import Dashboard from '../app/Component/Dashboard/index.js';
+// import TestUtils from 'react-addons-test-utils';
+// function setupComponent() {
+//   let renderer = TestUtils.createRenderer();
+//   TestUtils.renderIntoDocument(
+//     <Provider store={AppStore}>
+//       <Dashboard />
+//     </Provider>
+//   );
+//   let output = renderer.getRenderOutput()
+//   return {
+//     output,
+//     renderer
+//   }
+// }
 
 describe('actions', () => {
   describe('test parameters change action', () => {
@@ -91,3 +109,15 @@ describe('actions', () => {
     });
   });
 });
+
+// describe('react component', () => {
+//   describe('dashboard', () => {
+//     it('test dashboard', () => {
+//       // const { output } = setupComponent();
+//       let testComponent = setupComponent();
+//       expect(testComponent).toExist();
+//       // expect(output.type).toBe('div');
+//       // expect(output.props.className).toBe('dashboard_container');
+//     });
+//   });
+// });
