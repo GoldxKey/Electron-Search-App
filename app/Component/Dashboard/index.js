@@ -13,11 +13,13 @@ import {
   changeSite
 } from '../../Redux/actions/index';
 import {
-  LANGUAGES,
+  LANGUAGES
+} from '../ConstValue';
+import {
   GITHUB,
   STACKOVERFLOW,
   CNODEJS
-} from '../ConstValue';
+} from '../../Redux/ConstValue/BaseUrl';
 
 import FAB from '../FAB/index';
 import Search from './Search';
@@ -93,7 +95,7 @@ class Dashboard extends Component {
     });
 
     let fab;
-    if(activeMenu === GITHUB) {
+    if(activeMenu !== GITHUB) {
       fab = (
         <FAB
           handleClick={changeLanguageModalStatus.bind(this)}

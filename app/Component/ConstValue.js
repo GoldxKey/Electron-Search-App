@@ -1,45 +1,31 @@
-export const BASE_URL_GITHUB = 'https://api.github.com/search/repositories?sort=stars&order=desc&page=';
-export const BASE_URL_STACKOVERFLOW = 'https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow&page=';
-export const BASE_URL_STACKOVERFLOW_SEARCH = 'https://api.stackexchange.com/2.2/search?order=desc&sort=activity&site=stackoverflow&page=';
-export const BASE_URL_CNODEJS = 'https://cnodejs.org/api/v1/topics?mdrender=false&page=';
-export const BASE_URL_CNODEJS_DETAIL = 'https://cnodejs.org/api/v1/topic/';
-export const BASE_URL_SEGMENTFAULT = 'https://segmentfault.com';
-export const BASE_URL_SEGMENTFAULT_SEARCH = 'https://api.segmentfault.com/search?page=';
-
-export const GITHUB = 'github';
-export const STACKOVERFLOW = 'stackoverflow';
-export const CNODEJS = 'cnodejs';
-export const HACKER_NEWS = 'hacker news';
-export const SEGMENTFAULT = 'segmentfault';
+import * as SITES from '../Redux/ConstValue/BaseUrl.js';
 
 export const SITE_LOGOS = {
   github: {
-    name: GITHUB,
+    name: SITES.GITHUB,
     logo: require('../Page/image/logos/github.png'),
     searchAble: true,
     parameter: 'language'
   },
   stackoverflow: {
-    name: STACKOVERFLOW,
+    name: SITES.STACKOVERFLOW,
     logo: require('../Page/image/logos/stackoverflow.png'),
     searchAble: true,
     parameter: 'tagged'
   },
   cnodejs: {
-    name: CNODEJS,
+    name: SITES.CNODEJS,
     logo: require('../Page/image/logos/cnodejs.png'),
     searchAble: false,
     parameter: 'tab'
   },
   segmentfault: {
-    name: SEGMENTFAULT,
+    name: SITES.SEGMENTFAULT,
     logo: require('../Page/image/logos/segmentfault.png'),
     searchAble: true,
     parameter: 'name'
   }
 };
-
-export const LANGUAGE_IMAGE_URL = 'Page/image/language/';
 
 export const LANGUAGES = {
   all: {
