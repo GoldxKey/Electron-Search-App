@@ -125,6 +125,13 @@ export const changeTagged = (tagged) => {
   }
 };
 
+export const changeTab = (tab) => {
+  return {
+    type: TYPES.CHANGE_TAB,
+    tab
+  }
+};
+
 // searchResult
 export const loadNextPage = () => {
   return (dispatch, getState) => {
