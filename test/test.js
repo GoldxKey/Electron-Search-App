@@ -46,10 +46,10 @@ const ApiTest = (action) => {
 
 describe('actions & state', () => {
   describe('test parameters change action', () => {
-    it('should change language to \'python\'', (done) => {
-      state.parameters.language = 'python';
+    it('should change language to \'javascript\'', (done) => {
+      state.parameters.language = 'javascript';
       let unsubscribe = subscribeListener(state, done);
-      let language = 'python';
+      let language = 'javascript';
       AppStore.dispatch(ACTIONS.changeLanguage(language));
       unsubscribe();
     });
@@ -61,6 +61,31 @@ describe('actions & state', () => {
       AppStore.dispatch(ACTIONS.changeStars(starCount));
       unsubscribe();
     });
+
+    it('should change name to \'react\'', (done) => {
+      state.parameters.name = 'react';
+      let unsubscribe = subscribeListener(state, done);
+      let name = 'react';
+      AppStore.dispatch(ACTIONS.changeName(name));
+      unsubscribe();
+    });
+
+    it('should change tab to \'ask\'', (done) => {
+      state.parameters.tab = 'ask';
+      let unsubscribe = subscribeListener(state, done);
+      let tab = 'ask';
+      AppStore.dispatch(ACTIONS.changeTab(tab));
+      unsubscribe();
+    });
+
+    it('should change tagged to \'redux\'', (done) => {
+      state.parameters.tagged = 'redux';
+      let unsubscribe = subscribeListener(state, done);
+      let tagged = 'redux';
+      AppStore.dispatch(ACTIONS.changeTagged(tagged));
+      unsubscribe();
+    });
+
   });
 
   describe('test API', () => {
@@ -70,8 +95,4 @@ describe('actions & state', () => {
     ApiTest(ACTIONS.fetchSegmentfaultItems);
   });
 
-});
-
-describe('test API', () => {
-  ApiTest(ACTIONS.fetchGithubItems);
 });

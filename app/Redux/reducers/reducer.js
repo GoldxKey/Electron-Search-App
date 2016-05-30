@@ -70,6 +70,10 @@ export function parameters(parameters = state.parameters, action) {
     return setState(parameters, {
       tagged: action.tagged
     });
+  case TYPES.CHANGE_TAB:
+    return setState(parameters, {
+      tab: action.tab
+    });
   default:
     return parameters;
   }
