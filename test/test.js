@@ -22,16 +22,29 @@ const DiagnosticAPI = (store, done) => {
     console.log(err);
   } finally {
   }
-}
+};
 
 const subscribeListener = (result, done) => {
   return AppStore.subscribe(() => {
     expect(AppStore.getState()).to.deep.equal(result);
     done();
   });
-}
+};
 
-describe('actions', () => {
+const ApiTest = (action) => {
+  it('should get items from API', (done) => {
+    AppStore.dispatch(action()).then(() => {
+      DiagnosticAPI(AppStore, done);
+    });
+  });
+  it('should reset page', () => {
+    AppStore.dispatch(ACTIONS.changePage(0));
+    let page = AppStore.getState().parameters.page;
+    expect(page).to.deep.equal(0);
+  });
+};
+
+describe('actions & state', () => {
   describe('test parameters change action', () => {
     it('should change language to \'python\'', (done) => {
       state.parameters.language = 'python';
@@ -47,47 +60,18 @@ describe('actions', () => {
       let starCount = 30;
       AppStore.dispatch(ACTIONS.changeStars(starCount));
       unsubscribe();
-    })
+    });
   });
 
   describe('test API', () => {
-    it('should get items from github', (done) => {
-      AppStore.dispatch(ACTIONS.fetchGithubItems()).then(() => {
-        DiagnosticAPI(AppStore, done);
-      });
-    });
-    it('should reset page', () => {
-      AppStore.dispatch(ACTIONS.changePage(0));
-      let page = AppStore.getState().parameters.page;
-      expect(page).to.deep.equal(0);
-    });
-
-    it('should get items from stackoverflow', (done) => {
-      AppStore.dispatch(ACTIONS.fetchStackoverflowItems()).then(() => {
-        DiagnosticAPI(AppStore, done);
-      });
-    });
-    it('should reset page', () => {
-      AppStore.dispatch(ACTIONS.changePage(0));
-      let page = AppStore.getState().parameters.page;
-      expect(page).to.deep.equal(0);
-    });
-
-    it('should get items from cnodejs', (done) => {
-      AppStore.dispatch(ACTIONS.fetchCnodejsItems()).then(() => {
-        DiagnosticAPI(AppStore, done);
-      });
-    });
-    it('should reset page', () => {
-      AppStore.dispatch(ACTIONS.changePage(0));
-      let page = AppStore.getState().parameters.page;
-      expect(page).to.deep.equal(0);
-    });
-
-    it('should get items from segmentfault', (done) => {
-      AppStore.dispatch(ACTIONS.fetchSegmentfaultItems()).then(() => {
-        DiagnosticAPI(AppStore, done);
-      });
-    });
+    ApiTest(ACTIONS.fetchGithubItems);
+    ApiTest(ACTIONS.fetchStackoverflowItems);
+    // ApiTest(ACTIONS.fetchCnodejsItems);
+    ApiTest(ACTIONS.fetchSegmentfaultItems);
   });
+
+});
+
+describe('test API', () => {
+  ApiTest(ACTIONS.fetchGithubItems);
 });

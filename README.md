@@ -1,5 +1,7 @@
 ## Electron-Search-App
 
+[![Build Status](https://travis-ci.org/ecmadao/Electron-Search-App.svg?branch=master)](https://travis-ci.org/ecmadao/Electron-Search-App)
+
 最初只是为了学习[`Electron`](https://github.com/electron/electron)，而clone了[`electron-quick-start`](https://github.com/electron/electron-quick-start)
 
 后来发现官方案例真的蛮简单的，就在此基础上增加了React&Redux和Webpack，并利用[Github-API](https://developer.github.com/)以及[stackoverflow-API](https://api.stackexchange.com/docs)，[CNodejs-API](https://cnodejs.org/api)，Segmentfault，随便打造一个练手的小项目，也算是自己写的第一个JS桌面端App了吧。

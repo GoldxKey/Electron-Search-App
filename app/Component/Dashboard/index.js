@@ -95,7 +95,7 @@ class Dashboard extends Component {
     });
 
     let fab;
-    if(activeMenu !== GITHUB) {
+    if(activeMenu === GITHUB) {
       fab = (
         <FAB
           handleClick={changeLanguageModalStatus.bind(this)}
