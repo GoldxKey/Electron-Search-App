@@ -1,7 +1,7 @@
 import * as TYPES from '../actions/types.js';
-import {state} from '../ConstValue/DefaultState';
+import defaultState from '../ConstValue/DefaultState';
 
-export function msg(msg = state.msg, action) {
+export function msg(msg = defaultState.msg, action) {
   switch (action.type) {
   case TYPES.CHANGE_MESSAGE:
     return setState(msg, action.msg);
@@ -10,7 +10,7 @@ export function msg(msg = state.msg, action) {
   }
 }
 
-export function sideMenu(sideMenu = state.sideMenu, action) {
+export function sideMenu(sideMenu = defaultState.sideMenu, action) {
   switch (action.type) {
   case TYPES.CHANGE_SIDE_MENU_STATUS:
     return setState(sideMenu, {
@@ -29,7 +29,7 @@ export function sideMenu(sideMenu = state.sideMenu, action) {
   }
 }
 
-export function modal(modal = state.modal, action) {
+export function modal(modal = defaultState.modal, action) {
   switch (action.type) {
   case TYPES.CHANGE_LANGUAGE_MODAL_STATUS:
     return setState(modal, {
@@ -44,7 +44,7 @@ export function modal(modal = state.modal, action) {
   }
 }
 
-export function parameters(parameters = state.parameters, action) {
+export function parameters(parameters = defaultState.parameters, action) {
   switch (action.type) {
   case TYPES.CHANGE_NAME:
     return setState(parameters, {
@@ -79,7 +79,7 @@ export function parameters(parameters = state.parameters, action) {
   }
 }
 
-export function searchResult(searchResult = state.searchResult, action) {
+export function searchResult(searchResult = defaultState.searchResult, action) {
   switch (action.type) {
   case TYPES.CHANGE_TOTAL_COUNT:
     return setState(searchResult, {

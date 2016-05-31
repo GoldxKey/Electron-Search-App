@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux';
 import * as REDUCERS from './reducer';
-export const gitSearchApp = combineReducers(REDUCERS);
+import { routerReducer } from 'react-router-redux';
+REDUCERS.routing = routerReducer;
+export const searchAppReducer = combineReducers(REDUCERS);
