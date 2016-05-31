@@ -1,16 +1,20 @@
 import * as TYPES from '../app/Redux/actions/types.js';
 import * as ACTIONS from '../app/Redux/actions/index.js';
-import {gitSearchApp} from '../app/Redux/reducers/index.js';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import {expect} from 'chai';
-import {state} from '../app/Redux/ConstValue/DefaultState';
+import defaultState from '../app/Redux/ConstValue/DefaultState';
 import should from 'should';
+import {
+  GITHUB,
+  STACKOVERFLOW,
+  CNODEJS,
+  SEGMENTFAULT
+} from '../app/Redux/ConstValue/BaseUrl';
+const BASE_SITE = [GITHUB, STACKOVERFLOW, CNODEJS, SEGMENTFAULT];
+import AppStore from '../app/Redux/store.js';
 
-const AppStore = createStore(
-    gitSearchApp,
-    applyMiddleware(thunk)
-);
+let state = Object.assign({}, defaultState, AppStore.getState());
 
 const DiagnosticAPI = (store, done) => {
   let newState = store.getState();
@@ -19,8 +23,7 @@ const DiagnosticAPI = (store, done) => {
     expect(newItems.length).not.to.equal(0);
     done();
   } catch (err) {
-    console.log(err);
-  } finally {
+    done(err);
   }
 };
 
@@ -43,6 +46,25 @@ const ApiTest = (action) => {
     expect(page).to.deep.equal(0);
   });
 };
+
+const StateTest = (targetName, targetValue, result) => {
+  it(targetName + 'should be equal', () => {
+    expect(targetValue).to.deep.equal(result);
+  });
+};
+
+const ApiResultTest = (targetSite, store, done) => {
+  let newState = store.getState();
+  try {
+    expect(newState.sideMenu.activeMenu).to.deep.equal(targetSite);
+    expect(newState.parameters.page).to.deep.equal(1);
+    expect(newState.modal.loading).to.deep.equal(false);
+    expect(newState.searchResult.items.length).not.to.equal(0);
+    done();
+  } catch (err) {
+    done(err);
+  }
+}
 
 describe('actions & state', () => {
   describe('test parameters change action', () => {
@@ -93,6 +115,20 @@ describe('actions & state', () => {
     ApiTest(ACTIONS.fetchStackoverflowItems);
     // ApiTest(ACTIONS.fetchCnodejsItems);
     ApiTest(ACTIONS.fetchSegmentfaultItems);
+  });
+
+  describe('change site to an random one', () => {
+
+    before(() => {
+      AppStore.dispatch(ACTIONS.resetState());
+    });
+
+    it('should change site and reset state', (done) => {
+      let site = BASE_SITE[Math.round(Math.random()*3)];
+      AppStore.dispatch(ACTIONS.changeSite(site)).then(() => {
+        ApiResultTest(site, AppStore, done);
+      });
+    });
   });
 
 });

@@ -5,7 +5,7 @@ import {
   SEGMENTFAULT
 } from './BaseUrl';
 
-export const state = {
+const defaultState = {
   parameters: {
     name: '',
     language: 'all',
@@ -34,3 +34,5 @@ export const state = {
     messageType: 'default'
   }
 };
+
+export default defaultState;

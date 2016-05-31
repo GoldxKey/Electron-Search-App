@@ -67,10 +67,10 @@ export const changeActiveMenu = (menu) => {
 };
 
 export const changeSite = (site) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(resetState());
     dispatch(changeActiveMenu(site));
-    dispatch(fetchItems());
+    return dispatch(fetchItems());
   }
 }
 
@@ -189,16 +189,16 @@ export const fetchItems = (loadingStatus = true) => {
     if(items.length < totalCount) {
       switch (activeMenu) {
       case GITHUB:
-        dispatch(fetchGithubItems(loadingStatus));
+        return dispatch(fetchGithubItems(loadingStatus));
         break;
       case STACKOVERFLOW:
-        dispatch(fetchStackoverflowItems(loadingStatus));
+        return dispatch(fetchStackoverflowItems(loadingStatus));
         break;
       case CNODEJS:
-        dispatch(fetchCnodejsItems(loadingStatus));
+        return dispatch(fetchCnodejsItems(loadingStatus));
         break;
       case SEGMENTFAULT:
-        dispatch(fetchSegmentfaultItems(loadingStatus));
+        return dispatch(fetchSegmentfaultItems(loadingStatus));
         break;
       default:
         return false;

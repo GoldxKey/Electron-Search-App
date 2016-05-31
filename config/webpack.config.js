@@ -63,7 +63,7 @@ if(production) {
 module.exports = {
   context: path.join(__dirname, '../'),
   entry: {
-    index: './app/Component/index/index.js',
+    index: './app/Component/index.js',
     // renderer: './renderer.js',
     common: ['jquery']
     // public: './public/pages/public.js'
