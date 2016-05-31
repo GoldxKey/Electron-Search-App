@@ -1,6 +1,5 @@
 import * as TYPES from '../app/Redux/actions/types.js';
 import * as ACTIONS from '../app/Redux/actions/index.js';
-import {gitSearchApp} from '../app/Redux/reducers/index.js';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import {expect} from 'chai';
