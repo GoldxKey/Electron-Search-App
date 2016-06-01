@@ -4,12 +4,17 @@ import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import Dashboard from '../Dashboard/index';
-import AppStore from '../../Redux/store.js';
+import AppStore from '../../Redux/store';
+import App from '../App';
+import Setting from '../Setting/index';
+
 const history = syncHistoryWithStore(hashHistory, AppStore);
 
 const AppRouter = (
   <Router history={history}>
-    <Route path="/" component={Dashboard}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Dashboard}/>
+      <Route path="/setting" component={Setting}/>
     </Route>
   </Router>
 );

@@ -3,6 +3,7 @@ import className from 'classnames';
 import {connect} from 'react-redux';
 require('../../Page/stylesheet/side_menu.less');
 import SiteItem from './SiteItem';
+import { Link, IndexLink } from 'react-router';
 
 import {
   changeSideMenuStatus,
@@ -47,12 +48,14 @@ class SideMenu extends Component {
 
     let siteItems = Object.keys(SITE_LOGOS).map((site, index) => {
       return (
-        <SiteItem
-          key={index}
-          siteName={site}
-          siteLogo={SITE_LOGOS[site].logo}
-          handleClick={this.changeSite.bind(this)}
-        />
+        <IndexLink to="/">
+          <SiteItem
+            key={index}
+            siteName={site}
+            siteLogo={SITE_LOGOS[site].logo}
+            handleClick={this.changeSite.bind(this)}
+          />
+        </IndexLink>
       )
     });
 
@@ -72,9 +75,11 @@ class SideMenu extends Component {
           <div className="content_logo_container">
             {siteItems}
           </div>
-          <div className="side_menu_bottom">
-            <i className="fa fa-cog" aria-hidden="true"></i>
-          </div>
+          <Link to="/setting">
+            <div className="side_menu_bottom">
+              <i className="fa fa-cog" aria-hidden="true"></i>
+            </div>
+          </Link>
         </div>
       </div>
     )
