@@ -1,6 +1,21 @@
 import * as TYPES from '../actions/types.js';
 import defaultState from '../ConstValue/DefaultState';
 
+export function setting(setting = defaultState.setting, action) {
+  switch (action.type) {
+  case TYPES.ADD_SITE:
+    return setState(setting, {
+      sites: [...setting.sites, action.site]
+    });
+  case TYPES.DELETE_SITE:
+    return setState(setting, {
+      sites: setting.site.filter((site) => site !== action.site)
+    });
+  default:
+    return setting;
+  }
+}
+
 export function msg(msg = defaultState.msg, action) {
   switch (action.type) {
   case TYPES.CHANGE_MESSAGE:
@@ -15,10 +30,6 @@ export function sideMenu(sideMenu = defaultState.sideMenu, action) {
   case TYPES.CHANGE_SIDE_MENU_STATUS:
     return setState(sideMenu, {
       showSideMenu: action.status
-    });
-  case TYPES.TOGGLE_SIDE_MENU_FULL_MODE:
-    return setState(sideMenu, {
-      fullMode: action.status
     });
   case TYPES.CHANGE_ACTIVE_MENU:
     return setState(sideMenu, {
@@ -85,10 +96,6 @@ export function searchResult(searchResult = defaultState.searchResult, action) {
     return setState(searchResult, {
       totalCount: action.totalCount
     });
-  // case TYPES.CHANGE_REMAINING_COUNT:
-  //   return setState(searchResult, {
-  //     remainingCount: action.remainingCount
-  //   });
   case TYPES.RESET_ITEMS:
     return setState(searchResult, {
       items: [...action.items]

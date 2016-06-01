@@ -32,6 +32,9 @@ const defaultState = {
   msg: {
     message: null,
     messageType: 'default'
+  },
+  setting: {
+    sites: [GITHUB, STACKOVERFLOW, CNODEJS, SEGMENTFAULT]
   }
 };
 

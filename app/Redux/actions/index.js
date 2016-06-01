@@ -19,6 +19,22 @@ import {
 
 import * as TYPES from './types.js';
 
+// setting
+export const addSite = (site) => {
+  return {
+    type: TYPES.ADD_SITE,
+    site
+  }
+};
+
+export const deleteSite = (site) => {
+  return {
+    type: TYPES.DELETE_SITE,
+    site
+  }
+};
+
+// message
 export const changeMessage = (message, messageType) => {
   return {
     type: TYPES.CHANGE_MESSAGE,
@@ -48,13 +64,6 @@ export const changeLoadingStatus = (status) => {
 export const changeSideMenuStatus = (status) => {
   return {
     type: TYPES.CHANGE_SIDE_MENU_STATUS,
-    status
-  }
-};
-
-export const toggleSideMenuFullMode = (status) => {
-  return {
-    type: TYPES.TOGGLE_SIDE_MENU_FULL_MODE,
     status
   }
 };
