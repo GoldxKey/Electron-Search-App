@@ -9,7 +9,7 @@ export function setting(setting = defaultState.setting, action) {
     });
   case TYPES.DELETE_SITE:
     return setState(setting, {
-      sites: setting.site.filter((site) => site !== action.site)
+      sites: setting.sites.filter((site) => site !== action.site)
     });
   default:
     return setting;

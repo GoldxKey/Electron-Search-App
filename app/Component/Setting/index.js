@@ -11,8 +11,10 @@ class Setting extends Component {
   render() {
     return (
       <div className="setting_container">
-        <Sites />
-        <OpenConfig />
+        <div className="setting_panels">
+          <Sites />
+          <OpenConfig />
+        </div>
       </div>
     )
   }

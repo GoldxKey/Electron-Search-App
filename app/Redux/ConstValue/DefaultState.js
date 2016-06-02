@@ -25,8 +25,7 @@ const defaultState = {
     loading: true
   },
   sideMenu: {
-    showSideMenu: false,
-    fullMode: false,
+    showSideMenu: true,
     activeMenu: GITHUB
   },
   msg: {

@@ -14,12 +14,8 @@ class Sites extends Component {
     super(props);
   }
 
-  toggleSite(site) {
-    let {addSite, deleteSite} = this.props;
-  }
-
   render() {
-    let {sites} = this.props;
+    let {sites, addSite, deleteSite} = this.props;
 
     let allSites = Object.keys(SITE_LOGOS).map((site, index) => {
       let active = false;
@@ -31,8 +27,10 @@ class Sites extends Component {
         <Site
           key={index}
           active={active}
+          logo={SITE_LOGOS[site].logo}
           site={SITE_LOGOS[site].name}
-          toggleSite={this.toggleSite.bind(this)}
+          addSite={addSite.bind(this)}
+          deleteSite={deleteSite.bind(this)}
         />
       )
     });

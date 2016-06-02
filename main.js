@@ -100,9 +100,9 @@ function createWindow () {
     // center: true,
     resizable: false,
     skipTaskbar: true,
-    movable: true,
-    fullscreenable: false,
-    fullscreen: false
+    // movable: true,
+    // fullscreenable: false,
+    // fullscreen: false
     // icon: __dirname + './app/Page/image/gundamcat.png'
     // backgroundColor: '#000000'
   });

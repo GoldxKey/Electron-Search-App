@@ -13,8 +13,8 @@ const history = syncHistoryWithStore(hashHistory, AppStore);
 const AppRouter = (
   <Router history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={Dashboard}/>
-      <Route path="/setting" component={Setting}/>
+      <IndexRoute component={Setting}/>
+      <Route path="/setting" component={Dashboard}/>
     </Route>
   </Router>
 );
