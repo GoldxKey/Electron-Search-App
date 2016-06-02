@@ -100,9 +100,9 @@ function createWindow () {
     // center: true,
     resizable: false,
     skipTaskbar: true,
-    movable: true,
-    fullscreenable: false,
-    fullscreen: false
+    // movable: true,
+    // fullscreenable: false,
+    // fullscreen: false
     // icon: __dirname + './app/Page/image/gundamcat.png'
     // backgroundColor: '#000000'
   });
@@ -121,7 +121,7 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null;
-    app.quit();
+    // app.quit();
   });
 
 }

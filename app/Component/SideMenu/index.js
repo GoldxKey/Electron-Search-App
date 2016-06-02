@@ -1,19 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {connect} from 'react-redux';
-require('../../Page/stylesheet/side_menu.less');
 import SiteItem from './SiteItem';
 import { Link, IndexLink } from 'react-router';
-
 import {
   changeSideMenuStatus,
-  toggleSideMenuFullMode,
   changeSite
 } from '../../Redux/actions/index';
-
 import {
   SITE_LOGOS
 } from '../ConstValue';
+
+require('../../Page/stylesheet/side_menu.less');
 
 class SideMenu extends Component {
   constructor(props) {
@@ -39,19 +37,19 @@ class SideMenu extends Component {
   }
 
   render() {
-    let {showSideMenu, closeSideMenu} = this.props;
+    let {showSideMenu, closeSideMenu, sites} = this.props;
     let {fullScreen} = this.state;
 
     let sideMenuContainer = className('side_menu_container', {
       active: showSideMenu
     });
 
-    let siteItems = Object.keys(SITE_LOGOS).map((site, index) => {
+    let siteItems = sites.map((site, index) => {
       return (
         <IndexLink to="/">
           <SiteItem
             key={index}
-            siteName={site}
+            siteName={SITE_LOGOS[site].name}
             siteLogo={SITE_LOGOS[site].logo}
             handleClick={this.changeSite.bind(this)}
           />
@@ -89,8 +87,8 @@ class SideMenu extends Component {
 function mapStateToProps(state) {
   return {
     showSideMenu: state.sideMenu.showSideMenu,
-    fullMode: state.sideMenu.fullMode,
-    activeMenu: state.sideMenu.activeMenu
+    activeMenu: state.sideMenu.activeMenu,
+    sites: state.setting.sites
   }
 }
 
@@ -98,9 +96,6 @@ function mapDispatchToProps(dispatch) {
   return {
     closeSideMenu: () => {
       dispatch(changeSideMenuStatus(false));
-    },
-    toggleSideMenuFullMode: (status) => {
-      dispatch(toggleSideMenuFullMode(status));
     },
     changeSite: (menu) => {
       dispatch(changeSite(menu));
