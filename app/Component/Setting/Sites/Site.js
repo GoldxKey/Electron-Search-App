@@ -17,14 +17,14 @@ class Site extends Component {
 
   render() {
     let {site, logo, active} = this.props;
-    let siteClass = className('site_name', {
+    let siteClass = className('site_check_container', {
       active: active
     });
 
     return (
       <div className="setting_site">
         <div className={siteClass} onClick={this.toggleSiteActive.bind(this)}>
-          {site}
+          <i className="fa fa-check site_checked" aria-hidden="true"></i>
         </div>
         <img className="site_logo" src={logo} />
       </div>

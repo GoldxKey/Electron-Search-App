@@ -144,3 +144,5 @@ export const TIME_OPTIONS = {
     range: moment(weekBefore).format().split('+')[0] + '..*'
   }
 };
+
+export const TECH_LIST = ['electron', 'react', 'redux', 'react-router', 'webpack'];

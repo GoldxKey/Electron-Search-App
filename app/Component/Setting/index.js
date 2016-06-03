@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import OpenConfig from './OpenConfig/index';
 import Sites from './Sites/index';
-import AppInfo from './AppInfo';
+import AppInfo from './AppInfo/index';
 import {connect} from 'react-redux';
 require('../../Page/stylesheet/setting.less');
 
