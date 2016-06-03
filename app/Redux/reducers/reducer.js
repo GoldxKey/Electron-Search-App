@@ -1,5 +1,8 @@
 import * as TYPES from '../actions/types.js';
 import defaultState from '../ConstValue/DefaultState';
+import {
+  TIME_OPTIONS
+} from '../ConstValue/TimeOptions';
 
 export function setting(setting = defaultState.setting, action) {
   switch (action.type) {

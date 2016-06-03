@@ -6,7 +6,7 @@
   height: 100%;
   position: relative;
   background-color: #6a6a6a;
-  overflow: hidden;
+  // overflow: hidden;
 
   .setting_panels {
     width: 90%;
@@ -22,7 +22,6 @@
     .button_mini_shadow;
     width: 100%;
     min-height: 80px;
-    // background-color: #eeeeee;
     background-color: #fff;
     border-radius: 2px;
     margin: 20px 0;
@@ -59,6 +58,7 @@
         position: relative;
         margin: 10px;
         overflow: hidden;
+        .button_common_shadow;
 
         .site_name {
           z-index: 1;
@@ -168,6 +168,19 @@
 
     .info_content {
       font-size: 14px;
+
+      .info_tech_tag {
+        display: inline-block;
+        margin: 5px 5px;
+        padding: 5px 5px;
+        background-color: #EEEEEE;
+        color: #343434;
+        .transition_animation;
+
+        &:hover {
+          background-color: #BDBDBD;
+        }
+      }
     }
   }
 

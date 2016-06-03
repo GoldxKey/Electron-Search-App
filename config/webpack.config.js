@@ -36,7 +36,10 @@ const plugins = [
     fileName: 'webpack_manifest.json'
   }),
   // 在打包前清空 assets 文件夹
-  // new CleanPlugin(BUILD_PATH),
+  new CleanPlugin([BUILD_PATH], {
+    root: CURRENT_PATH,
+    verbose: true
+  }),
 ];
 
 var config = module.exports = {
