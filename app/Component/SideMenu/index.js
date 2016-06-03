@@ -74,7 +74,7 @@ class SideMenu extends Component {
             {siteItems}
           </div>
           <Link to="/setting">
-            <div className="side_menu_bottom">
+            <div className="side_menu_bottom" onClick={closeSideMenu.bind(this)}>
               <i className="fa fa-cog" aria-hidden="true"></i>
             </div>
           </Link>

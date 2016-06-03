@@ -27,7 +27,7 @@ import SearchResult from './SearchResult/index';
 import EmptyContainer from '../EmptyContainer/index';
 import LoadingContainer from '../LoadingContainer/index';
 import LanguageModal from '../LanguageModal/index';
-// import Message from '../Message/index';
+import Message from '../Message/index';
 
 require('../../Page/stylesheet/dashboard.less');
 const ipcRenderer = require('electron').ipcRenderer;
@@ -107,6 +107,7 @@ class Dashboard extends Component {
       <div className={dashboardContainerClass}>
         <div className="dashboard" >
           {fab}
+          <Message />
           <Search />
           {container}
         </div>

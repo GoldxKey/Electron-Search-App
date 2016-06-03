@@ -4,19 +4,25 @@
   padding-top: 20px;
   width: 100%;
   height: 100%;
+  position: relative;
+  background-color: #6a6a6a;
+  overflow: hidden;
 
   .setting_panels {
     width: 90%;
     margin: 50px 5%;
     height: 100%;
     position: relative;
+    padding-top: 100px;
   }
 
+  .setting__app_info,
   .setting__open_config,
   .setting__sites {
     .button_mini_shadow;
     width: 100%;
     min-height: 80px;
+    // background-color: #eeeeee;
     background-color: #fff;
     border-radius: 2px;
     margin: 20px 0;
@@ -30,9 +36,10 @@
       height: 40px;
       line-height: 40px;
       margin: 0 5%;
-      font-size: 14px;
+      font-size: 16px;
       color: #343434;
-      border-bottom: 1px solid #F4F4F4;
+      border-bottom: 1px solid #6a6a6a;
+      font-weight: bold;
     }
 
     .sites_container {
@@ -46,20 +53,23 @@
       }
 
       .setting_site {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         float: left;
         position: relative;
         margin: 10px;
+        overflow: hidden;
 
         .site_name {
+          z-index: 1;
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          line-height: 60px;
+          line-height: 70px;
           text-align: center;
+          border-radius: 3px;
           color: #fff;
           .transition_animation;
           opacity: 0;
@@ -77,12 +87,88 @@
         }
 
         .site_logo {
-          height: 100%;
+          height: 80%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          .transform_to_center;
         }
       }
     }
+  }
 
+  .setting_banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    height: 150px;
+    background: url('../image/material_desigin_wallpaper/blue-backgroung-minimalistic-moon-lawn-mowing-astronaut_1920x10801.jpg') no-repeat center;
+    background-size: cover;
+    box-shadow: 0 2px 4px #4a4a4a;
+    z-index: 9;
 
+    .setting_title {
+      font-size: 18px;
+      position: absolute;
+      bottom: 10px;
+      left: 5%;
+      height: 25px;
+      line-height: 25px;
+      color: #fff;
+    }
+
+    .setting_layout {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(62, 125, 198, 0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .setting_menu_icon {
+      color: #fff;
+      cursor: pointer;
+      margin-top: 40px;
+      margin-left: 15px;
+    }
+  }
+
+  .setting__app_info {
+
+    .app_info {
+      width: 90%;
+      height: 40px;
+      line-height: 40px;
+      margin: 0 5%;
+      font-size: 16px;
+      color: #343434;
+      border-bottom: 1px solid #6a6a6a;
+      font-weight: bold;
+    }
+
+    .info_tech,
+    .info_developer {
+      width: 90%;
+      margin: 0 5%;
+      padding: 10px 0;
+    }
+
+    .info_developer {
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    .info_title {
+      font-size: 15px;
+      color: #757575;
+    }
+
+    .info_content {
+      font-size: 14px;
+    }
   }
 
 }
