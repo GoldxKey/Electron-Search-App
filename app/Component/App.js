@@ -11,7 +11,6 @@ class App extends Component {
     return (
       <div className="app_container">
         <SideMenu />
-        <Message />
         {this.props.children}
       </div>
     )
