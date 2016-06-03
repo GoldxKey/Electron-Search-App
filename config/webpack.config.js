@@ -1,4 +1,3 @@
-// config/webpack.config.js
 const webpack = require('webpack');
 
 // 配置目录
@@ -17,7 +16,6 @@ const CleanPlugin = require('clean-webpack-plugin');
 const production = process.env.NODE_ENV === 'production';
 
 const plugins = [
-  // 插件扔在这里
   new webpack.optimize.CommonsChunkPlugin({
     // 与 entry 中的 jquery 对应
     name: 'common',
@@ -34,11 +32,6 @@ const plugins = [
     jQuery: 'jquery',
     'window.jQuery': 'jquery'
   }),
-  new webpack.DefinePlugin({
-    "process.env": {
-       NODE_ENV: JSON.stringify("production")
-     }
-  }),
   new ManifestPlugin({
     fileName: 'webpack_manifest.json'
   }),
@@ -46,27 +39,11 @@ const plugins = [
   // new CleanPlugin(BUILD_PATH),
 ];
 
-if(production) {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: {
-        except: ['$super', '$', 'exports', 'require']
-        //以上变量‘$super’, ‘$’, ‘exports’ or ‘require’，不会被混淆
-      },
-      compress: {
-        warnings: false
-      }
-    })
-  )
-}
-
-module.exports = {
+var config = module.exports = {
   context: path.join(__dirname, '../'),
   entry: {
     index: './app/Component/index.js',
-    // renderer: './renderer.js',
     common: ['jquery']
-    // public: './public/pages/public.js'
   },
   output: {
     path: BUILD_PATH, // 设置输出目录
@@ -77,11 +54,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      // loader 扔在这里
-      // css, less
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
       { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!less') },
-      // babel loader
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
@@ -90,7 +64,6 @@ module.exports = {
           presets: ['react', 'es2015']
         }
       },
-      // image & font
       { test: /\.(woff|woff2|eot|ttf|otf)$/i, loader: 'url-loader?limit=8192&name=[name].[ext]'},
       { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'url-loader?limit=819200&name=[name].[ext]'},
       { test: require.resolve("jquery"), loader: "expose?$!expose?jQuery" }
