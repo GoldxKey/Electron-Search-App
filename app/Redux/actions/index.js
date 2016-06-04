@@ -486,7 +486,7 @@ export const setCnodejsTopic = (data) => {
   }
 };
 
-export setSegmentfaultArticle = (data) => {
+export const setSegmentfaultArticle = (data) => {
   return {
     type: TYPES.SET_SEGMENTFAULT_ARTICLE,
     data
