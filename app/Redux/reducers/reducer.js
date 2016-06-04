@@ -7,48 +7,48 @@ import {
 export function detail(detail = defaultState.detail, action) {
   switch (action.type) {
   case TYPES.SET_CNODEJS_TOPIC:
-    let {data} = action;
-    let {title, content, create_at, author, replies} = data;
+    //let data = action.data;
+    //let {title, content, create_at, author, replies} = data;
     return setState(detail, {
-      title: title,
-      content: content,
-      time: create_at,
+      title: action.data.title,
+      content: action.data.content,
+      time: action.data.create_at,
       author: setState(detail.author, {
-        name: author.loginname,
-        avatar: author.avatar_url
+        name: action.data.author.loginname,
+        avatar: action.data.author.avatar_url
       }),
       tags: [],
-      replies: [...replies]
+      replies: [...action.data.replies]
     });
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
   case TYPES.SET_SEGMENTFAULT_QUESTION:
-    let {data} = action;
-    let {title, createdDate, originalText, isAccepted, tags, user, isAccepted, votes} = data;
-    let detailTag = getAllTags(tags);
+    //let {data} = action;
+    //let {title, createdDate, originalText, isAccepted, tags, user, isAccepted, votes} = data;
+    let detailTag = getAllTags(action.data.tags);
     return setState(detail, {
-      title: title,
-      content: originalText,
-      time: createdDate,
+      title: action.data.title,
+      content: action.data.originalText,
+      time: action.data.createdDate,
       author: setState(detail.author, {
-        name: user.name,
-        avatar: user.avatarUrl
+        name: action.data.user.name,
+        avatar: action.data.user.avatarUrl
       }),
       tags: [...detailTag],
       replies: [],
-      isAccepted: isAccepted || votes > 10
+      isAccepted: action.data.isAccepted || votes > 10
     });
   case TYPES.SET_SEGMENTFAULT_ANSWERS:
-    let {data} = action;
-    let {available} = data;
+    //let {data} = action;
+    //let {available} = data;
     let answerList = [];
-    available.map((answerObj) => {
-      let {originalText, user, createdDate} = answerObj;
-      let {name, avatarUrl} = user;
+    action.data.available.map((answerObj) => {
+      //let {originalText, user, createdDate} = answerObj;
+      //let {name, avatarUrl} = user;
       answerList.push({
-        time: createdDate,
-        content: originalText,
-        name: name,
-        avatar: avatarUrl
+        time: answerObj.createdDate,
+        content: answerObj.originalText,
+        name: answerObj.user.name,
+        avatar: answerObj.user.avatarUrl
       });
     });
     return setState(detail, {
