@@ -75,13 +75,20 @@ export const changeActiveMenu = (menu) => {
   }
 };
 
-export const changeSite = (site) => {
+export const resetSite = (site) => {
   return (dispatch) => {
     dispatch(resetState());
     dispatch(changeActiveMenu(site));
+    dispatch(changeLoadingStatus(true));
+  }
+};
+
+export const changeSite = (site) => {
+  return (dispatch) => {
+    dispatch(resetSite(site));
     return dispatch(fetchItems());
   }
-}
+};
 
 export const resetState = () => {
   return (dispatch) => {
@@ -89,7 +96,7 @@ export const resetState = () => {
     dispatch(resetSearchResult([]));
     dispatch(changeTotalCount(1));
   }
-}
+};
 
 // parameters
 export const changeName = (name) => {

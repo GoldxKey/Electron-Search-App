@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron main.js",
     "webpack-build": "webpack --config config/development.config.js -p --display-reasons --display-chunks --progress --colors --profile --display-modules",
-    "webpack-watch": "webpack --watch",
+    "webpack-watch": "webpack --config config/development.config.js --watch",
     "rock": "npm run webpack-build && npm start && webpack-watch",
     "test": "mocha --timeout 20s --compilers js:babel-core/register --recursive"
   },

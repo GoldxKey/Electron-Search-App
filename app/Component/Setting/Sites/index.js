@@ -37,7 +37,7 @@ class Sites extends Component {
 
     return (
       <div className="setting__sites">
-        <div className="sites_header">chose the site you wish to search</div>
+        <div className="sites_header">chose sites you wish to search</div>
         <div className="sites_container">
           {allSites}
         </div>

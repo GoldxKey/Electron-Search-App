@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 import {
   showNewPage
-} from '../../../../Page/js/utils/index';
+} from '../../../Page/js/utils/index';
 import ItemTag from './ItemTag';
 import classNames from 'classnames';
 
-require('../../../../Page/stylesheet/SearchItem/stackoverflow_item.less');
+require('../../../Page/stylesheet/SearchItem/stackoverflow_item.less');
 
 class StackoverflowItem extends Component {
   constructor(props) {
@@ -44,7 +44,6 @@ class StackoverflowItem extends Component {
         </div>
         <div className="item_bottom">
           <div className="item__author">
-            {/*<img className="author_profile" src={owner["profile_image"]} />*/}
             <span className="author_name">by: {owner["display_name"]}</span>
           </div>
           <div className={itemStatusClass}>

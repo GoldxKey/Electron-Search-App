@@ -10,7 +10,8 @@ import {
   changeLanguageModalStatus,
   changeMessage,
   loadNextPage,
-  changeSite
+  changeSite,
+  resetState
 } from '../../Redux/actions/index';
 import {
   LANGUAGES
@@ -23,7 +24,7 @@ import {
 
 import FAB from '../FAB/index';
 import Search from './Search';
-import SearchResult from './SearchResult/index';
+import SearchResult from '../SearchResult/index';
 import EmptyContainer from '../EmptyContainer/index';
 import LoadingContainer from '../LoadingContainer/index';
 import LanguageModal from '../LanguageModal/index';
@@ -37,9 +38,20 @@ class Dashboard extends Component {
     super(props);
   }
 
+  componentDidUpdate(prevProps) {
+    let {activeMenu, fetchItems, resetState} = this.props;
+    let prevActiveMenu = prevProps.activeMenu;
+    if(activeMenu !== prevActiveMenu) {
+      resetState();
+      fetchItems();
+    }
+  }
+
   componentDidMount() {
-    let {totalCount, fetchItems, loadNextPage} = this.props;
-    this.props.fetchItems();
+    let {totalCount, fetchItems, loadNextPage, resetState, activeMenu} = this.props;
+    resetState();
+    fetchItems();
+
     Push.create('Hey',{
       body: 'I\'m a desktop app, built by Electron & React & Redux',
       icon: '../../Page/image/gundamcat.png',
@@ -50,7 +62,7 @@ class Dashboard extends Component {
     let $searchTop = $search.offset().top;
     let $searchHeight = $search.height();
 
-     $(window).scroll(() => {
+     $('.dashboard_container').scroll(() => {
        let $currentTop = $(document).scrollTop();
        if($currentTop >= $searchTop + $searchHeight/2) {
          $search.parent().addClass('active');
@@ -69,10 +81,18 @@ class Dashboard extends Component {
          changeSite(site);
        }
      });
+
   }
 
   render() {
-    let {totalCount, loading, changeLanguageModalStatus, languageModal, language, activeMenu} = this.props;
+    let {
+      totalCount,
+      loading,
+      changeLanguageModalStatus,
+      languageModal,
+      language,
+      activeMenu
+    } = this.props;
 
     let container = (<EmptyContainer />), changeLanguageModal;
 
@@ -141,6 +161,9 @@ function mapDispatchToProps(dispatch) {
     },
     changeSite: (site) => {
       dispatch(changeSite(site));
+    },
+    resetState: () => {
+      dispatch(resetState());
     }
   }
 }

@@ -34,13 +34,13 @@ $ npm run rock
 - upgrade user experience
   - stackoverflow搜索无内容时的处理
 - 自动化测试
-- React-Router
+- ~~React-Router~~
 - 设置页面
 - 搜索的条目的详情页（router）
 
 ### bugfix
 
-- 对外层滚动事件的监听
+- ~~对外层滚动事件的监听~~
 
 if possible, I wanna:
 

@@ -5,7 +5,7 @@ import SiteItem from './SiteItem';
 import { Link, IndexLink } from 'react-router';
 import {
   changeSideMenuStatus,
-  changeSite
+  resetSite
 } from '../../Redux/actions/index';
 import {
   SITE_LOGOS
@@ -28,12 +28,10 @@ class SideMenu extends Component {
     });
   }
 
-  changeSite(site) {
-    let {closeSideMenu, changeSite, activeMenu} = this.props;
-    if(activeMenu !== site) {
-      changeSite(site);
-      closeSideMenu();
-    }
+  resetSite(site) {
+    let {closeSideMenu, resetSite} = this.props;
+    resetSite(site);
+    closeSideMenu();
   }
 
   render() {
@@ -51,7 +49,7 @@ class SideMenu extends Component {
             key={index}
             siteName={SITE_LOGOS[site].name}
             siteLogo={SITE_LOGOS[site].logo}
-            handleClick={this.changeSite.bind(this)}
+            handleClick={this.resetSite.bind(this)}
           />
         </IndexLink>
       )
@@ -97,8 +95,8 @@ function mapDispatchToProps(dispatch) {
     closeSideMenu: () => {
       dispatch(changeSideMenuStatus(false));
     },
-    changeSite: (menu) => {
-      dispatch(changeSite(menu));
+    resetSite: (site) => {
+      dispatch(resetSite(site));
     }
   }
 }
