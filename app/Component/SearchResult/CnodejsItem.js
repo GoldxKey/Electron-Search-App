@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {
   showNewPage
-} from '../../../Page/js/utils/index';
+} from '../../Page/js/utils/index';
 import {remote} from 'electron';
-require('../../../Page/stylesheet/SearchItem/cnodejs_item.less');
+require('../../Page/stylesheet/SearchItem/cnodejs_item.less');
 
 class CnodejsItem extends Component {
   constructor(props) {

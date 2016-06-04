@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import {
   showNewPage
-} from '../../../Page/js/utils/index';
-require('../../../Page/stylesheet/SearchItem/github_item.less');
+} from '../../Page/js/utils/index';
+require('../../Page/stylesheet/SearchItem/github_item.less');
 
 class GithubItem extends Component {
   constructor(props) {

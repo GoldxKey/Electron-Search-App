@@ -7,7 +7,7 @@ import {
   changeTagged,
   changeLanguage,
   fetchItems
-} from '../../../Redux/actions/index';
+} from '../../Redux/actions/index';
 
 class SearchResult extends Component {
   constructor(props) {

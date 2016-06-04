@@ -10,7 +10,10 @@ import {
   STACKOVERFLOW,
   GITHUB,
   CNODEJS,
-  SEGMENTFAULT
+  SEGMENTFAULT,
+  DETAIL_URL_CNODEJS,
+  DETAIL_URL_SEGMENTFAULT_ARTICLE,
+  DETAIL_URL_SEGMENTFAULT_QUESTION
 } from '../ConstValue/BaseUrl.js';
 
 import {
@@ -75,13 +78,20 @@ export const changeActiveMenu = (menu) => {
   }
 };
 
-export const changeSite = (site) => {
+export const resetSite = (site) => {
   return (dispatch) => {
     dispatch(resetState());
     dispatch(changeActiveMenu(site));
+    dispatch(changeLoadingStatus(true));
+  }
+};
+
+export const changeSite = (site) => {
+  return (dispatch) => {
+    dispatch(resetSite(site));
     return dispatch(fetchItems());
   }
-}
+};
 
 export const resetState = () => {
   return (dispatch) => {
@@ -89,7 +99,7 @@ export const resetState = () => {
     dispatch(resetSearchResult([]));
     dispatch(changeTotalCount(1));
   }
-}
+};
 
 // parameters
 export const changeName = (name) => {
@@ -378,5 +388,121 @@ export const appendSearchResult = (items) => {
     let {page} = parameters;
     dispatch(changePage(parseInt(page) + 1));
     dispatch(appendItems(items))
+  }
+};
+
+export const fetchDetail = (id) => {
+  return (dispatch, getState) => {
+    let {sideMenu} = getState();
+    let {activeMenu} = sideMenu;
+    switch (activeMenu) {
+    // case SEGMENTFAULT:
+    //   return dispatch(setSegmentfaultArticle(id));
+    //   break;
+    case CNODEJS:
+      return dispatch(fetchCnodejsTopic(id));
+    default:
+      return false;
+    }
+  }
+}
+
+export const fetchCnodejsTopic = (id) => {
+  return (dispatch, getState) => {
+    dispatch(changeLoadingStatus(loadingStatus));
+    let url = `${DETAIL_URL_CNODEJS}${id}?mdrender=false`;
+    fetch(url).then((response) => {
+      if(response.status === 200) {
+        return response.json();
+      }
+    }).then((data) => {
+      dispatch(setCnodejsTopic(data.data));
+      dispatch(changeLoadingStatus(false));
+    }).catch((err) => {
+      dispatch(changeMessage(err, 'error'));
+      dispatch(changeLoadingStatus(false));
+    });
+  }
+};
+
+export const fetchSegmentfaultArticle = (id) => {
+  return (dispatch, getState) => {
+    dispatch(changeLoadingStatus(loadingStatus));
+    let url = `${DETAIL_URL_SEGMENTFAULT_ARTICLE}${id}`;
+    fetch(url).then((response) => {
+      if(response.status === 200) {
+        return response.json();
+      }
+    }).then((data) => {
+      dispatch(setSegmentfaultArticle(data.data));
+      dispatch(changeLoadingStatus(false));
+    }).catch((err) => {
+      dispatch(changeMessage(err, 'error'));
+      dispatch(changeLoadingStatus(false));
+    });
+  }
+};
+
+export const fetchSegmentfaultQuestion = (id) => {
+  return (dispatch, getState) => {
+    dispatch(changeLoadingStatus(loadingStatus));
+    let url = `${DETAIL_URL_SEGMENTFAULT_QUESTION}${id}`;
+    fetch(url).then((response) => {
+      if(response.status === 200) {
+        return response.json();
+      }
+    }).then((data) => {
+      dispatch(setSegmentfaultQuestion(data.data));
+      dispatch(changeLoadingStatus(false));
+    }).catch((err) => {
+      dispatch(changeMessage(err, 'error'));
+      dispatch(changeLoadingStatus(false));
+    });
+  }
+};
+
+export const fetchSegmentfaultAnswers = () => {
+  return (dispatch, getState) => {
+    dispatch(changeLoadingStatus(loadingStatus));
+    let url = `${DETAIL_URL_SEGMENTFAULT_QUESTION}${id}/answers`;
+    fetch(url).then((response) => {
+      if(response.status === 200) {
+        return response.json();
+      }
+    }).then((data) => {
+      dispatch(setSegmentfaultAnswers(data.data));
+      dispatch(changeLoadingStatus(false));
+    }).catch((err) => {
+      dispatch(changeMessage(err, 'error'));
+      dispatch(changeLoadingStatus(false));
+    });
+  }
+};
+
+export const setCnodejsTopic = (data) => {
+  return {
+    type: TYPES.SET_CNODEJS_TOPIC,
+    data
+  }
+};
+
+export const setSegmentfaultArticle = (data) => {
+  return {
+    type: TYPES.SET_SEGMENTFAULT_ARTICLE,
+    data
+  }
+};
+
+export const setSegmentfaultQuestion = (data) => {
+  return {
+    type: TYPES.SET_SEGMENTFAULT_QUESTION,
+    data
+  }
+};
+
+export const setSegmentfaultAnswers = (data) => {
+  return {
+    type: TYPES.SET_SEGMENTFAULT_ANSWERS,
+    data
   }
 };

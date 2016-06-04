@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {
   showNewPage
-} from '../../../Page/js/utils/index';
+} from '../../Page/js/utils/index';
 import {
   BASE_URL_SEGMENTFAULT
-} from '../../ConstValue';
-require('../../../Page/stylesheet/SearchItem/segmentfault_item.less');
+} from '../ConstValue';
+require('../../Page/stylesheet/SearchItem/segmentfault_item.less');
 
 class SegmentfaultItem extends Component {
   constructor(props) {
