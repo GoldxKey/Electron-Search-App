@@ -34,6 +34,18 @@ const defaultState = {
   },
   setting: {
     sites: [GITHUB, STACKOVERFLOW, CNODEJS, SEGMENTFAULT]
+  },
+  detail: {
+    title: '',
+    content: '',
+    time: '',
+    author: {
+      name: '',
+      avatar: ''
+    },
+    tags: [],
+    replies: [],
+    isAccepted: false
   }
 };
 

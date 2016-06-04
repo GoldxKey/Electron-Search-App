@@ -4,6 +4,61 @@ import {
   TIME_OPTIONS
 } from '../ConstValue/TimeOptions';
 
+export function detail(detail = defaultState.detail, action) {
+  switch (action.type) {
+  case TYPES.SET_CNODEJS_TOPIC:
+    let {data} = action;
+    let {title, content, create_at, author, replies} = data;
+    return setState(detail, {
+      title: title,
+      content: content,
+      time: create_at,
+      author: setState(detail.author, {
+        name: author.loginname,
+        avatar: author.avatar_url
+      }),
+      tags: [],
+      replies: [...replies]
+    });
+  case TYPES.SET_SEGMENTFAULT_ARTICLE:
+  case TYPES.SET_SEGMENTFAULT_QUESTION:
+    let {data} = action;
+    let {title, createdDate, originalText, isAccepted, tags, user, isAccepted, votes} = data;
+    let detailTag = getAllTags(tags);
+    return setState(detail, {
+      title: title,
+      content: originalText,
+      time: createdDate,
+      author: setState(detail.author, {
+        name: user.name,
+        avatar: user.avatarUrl
+      }),
+      tags: [...detailTag],
+      replies: [],
+      isAccepted: isAccepted || votes > 10
+    });
+  case TYPES.SET_SEGMENTFAULT_ANSWERS:
+    let {data} = action;
+    let {available} = data;
+    let answerList = [];
+    available.map((answerObj) => {
+      let {originalText, user, createdDate} = answerObj;
+      let {name, avatarUrl} = user;
+      answerList.push({
+        time: createdDate,
+        content: originalText,
+        name: name,
+        avatar: avatarUrl
+      });
+    });
+    return setState(detail, {
+      replies: [...answerList]
+    });
+  default:
+    return detail;
+  }
+}
+
 export function setting(setting = defaultState.setting, action) {
   switch (action.type) {
   case TYPES.ADD_SITE:
@@ -118,4 +173,12 @@ export function searchResult(searchResult = defaultState.searchResult, action) {
 
 function setState(pre, next) {
   return Object.assign({}, pre, next);
+}
+
+function getAllTags(tags) {
+  let detailTag = [];
+  tags.map((tag) => {
+    detailTag.push(detailTag.name);
+  });
+  return detailTag;
 }
