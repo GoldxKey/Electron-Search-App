@@ -4,6 +4,7 @@ import {
   showNewPage
 } from '../../Page/js/utils/index';
 import {remote} from 'electron';
+import { Link } from 'react-router';
 require('../../Page/stylesheet/SearchItem/cnodejs_item.less');
 
 class CnodejsItem extends Component {
@@ -47,7 +48,9 @@ class CnodejsItem extends Component {
     return (
       <div className="cnodejs_item_container">
         <div className="cnodejs_top">
-          <div className="top_title" onClick={this.showCnodejsPage.bind(this)}>{title}</div>
+          <Link to="/detail">
+            <div className="top_title" onClick={this.showCnodejsPage.bind(this)}>{title}</div>
+          </Link>
           <div className="top_content">{itemContent}</div>
         </div>
         <div className="cnodejs_bottom">

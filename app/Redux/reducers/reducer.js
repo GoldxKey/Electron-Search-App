@@ -7,8 +7,6 @@ import {
 export function detail(detail = defaultState.detail, action) {
   switch (action.type) {
   case TYPES.SET_CNODEJS_TOPIC:
-    //let data = action.data;
-    //let {title, content, create_at, author, replies} = data;
     return setState(detail, {
       title: action.data.title,
       content: action.data.content,
@@ -22,8 +20,6 @@ export function detail(detail = defaultState.detail, action) {
     });
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
   case TYPES.SET_SEGMENTFAULT_QUESTION:
-    //let {data} = action;
-    //let {title, createdDate, originalText, isAccepted, tags, user, isAccepted, votes} = data;
     let detailTag = getAllTags(action.data.tags);
     return setState(detail, {
       title: action.data.title,
@@ -38,12 +34,8 @@ export function detail(detail = defaultState.detail, action) {
       isAccepted: action.data.isAccepted || votes > 10
     });
   case TYPES.SET_SEGMENTFAULT_ANSWERS:
-    //let {data} = action;
-    //let {available} = data;
     let answerList = [];
     action.data.available.map((answerObj) => {
-      //let {originalText, user, createdDate} = answerObj;
-      //let {name, avatarUrl} = user;
       answerList.push({
         time: answerObj.createdDate,
         content: answerObj.originalText,
