@@ -45,7 +45,8 @@ const defaultState = {
     },
     tags: [],
     replies: [],
-    isAccepted: false
+    isAccepted: false,
+    loading: false
   }
 };
 

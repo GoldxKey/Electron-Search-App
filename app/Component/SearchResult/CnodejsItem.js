@@ -30,6 +30,12 @@ class CnodejsItem extends Component {
     currentWindow.setTitle(title);
   }
 
+  fetchDetail() {
+    let {item, fetchDetail} = this.props;
+    fetchDetail(item.id);
+    this.showCnodejsPage();
+  }
+
   render() {
     let {expand} = this.state;
     let {item} = this.props;
@@ -49,7 +55,7 @@ class CnodejsItem extends Component {
       <div className="cnodejs_item_container">
         <div className="cnodejs_top">
           <Link to="/detail">
-            <div className="top_title" onClick={this.showCnodejsPage.bind(this)}>{title}</div>
+            <div className="top_title" onClick={this.fetchDetail.bind(this)}>{title}</div>
           </Link>
           <div className="top_content">{itemContent}</div>
         </div>

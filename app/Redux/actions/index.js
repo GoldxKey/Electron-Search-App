@@ -391,14 +391,17 @@ export const appendSearchResult = (items) => {
   }
 };
 
-export const fetchDetail = (id) => {
+export const fetchDetail = (id, type = null) => {
   return (dispatch, getState) => {
     let {sideMenu} = getState();
     let {activeMenu} = sideMenu;
     switch (activeMenu) {
-    // case SEGMENTFAULT:
-    //   return dispatch(setSegmentfaultArticle(id));
-    //   break;
+    case SEGMENTFAULT:
+      if(type === 'atricle') {
+        return dispatch(setSegmentfaultArticle(id));
+      }else {
+        return dispatch(fetchSegmentfaultQuestion(id));
+      }
     case CNODEJS:
       return dispatch(fetchCnodejsTopic(id));
     default:
@@ -411,14 +414,17 @@ export const fetchCnodejsTopic = (id) => {
   return (dispatch, getState) => {
     dispatch(changeLoadingStatus(loadingStatus));
     let url = `${DETAIL_URL_CNODEJS}${id}?mdrender=false`;
+    console.log(url);
     fetch(url).then((response) => {
       if(response.status === 200) {
         return response.json();
       }
     }).then((data) => {
+      console.log(data);
       dispatch(setCnodejsTopic(data.data));
       dispatch(changeLoadingStatus(false));
     }).catch((err) => {
+      console.log(err);
       dispatch(changeMessage(err, 'error'));
       dispatch(changeLoadingStatus(false));
     });

@@ -6,6 +6,8 @@ import {
   SITE_DETAIL
 } from './Detail/index';
 import DetailInfo from './DetailInfo';
+// import DetailLoading from './DetailLoading';
+import LoadingContainer from '../LoadingContainer/index';
 require('../../Page/stylesheet/detail_page.less');
 
 class DetailPage extends Component {
@@ -14,12 +16,24 @@ class DetailPage extends Component {
   }
 
   render() {
-    let {activeMenu} = this.props;
+    let {activeMenu, loading} = this.props;
     let Detail = SITE_DETAIL[activeMenu];
+    let detailContainer;
+    if(loading) {
+      detailContainer = (
+        <LoadingContainer />
+      );
+    }else {
+      detailContainer = (
+        <div className="detail_page">
+          <DetailInfo />
+          <Detail />
+        </div>
+      )
+    }
     return (
-      <div className="detail_page">
-        <DetailInfo />
-        <Detail />
+      <div className="detail_page_container">
+        {detailLoadingContainer}
       </div>
     )
   }
@@ -28,6 +42,7 @@ class DetailPage extends Component {
 function mapStateToProps(state) {
   return {
     activeMenu: state.sideMenu.activeMenu,
+    loading: state.detail.loading
   }
 }
 
