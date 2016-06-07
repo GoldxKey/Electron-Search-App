@@ -20,8 +20,6 @@ export function detail(detail = defaultState.detail, action) {
     });
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
   case TYPES.SET_SEGMENTFAULT_QUESTION:
-    console.log('test');
-    console.log(action.data);
     let detailTag = getAllTags(action.data.tags);
     return setState(detail, {
       title: action.data.title,

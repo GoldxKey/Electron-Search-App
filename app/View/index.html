@@ -23,7 +23,6 @@
   <script>
      var fs = require('fs');
      var result = fs.readFileSync("./assets/webpack_manifest.json", "utf8");
-     console.log(result);
      result = JSON.parse(result);
      require('../../assets/' + result['common.js']);
      require('../../assets/' + result['index.js']);

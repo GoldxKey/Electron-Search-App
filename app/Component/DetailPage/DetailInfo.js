@@ -72,7 +72,6 @@ function mapStateToProps(state) {
   let {detail, sideMenu} = state;
   let {activeMenu} = sideMenu;
   let {title, time, author, tags} = detail;
-  console.log(detail);
   return {
     activeMenu,
     title,
