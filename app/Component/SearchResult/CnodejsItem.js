@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {
-  showNewPage
+  expandWindow
 } from '../../Page/js/utils/index';
 import {remote} from 'electron';
+import { Link } from 'react-router';
 require('../../Page/stylesheet/SearchItem/cnodejs_item.less');
 
 class CnodejsItem extends Component {
@@ -21,12 +22,19 @@ class CnodejsItem extends Component {
     });
   }
 
-  showCnodejsPage() {
-    let {item} = this.props;
+  // showCnodejsPage() {
+  //   let {item} = this.props;
+  //   let {id, title} = item;
+  //   let currentWindow = remote.getCurrentWindow();
+  //   currentWindow.setContentSize(800, 700, true);
+  //   currentWindow.setTitle(title);
+  // }
+
+  fetchDetail() {
+    let {item, fetchDetail} = this.props;
     let {id, title} = item;
-    let currentWindow = remote.getCurrentWindow();
-    currentWindow.setContentSize(800, 700, true);
-    currentWindow.setTitle(title);
+    fetchDetail(item.id);
+    expandWindow(title);
   }
 
   render() {
@@ -47,7 +55,9 @@ class CnodejsItem extends Component {
     return (
       <div className="cnodejs_item_container">
         <div className="cnodejs_top">
-          <div className="top_title" onClick={this.showCnodejsPage.bind(this)}>{title}</div>
+          <Link to="/detail">
+            <div className="top_title" onClick={this.fetchDetail.bind(this)}>{title}</div>
+          </Link>
           <div className="top_content">{itemContent}</div>
         </div>
         <div className="cnodejs_bottom">

@@ -44,9 +44,8 @@ class SideMenu extends Component {
 
     let siteItems = sites.map((site, index) => {
       return (
-        <IndexLink to="/">
+        <IndexLink to="/" key={index}>
           <SiteItem
-            key={index}
             siteName={SITE_LOGOS[site].name}
             siteLogo={SITE_LOGOS[site].logo}
             handleClick={this.resetSite.bind(this)}

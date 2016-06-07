@@ -7,8 +7,6 @@ import {
 export function detail(detail = defaultState.detail, action) {
   switch (action.type) {
   case TYPES.SET_CNODEJS_TOPIC:
-    //let data = action.data;
-    //let {title, content, create_at, author, replies} = data;
     return setState(detail, {
       title: action.data.title,
       content: action.data.content,
@@ -22,8 +20,8 @@ export function detail(detail = defaultState.detail, action) {
     });
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
   case TYPES.SET_SEGMENTFAULT_QUESTION:
-    //let {data} = action;
-    //let {title, createdDate, originalText, isAccepted, tags, user, isAccepted, votes} = data;
+    console.log('test');
+    console.log(action.data);
     let detailTag = getAllTags(action.data.tags);
     return setState(detail, {
       title: action.data.title,
@@ -35,15 +33,11 @@ export function detail(detail = defaultState.detail, action) {
       }),
       tags: [...detailTag],
       replies: [],
-      isAccepted: action.data.isAccepted || votes > 10
+      isAccepted: action.data.votes > 10 || action.data.isAccepted
     });
   case TYPES.SET_SEGMENTFAULT_ANSWERS:
-    //let {data} = action;
-    //let {available} = data;
     let answerList = [];
     action.data.available.map((answerObj) => {
-      //let {originalText, user, createdDate} = answerObj;
-      //let {name, avatarUrl} = user;
       answerList.push({
         time: answerObj.createdDate,
         content: answerObj.originalText,
@@ -178,7 +172,7 @@ function setState(pre, next) {
 function getAllTags(tags) {
   let detailTag = [];
   tags.map((tag) => {
-    detailTag.push(detailTag.name);
+    detailTag.push(tag.name);
   });
   return detailTag;
 }

@@ -1,22 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {
-  showNewPage
+  expandWindow
 } from '../../Page/js/utils/index';
 import {
   BASE_URL_SEGMENTFAULT
 } from '../ConstValue';
 require('../../Page/stylesheet/SearchItem/segmentfault_item.less');
+import { Link } from 'react-router';
 
 class SegmentfaultItem extends Component {
   constructor(props) {
     super(props);
   }
 
-  showSfPage() {
-    let {item} = this.props;
-    let {title, url} = item;
-    showNewPage(BASE_URL_SEGMENTFAULT + url, title);
+  fetchDetail() {
+    let {item, fetchDetail} = this.props;
+    let {id, type, title} = item;
+    fetchDetail(id, type);
+    expandWindow(title);
   }
 
   render() {
@@ -30,7 +32,9 @@ class SegmentfaultItem extends Component {
     return (
       <div className="segmentfault_item_container">
         <div className="segmentfault_top">
-          <div className="top_title" onClick={this.showSfPage.bind(this)}>{title}</div>
+          <Link to="/detail">
+            <div className="top_title" onClick={this.fetchDetail.bind(this)}>{title}</div>
+          </Link>
           <div className="top_content">{excerpt}</div>
         </div>
         <div className="segmentfault_bottom">

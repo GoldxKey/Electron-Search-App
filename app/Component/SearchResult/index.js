@@ -6,7 +6,8 @@ import DISTRIBUTE_SEARCH_ITEMS from './DistributeItems';
 import {
   changeTagged,
   changeLanguage,
-  fetchItems
+  fetchItems,
+  fetchDetail
 } from '../../Redux/actions/index';
 
 class SearchResult extends Component {
@@ -22,17 +23,17 @@ class SearchResult extends Component {
   }
 
   render() {
-    let {items, activeMenu} = this.props;
+    let {items, activeMenu, fetchDetail} = this.props;
 
     let SearchItem = DISTRIBUTE_SEARCH_ITEMS[activeMenu];
 
-    console.log(items);
     let searchItems = items.map((item, index) => {
       return (
         <SearchItem
           key={index}
           item={item}
           changeTagged={this.changeTagged.bind(this)}
+          fetchDetail={fetchDetail.bind(this)}
         />
       )
     })
@@ -62,6 +63,9 @@ function mapDispatchToProps(dispatch) {
     },
     fetchItems: () => {
       dispatch(fetchItems());
+    },
+    fetchDetail: (id, type) => {
+      dispatch(fetchDetail(id, type));
     }
   }
 }

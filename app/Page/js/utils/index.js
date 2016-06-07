@@ -50,3 +50,17 @@ export const showNewPage = (url, name = 'new window', options) => {
   showNewPage.loadURL(url);
   showNewPage.show();
 }
+
+export const expandWindow = (title) => {
+  const remote = require('electron').remote;
+  let currentWindow = remote.getCurrentWindow();
+  currentWindow.setContentSize(800, 700, true);
+  currentWindow.setTitle(title);
+}
+
+export const shrinkWindow = (title) => {
+  const remote = require('electron').remote;
+  let currentWindow = remote.getCurrentWindow();
+  currentWindow.setContentSize(450, 700, true);
+  currentWindow.setTitle(title);
+}
