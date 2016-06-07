@@ -9,6 +9,9 @@ import {
   changeSite,
   changeTime
 } from '../../Redux/actions/index';
+import {
+  shrinkWindow
+} from '../../Page/js/utils/index';
 
 class DetailInfo extends Component {
   constructor(props) {
@@ -20,6 +23,12 @@ class DetailInfo extends Component {
     changeName(tag);
     resetSearchTime();
     changeSite();
+    this.shrinkWindow();
+  }
+
+  shrinkWindow() {
+    let {activeMenu} = this.props;
+    shrinkWindow(activeMenu);
   }
 
   render() {
@@ -39,14 +48,15 @@ class DetailInfo extends Component {
       <div className="detail_info">
         <div className="detail_top">
           <Link to="/">
-            <i className="fa fa-angle-left" aria-hidden="true"></i>
+            <i className="fa fa-angle-left" aria-hidden="true" onClick={this.shrinkWindow.bind(this)}></i>
           </Link>
           <div className="into_site">{activeMenu}</div>
         </div>
         <div className="detail_tags">{detailTags}</div>
         <div className="detail_bottom">
           <div className="author_info">
-            {author.name}
+            {author.name}&nbsp;&nbsp;
+            <i className="fa fa-calendar" aria-hidden="true"></i>&nbsp;{time}
           </div>
           <div className="detail_title">
             {title}
@@ -62,6 +72,7 @@ function mapStateToProps(state) {
   let {detail, sideMenu} = state;
   let {activeMenu} = sideMenu;
   let {title, time, author, tags} = detail;
+  console.log(detail);
   return {
     activeMenu,
     title,

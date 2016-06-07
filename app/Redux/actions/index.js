@@ -399,8 +399,8 @@ export const fetchDetail = (id, type = null) => {
     let {activeMenu} = sideMenu;
     switch (activeMenu) {
       case SEGMENTFAULT:
-        if(type === 'atricle') {
-          return dispatch(setSegmentfaultArticle(id));
+        if(type === 'article') {
+          return dispatch(fetchSegmentfaultArticle(id));
         }else if(type === 'question'){
           return dispatch(fetchSegmentfaultQuestion(id));
         }
@@ -480,6 +480,7 @@ export const fetchSegmentfaultAnswers = () => {
         return response.json();
       }
     }).then((data) => {
+      console.log(data);
       dispatch(setSegmentfaultAnswers(data.data));
       dispatch(changeLoadingStatus(false));
     }).catch((err) => {

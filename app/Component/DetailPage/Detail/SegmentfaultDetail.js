@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { render } from 'react-dom';
 import classNames from 'classnames';
+import {connect} from 'react-redux';
 
 class SegmentfaultDetail extends Component {
   constructor(props) {
@@ -8,10 +9,28 @@ class SegmentfaultDetail extends Component {
   }
 
   render() {
+    let {content, replies} = this.props;
     return (
-      <div className="detail_container segmentfault_detail"></div>
+      <div className="detail_container segmentfault_detail">
+        {content}
+      </div>
     )
   }
 }
 
-export default SegmentfaultDetail;
+function mapStateToProps(state) {
+  let {detail} = state;
+  let {content, replies} = detail;
+  return {
+    content,
+    replies
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SegmentfaultDetail);

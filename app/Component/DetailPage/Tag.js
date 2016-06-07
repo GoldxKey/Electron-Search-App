@@ -18,7 +18,7 @@ class Tag extends Component {
 
     return (
       <Link to="">
-        <div class="detail_tag" onClick={this.handleTagClick.bind(this)}>
+        <div className="detail_tag" onClick={this.handleTagClick.bind(this)}>
           {tag}
         </div>
       </Link>

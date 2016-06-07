@@ -20,8 +20,9 @@ export function detail(detail = defaultState.detail, action) {
     });
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
   case TYPES.SET_SEGMENTFAULT_QUESTION:
+    console.log('test');
+    console.log(action.data);
     let detailTag = getAllTags(action.data.tags);
-    console.log(detailTag);
     return setState(detail, {
       title: action.data.title,
       content: action.data.originalText,
@@ -32,7 +33,7 @@ export function detail(detail = defaultState.detail, action) {
       }),
       tags: [...detailTag],
       replies: [],
-      isAccepted: action.data.isAccepted || votes > 10
+      isAccepted: action.data.votes > 10 || action.data.isAccepted
     });
   case TYPES.SET_SEGMENTFAULT_ANSWERS:
     let answerList = [];
