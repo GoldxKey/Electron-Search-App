@@ -21,6 +21,7 @@ export function detail(detail = defaultState.detail, action) {
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
   case TYPES.SET_SEGMENTFAULT_QUESTION:
     let detailTag = getAllTags(action.data.tags);
+    console.log(detailTag);
     return setState(detail, {
       title: action.data.title,
       content: action.data.originalText,
@@ -170,7 +171,7 @@ function setState(pre, next) {
 function getAllTags(tags) {
   let detailTag = [];
   tags.map((tag) => {
-    detailTag.push(detailTag.name);
+    detailTag.push(tag.name);
   });
   return detailTag;
 }

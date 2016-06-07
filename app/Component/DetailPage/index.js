@@ -33,7 +33,7 @@ class DetailPage extends Component {
     }
     return (
       <div className="detail_page_container">
-        {detailLoadingContainer}
+        {detailContainer}
       </div>
     )
   }

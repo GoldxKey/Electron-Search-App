@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {
-  showNewPage
+  expandWindow
 } from '../../Page/js/utils/index';
 import {remote} from 'electron';
 import { Link } from 'react-router';
@@ -22,18 +22,19 @@ class CnodejsItem extends Component {
     });
   }
 
-  showCnodejsPage() {
-    let {item} = this.props;
-    let {id, title} = item;
-    let currentWindow = remote.getCurrentWindow();
-    currentWindow.setContentSize(800, 700, true);
-    currentWindow.setTitle(title);
-  }
+  // showCnodejsPage() {
+  //   let {item} = this.props;
+  //   let {id, title} = item;
+  //   let currentWindow = remote.getCurrentWindow();
+  //   currentWindow.setContentSize(800, 700, true);
+  //   currentWindow.setTitle(title);
+  // }
 
   fetchDetail() {
     let {item, fetchDetail} = this.props;
+    let {id, title} = item;
     fetchDetail(item.id);
-    this.showCnodejsPage();
+    expandWindow(title);
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import className from 'classnames';
 import {
-  showNewPage
+  expandWindow
 } from '../../Page/js/utils/index';
 import {
   BASE_URL_SEGMENTFAULT
@@ -14,15 +14,11 @@ class SegmentfaultItem extends Component {
     super(props);
   }
 
-  // showSfPage() {
-  //   let {item} = this.props;
-  //   let {title, url} = item;
-  //   showNewPage(BASE_URL_SEGMENTFAULT + url, title);
-  // }
-
   fetchDetail() {
     let {item, fetchDetail} = this.props;
-    fetchDetail(item.id, item.type);
+    let {id, type, title} = item;
+    fetchDetail(id, type);
+    expandWindow(title);
   }
 
   render() {

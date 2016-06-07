@@ -64,8 +64,8 @@ function mapDispatchToProps(dispatch) {
     fetchItems: () => {
       dispatch(fetchItems());
     },
-    fetchDetail: (id) => {
-      dispatch(fetchDetail(id));
+    fetchDetail: (id, type) => {
+      dispatch(fetchDetail(id, type));
     }
   }
 }

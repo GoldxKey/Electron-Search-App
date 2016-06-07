@@ -81,12 +81,14 @@ export const changeActiveMenu = (menu) => {
 export const resetSite = (site) => {
   return (dispatch) => {
     dispatch(resetState());
-    dispatch(changeActiveMenu(site));
+    if(site !== null) {
+      dispatch(changeActiveMenu(site));
+    }
     dispatch(changeLoadingStatus(true));
   }
 };
 
-export const changeSite = (site) => {
+export const changeSite = (site = null) => {
   return (dispatch) => {
     dispatch(resetSite(site));
     return dispatch(fetchItems());
@@ -396,23 +398,24 @@ export const fetchDetail = (id, type = null) => {
     let {sideMenu} = getState();
     let {activeMenu} = sideMenu;
     switch (activeMenu) {
-    case SEGMENTFAULT:
-      if(type === 'atricle') {
-        return dispatch(setSegmentfaultArticle(id));
-      }else {
-        return dispatch(fetchSegmentfaultQuestion(id));
-      }
-    case CNODEJS:
-      return dispatch(fetchCnodejsTopic(id));
-    default:
-      return false;
+      case SEGMENTFAULT:
+        if(type === 'atricle') {
+          return dispatch(setSegmentfaultArticle(id));
+        }else if(type === 'question'){
+          return dispatch(fetchSegmentfaultQuestion(id));
+        }
+        break;
+      case CNODEJS:
+        return dispatch(fetchCnodejsTopic(id));
+      default:
+        return false;
     }
   }
 }
 
 export const fetchCnodejsTopic = (id) => {
   return (dispatch, getState) => {
-    dispatch(changeLoadingStatus(loadingStatus));
+    dispatch(changeLoadingStatus(true));
     let url = `${DETAIL_URL_CNODEJS}${id}?mdrender=false`;
     console.log(url);
     fetch(url).then((response) => {
@@ -433,7 +436,7 @@ export const fetchCnodejsTopic = (id) => {
 
 export const fetchSegmentfaultArticle = (id) => {
   return (dispatch, getState) => {
-    dispatch(changeLoadingStatus(loadingStatus));
+    dispatch(changeLoadingStatus(true));
     let url = `${DETAIL_URL_SEGMENTFAULT_ARTICLE}${id}`;
     fetch(url).then((response) => {
       if(response.status === 200) {
@@ -451,13 +454,14 @@ export const fetchSegmentfaultArticle = (id) => {
 
 export const fetchSegmentfaultQuestion = (id) => {
   return (dispatch, getState) => {
-    dispatch(changeLoadingStatus(loadingStatus));
+    dispatch(changeLoadingStatus(true));
     let url = `${DETAIL_URL_SEGMENTFAULT_QUESTION}${id}`;
     fetch(url).then((response) => {
       if(response.status === 200) {
         return response.json();
       }
     }).then((data) => {
+      console.log(data);
       dispatch(setSegmentfaultQuestion(data.data));
       dispatch(changeLoadingStatus(false));
     }).catch((err) => {
@@ -469,7 +473,7 @@ export const fetchSegmentfaultQuestion = (id) => {
 
 export const fetchSegmentfaultAnswers = () => {
   return (dispatch, getState) => {
-    dispatch(changeLoadingStatus(loadingStatus));
+    dispatch(changeLoadingStatus(true));
     let url = `${DETAIL_URL_SEGMENTFAULT_QUESTION}${id}/answers`;
     fetch(url).then((response) => {
       if(response.status === 200) {
