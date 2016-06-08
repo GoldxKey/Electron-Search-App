@@ -12,17 +12,33 @@
   z-index: 9;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
   .transition_animation;
-  background-color: #3498db;
-  // -webkit-app-region: drag;
+  background-color: #E0E0E0;
+
+  &.activeTheme {
+    background-color: #3498db;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
 
   &:hover {
+    background-color: #BDBDBD;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
-    background-color: #2980b9;
   }
 
   .fab_image {
     width: 24px;
     height: 24px;
     margin: 16px;
+  }
+
+  .fab_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    font-size: 1.5em;
+    .transform_to_center;
   }
 }

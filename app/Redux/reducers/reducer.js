@@ -10,12 +10,13 @@ export function detail(detail = defaultState.detail, action) {
     return setState(detail, {
       title: action.data.title,
       content: action.data.content,
-      time: action.data.create_at,
+      time: action.data.create_at.split('T')[0],
       author: setState(detail.author, {
         name: action.data.author.loginname,
         avatar: action.data.author.avatar_url
       }),
       tags: [],
+      hasReply: true,
       replies: [...action.data.replies]
     });
   case TYPES.SET_SEGMENTFAULT_ARTICLE:
@@ -30,6 +31,7 @@ export function detail(detail = defaultState.detail, action) {
         avatar: action.data.user.avatarUrl
       }),
       tags: [...detailTag],
+      hasReply: true,
       replies: [],
       isAccepted: action.data.votes > 10 || action.data.isAccepted
     });
