@@ -236,7 +236,6 @@ export const fetchSegmentfaultItems = (loadingStatus = true) => {
     page = parseInt(page) + 1;
     name = name ? name : '.json';
     let url = `${BASE_URL_SEGMENTFAULT_SEARCH}${page}&q=${name}`;
-    // let url = BASE_URL_SEGMENTFAULT_SEARCH + page + '&q=' + name;
     console.log(url);
     return fetch(url).then((response) => {
       if(response.status === 200) {
@@ -270,7 +269,6 @@ export const fetchCnodejsItems = (loadingStatus = true) => {
     let {tab, page} = parameters;
     page = parseInt(page) + 1;
     let url = `${BASE_URL_CNODEJS}${page}&tab=${tab}`;
-    // let url = BASE_URL_CNODEJS + page + '&tab=' +tab;
     console.log(url);
     return fetch(url).then((response) => {
       if(response.status === 200) {
@@ -304,11 +302,9 @@ export const fetchStackoverflowItems = (loadingStatus = true) => {
     let url = BASE_URL_STACKOVERFLOW + page;
     if(name) {
       url = `${BASE_URL_STACKOVERFLOW_SEARCH}${page}&intitle=${name}`;
-      // url =  BASE_URL_STACKOVERFLOW_SEARCH + page + '&intitle=' + name;
     }
     if(tagged) {
       url = `${url}&tagged=${tagged}`;
-      // url = url + '&tagged=' + tagged;
     }
     console.log(url);
     return fetch(url).then((response) => {
@@ -342,10 +338,8 @@ export const fetchGithubItems = (loadingStatus = true) => {
 
     page = parseInt(page) + 1;
     let url = `${BASE_URL_GITHUB}${page}&q=${name}+stars:${stars}+language:${language}`;
-    // let url = BASE_URL_GITHUB + page + '&q=' + name + '+stars:' + stars + '+language:' + language;
     if(time !== Object.keys(TIME_OPTIONS)[0]) {
       url = `${url}+created:${TIME_OPTIONS[time].range}`;
-      // url = url + '+created:' + TIME_OPTIONS[time].range;
     }
 
     console.log(url);

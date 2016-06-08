@@ -7,12 +7,6 @@ import {
 export const getFiles = (relativePath) => {
   return new Promise((resolve, reject) => {
     let fs = require('fs');
-    // let path = require('path');
-    // let CURRENT_PATH = path.resolve(__dirname);
-    // console.log(CURRENT_PATH);
-    // console.log(__dirname);
-    // console.log(relativePath);
-    // let targetPath = path.join(__dirname, relativePath);
 
     fs.readdir('../../image/language/', (err, files) => {
       if(err) {

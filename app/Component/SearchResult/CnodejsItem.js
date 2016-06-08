@@ -58,7 +58,9 @@ class CnodejsItem extends Component {
           <Link to="/detail">
             <div className="top_title" onClick={this.fetchDetail.bind(this)}>{title}</div>
           </Link>
-          <div className="top_content">{itemContent}</div>
+          <div className="top_content">
+            {itemContent}
+          </div>
         </div>
         <div className="cnodejs_bottom">
           <div className="bottom_info">

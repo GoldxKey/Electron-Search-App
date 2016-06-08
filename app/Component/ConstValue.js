@@ -145,4 +145,4 @@ export const TIME_OPTIONS = {
   }
 };
 
-export const TECH_LIST = ['electron', 'react', 'redux', 'react-router', 'webpack'];
+export const TECH_LIST = ['electron', 'react', 'redux', 'react-router', 'webpack', 'marked'];

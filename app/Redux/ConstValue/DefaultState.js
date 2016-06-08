@@ -45,6 +45,7 @@ const defaultState = {
     },
     tags: [],
     replies: [],
+    hasReply: true,
     isAccepted: false,
     loading: false
   }
